@@ -1,3 +1,5 @@
-{{pattern}}
+{{#each track in pattern.tracks}}
+  {{huayra-track track=track}}
+{{/each}}
 
-asdas
+{{ ember-json-pretty jsonObj=pattern }}

@@ -5,3 +5,20 @@ html, body {
 a.active {
   font-weight: bold;
 }
+
+
+.huayra-step {
+  color: red;
+}
+
+.huayra-track {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 5px;
+}
+
+.huayra-track-id {
+  display: inline-block;
+  border: 1px solid green;
+  width: 100px;
+}

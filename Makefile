@@ -16,7 +16,7 @@ comandos:
 	@echo "    ${G}compilar${N}        Genera los archivos compilados."
 	@echo "    ${G}compilar_live${N}   Compila de forma contínua."
 	@echo ""
-	@echo "    ${G}actualizar_theme{$N} Actualizar el tema css."
+	@echo "    ${G}actualizar_theme${N}Actualizar el tema css."
 	@echo ""
 	@echo "    ${G}ejecutar_linux${N}  Prueba la aplicacion sobre Huayra."
 	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
@@ -88,7 +88,7 @@ actualizar_theme:
 	rm -r -f public/fonts
 	mv tmp_theme/huayra-bootstrap-liso-master/destino/libs public/
 	mv tmp_theme/huayra-bootstrap-liso-master/destino/img public/
-	mv tmp_theme/huayra-bootstrap-liso-master/destino/fonts public/fontsawesome
+	mv tmp_theme/huayra-bootstrap-liso-master/destino/fonts public/
 	mv tmp_theme/huayra-bootstrap-liso-master/destino/huayra-bootstrap.css public/
 	rm -r -f master.zip
 	rm -r -f tmp_theme

@@ -2,7 +2,9 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var app = new EmberApp();
+var app = new EmberApp({
+  emberCliFontAwesome: { includeFontAwesomeAssets: false }
+});
 
 app.import('bower_components/boombox.js/boombox.js');
 // Use `app.import` to add additional libraries to the generated
