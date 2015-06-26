@@ -88,7 +88,7 @@ actualizar_theme:
 	rm -r -f public/fonts
 	mv tmp_theme/huayra-bootstrap-liso-master/destino/libs public/
 	mv tmp_theme/huayra-bootstrap-liso-master/destino/img public/
-	mv tmp_theme/huayra-bootstrap-liso-master/destino/fonts public/
+	mv tmp_theme/huayra-bootstrap-liso-master/destino/fonts public/fontsawesome
 	mv tmp_theme/huayra-bootstrap-liso-master/destino/huayra-bootstrap.css public/
 	rm -r -f master.zip
 	rm -r -f tmp_theme
