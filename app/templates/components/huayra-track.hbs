@@ -1,7 +1,8 @@
 <div class="huayra-track-id">
-ID: {{track.id}}
+  <p>ID: {{track.id}} </p>
+  <p>SOUND: {{track.sound}}</p>
 </div>
 
-{{#each step in track.steps}}
-  {{huayra-step step=step}}
+{{#each track.steps as |step index|}}
+  {{huayra-step index=index currentStep=player.currentStep sound=track.sound step=step}}
 {{/each}}

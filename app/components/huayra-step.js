@@ -1,13 +1,29 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['step', 'step-success', 'huayra-step'],
+  boombox: Ember.inject.service(),
+  classNames: ['step', 'step-default', 'huayra-step'],
+
+  classNameBindings: ['active:step-active', 'active:step-success', //estados para el step seleccionado
+                      'variant:step-variant', // estado para indicar que es una variante de la cuarta.
+                      'playing:step-playing'
+                      ],
+  activeBinding: "step.active",
+  variantBinding: "step.variant",
+
+  playing: function() {
+    return (this.get('currentStep') === this.get('index'));
+  }.property('currentStep'),
+
   step: null,
+  sound: null,
+
+  index: null,
+  currentStep: null,
 
   mouseDown: function() {
-      var step = this.get('step');
-      console.log(step);
-      step.set('enabled', true);
+      this.toggleProperty('step.active');
+      this.get('boombox').play(this.get('sound'));
   },
 
 });

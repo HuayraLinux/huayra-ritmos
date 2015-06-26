@@ -1,0 +1,10 @@
+<div class='huayra-player-handler'>
+  {{#if playing}}
+    <button {{action "togglePlay"}} class="btn btn-success">{{fa-icon "stop"}} Stop</button>
+  {{else}}
+    <button {{action "togglePlay"}} class="btn btn-success">{{fa-icon "play"}} Play</button>
+  {{/if}}
+</div>
+
+<span>Step: {{player.currentStep}}</span>
+<span>Step: {{player.bpm}}</span>

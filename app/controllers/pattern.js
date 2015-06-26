@@ -1,10 +1,33 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  player: {
+    currentStep: 0,
+    bpm: 20,
+  },
+
   pattern: {
     tracks: [
-      {id: 11, steps: [{id: 1, enabled: true}, {id: 2, enabled: false}, {id: 3, enabled: false}, {id: 4, enabled: false}]},
-      {id: 22, steps: [{id: 5, enabled: false}, {id: 6, enabled: false}, {id: 7, enabled: false}, {id: 8, enabled: false}]}
+      {id: 11,
+        sound: '000_drum1.wav',
+        steps: [
+                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
+                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
+                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+               ]},
+      {id: 22,
+        sound: '002_drum3.wav',
+        steps: [
+                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
+                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
+                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+              ]},
     ]
   },
+
+
+
+
 });
