@@ -587,3 +587,9 @@ input[type="button"].step-block {
   width: 100px;
   font-size: x-small;
 }
+
+
+div.slider {
+  width: 300px;
+  display: inline-block;
+}

@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   player: {
     currentStep: 0,
-    bpm: 20,
+    bpm: 10,
   },
 
   pattern: {
