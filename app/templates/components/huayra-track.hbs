@@ -1,6 +1,9 @@
 <div class="huayra-track-id">
-  <p>ID: {{track.id}} </p>
+  {{huayra-sound-switch value=track.enabled}}
+
+  <p class='hidden'>ID: {{track.id}} </p>
   <p>SOUND: {{track.sound}}</p>
+
 </div>
 
 {{#each track.steps as |step index|}}

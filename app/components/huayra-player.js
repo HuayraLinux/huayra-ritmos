@@ -33,8 +33,10 @@ export default Ember.Component.extend({
 
     tracks.forEach((t) => {
 
-      if (t.steps[currentStep].active) {
-        this.get('boombox').play(t.sound);
+      if (t.enabled) {
+        if (t.steps[currentStep].active) {
+          this.get('boombox').play(t.sound);
+        }
       }
 
     });
