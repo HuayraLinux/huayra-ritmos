@@ -12,14 +12,14 @@ export default Ember.Component.extend({
   variantBinding: "step.variant",
 
   playing: function() {
-    return (this.get('currentStep') === this.get('index'));
-  }.property('currentStep'),
+    return (this.get('player.playing') && (this.get('player.currentStep') === this.get('index')));
+  }.property('player.currentStep', 'player.playing'),
 
   step: null,
   sound: null,
 
   index: null,
-  currentStep: null,
+  player: null,
 
   mouseDown: function() {
       this.toggleProperty('step.active');

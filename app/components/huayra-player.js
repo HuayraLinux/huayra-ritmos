@@ -58,8 +58,10 @@ export default Ember.Component.extend({
       this.toggleProperty('playing');
 
       if (this.get('playing')) {
+        this.set('player.playing', true);
         this.play();
       } else {
+        this.set('player.playing', false);
         this.stop();
       }
 

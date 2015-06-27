@@ -4,5 +4,5 @@
 </div>
 
 {{#each track.steps as |step index|}}
-  {{huayra-step index=index currentStep=player.currentStep sound=track.sound step=step}}
+  {{huayra-step index=index player=player sound=track.sound step=step}}
 {{/each}}

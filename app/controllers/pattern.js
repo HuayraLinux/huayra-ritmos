@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   player: {
     currentStep: 0,
     bpm: 10,
+    playing: false,
   },
 
   pattern: {
