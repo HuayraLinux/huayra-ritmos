@@ -9,6 +9,15 @@ export default Ember.Component.extend({
   playing: false,
   timer: null,
 
+  connectKeyHandlers: function() {
+    this.$(document).keydown((e) => {
+      if (e.keyCode === 32) {
+        this.send('togglePlay');
+      }
+    });
+
+  }.on('didInsertElement'),
+
   play: function() {
     this.playStep();
   },
