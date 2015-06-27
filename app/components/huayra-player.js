@@ -10,13 +10,18 @@ export default Ember.Component.extend({
   timer: null,
 
   connectKeyHandlers: function() {
-    this.$(document).keydown((e) => {
-      if (e.keyCode === 32) {
-        this.send('togglePlay');
-      }
-    });
-
+    this.$(document).keydown(this.keyHandler.bind(this));
   }.on('didInsertElement'),
+
+  disconnectKeyHandlers: function() {
+    this.$(document).unbind('keydown', this.keyHandler.bind(this));
+  }.on('willDestroyElement'),
+
+  keyHandler: function(e) {
+    if (e.keyCode === 32) { // Si es la tecla SPACE
+      this.send('togglePlay');
+    }
+  },
 
   play: function() {
     this.playStep();

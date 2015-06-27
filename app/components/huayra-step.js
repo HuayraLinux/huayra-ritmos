@@ -23,7 +23,12 @@ export default Ember.Component.extend({
 
   mouseDown: function() {
       this.toggleProperty('step.active');
-      this.get('boombox').play(this.get('sound'));
+
+      // Solo reproduce cuando se hace click pero no está
+      // reproduciendo.
+      if (! this.get('player.playing')) {
+        this.get('boombox').play(this.get('sound'));
+      }
   },
 
 });
