@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
+
 export default Ember.Component.extend({
   classNames: ['huayra-player'],
   pattern: null,
@@ -10,18 +11,22 @@ export default Ember.Component.extend({
   timer: null,
 
   connectKeyHandlers: function() {
-    this.$(document).keydown(this.keyHandler.bind(this));
+    this.set('eventHandler', this.keyHandler.bind(this));
+    this.$(document).bind('keydown', this.get('eventHandler'));
   }.on('didInsertElement'),
 
   disconnectKeyHandlers: function() {
-    this.$(document).unbind('keydown', this.keyHandler.bind(this));
-  }.on('willDestroyElement'),
+    this.$(document).unbind('keydown', this.get('eventHandler'));
+  }.on('willClearRender'),
 
   keyHandler: function(e) {
-    if (e.keyCode === 32) { // Si es la tecla SPACE
+    // Si es la tecla SPACE
+    if (e.keyCode === 32) {
       this.send('togglePlay');
     }
   },
+
+
 
   play: function() {
     this.playStep();
