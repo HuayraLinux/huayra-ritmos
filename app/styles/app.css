@@ -605,3 +605,8 @@ div.slider {
 .hidden {
   display: none;
 }
+
+
+.buttons {
+  padding: 10px;
+}

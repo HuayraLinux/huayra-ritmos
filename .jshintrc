@@ -3,7 +3,8 @@
     "document",
     "window",
     "-Promise",
-    "boombox"
+    "boombox",
+    "require"
   ],
   "browser": true,
   "boss": true,
