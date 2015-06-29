@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=huayra-ritmos
-Comment=Comment
-Exec=/usr/bin/huayra-ritmos
-Terminal=false
-Type=Application
-Icon=huayra-ritmos
-Categories=GNOME;GTK;Huayra;Network;
