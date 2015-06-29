@@ -1,4 +1,4 @@
-VERSION=0.0.4
+VERSION=0.0.5
 NOMBRE="huayra-ritmos"
 
 N=[0m
