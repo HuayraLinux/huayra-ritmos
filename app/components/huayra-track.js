@@ -7,5 +7,8 @@ export default Ember.Component.extend({
     return this.get('index') + 1;
   }.property('index'),
 
-  
+  trackName: function() {
+    return this.get('track.sound').split('.')[0];
+  }.property('track.sound'),
+
 });
