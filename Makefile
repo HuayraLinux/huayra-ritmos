@@ -93,4 +93,14 @@ actualizar_theme:
 	rm -r -f master.zip
 	rm -r -f tmp_theme
 
+a_produccion:
+	cp public/package.prod.json public/package.json
+
+a_desarrollo:
+	cp public/package.dev.json public/package.json
+
+to_develop: a_desarrollo
+
+to_production: a_produccion
+
 .PHONY: dist
