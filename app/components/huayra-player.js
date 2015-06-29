@@ -1,6 +1,5 @@
 import Ember from 'ember';
 
-
 export default Ember.Component.extend({
   classNames: ['huayra-player'],
   pattern: null,
@@ -20,12 +19,19 @@ export default Ember.Component.extend({
   }.on('willClearRender'),
 
   keyHandler: function(e) {
+
     // Si es la tecla SPACE
     if (e.keyCode === 32) {
       this.send('togglePlay');
     }
-  },
 
+    // Permite usar las teclas 1, 2, 3 ... 9 para habilitar o deshabilitar
+    // los tracks inividualmente.
+    if (e.keyCode >= 49 && e.keyCode <= 57) {
+      this.send('toggleEnabledTrackByIndex', e.keyCode - 48);
+    }
+
+  },
 
 
   play: function() {
@@ -75,6 +81,22 @@ export default Ember.Component.extend({
   },
 
   actions: {
+
+    /*
+     * Intenta habilitar o deshabilitar un track dado un número o posición.
+     */
+    toggleEnabledTrackByIndex: function(index) {
+      var track = this.get('pattern.tracks')[index-1];
+
+      if (track) {
+        var lastValue = Ember.get(track, 'enabled');
+        Ember.set(track, 'enabled', !lastValue);
+      }
+    },
+
+    /*
+     * Alterna la reproducción del track.
+     */
     togglePlay: function() {
       this.toggleProperty('playing');
 

@@ -1,3 +1,3 @@
-{{#each track in pattern.tracks}}
-  {{huayra-track player=player track=track}}
+{{#each pattern.tracks as |track index|}}
+  {{huayra-track index=index player=player track=track}}
 {{/each}}
