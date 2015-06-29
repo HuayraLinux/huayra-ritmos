@@ -48,7 +48,7 @@ export default Ember.Component.extend({
   },
 
   playStep: function() {
-    var delay = 1000 / this.get('player.bpm');
+    var delay = ((1000 * 60)/4) / this.get('player.bpm');
 
     this.playCurrentStepSound();
 
