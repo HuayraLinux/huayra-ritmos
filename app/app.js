@@ -8,7 +8,12 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 var App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
-  Resolver: Resolver
+  Resolver: Resolver,
+  modals: {
+    layout: true,
+    style: true,
+    animation: 'scale'
+  }
 });
 
 loadInitializers(App, config.modulePrefix);

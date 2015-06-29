@@ -5,4 +5,12 @@ export default function(){
     this.use('fade'),
     this.reverse('fade')
   );
+
+
+  this.transition(
+    this.fromRoute('index'),
+    this.toRoute('playground'),
+    this.use('fade'),
+    this.reverse('fade')
+  );
 }

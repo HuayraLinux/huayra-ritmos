@@ -1,3 +1,7 @@
+@import url("/assets/layout.css");
+@import url("/assets/style.css");
+@import url("/assets/animations/scale.css");
+
 html, body {
   margin: 20px;
 }
@@ -609,4 +613,18 @@ div.slider {
 
 .buttons {
   padding: 10px;
+}
+
+
+
+
+.modal {
+  transition: opacity 0.1s, transform 0.2s !important;
+  display: block !important;
+  top: 30px !important;
+  bottom: 30px !important;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5) !important;
 }

@@ -54,7 +54,14 @@ export default Ember.Controller.extend({
           alert("ERROR: " + e);
         });
 
-      }
+      },
+
+      openConfirmDialog() {
+        this.showModal({
+          template: 'modals/modal-confirm',
+          controller: 'modal-confirm',
+        });
+      },
 
     }
 });
