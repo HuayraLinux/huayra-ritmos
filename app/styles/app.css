@@ -6,8 +6,20 @@ html, body {
   margin: 20px;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  font-family: "Roboto" !important;
+}
+
+h1, h2 {
+  font-weight: 100 !important;
+}
+
+h2 small {
+  font-weight: 100 !important;
+}
+
+
 a.active {
-  font-weight: bold;
 }
 
 
@@ -16,26 +28,32 @@ a.active {
 }
 
 .huayra-track {
-  border: 1px solid red;
-  padding: 10px;
-  margin: 5px;
+  position: relative;
+  margin-bottom: 32px;
 }
 
 .huayra-track-id {
-  display: inline-block;
-  border: 1px solid green;
   width: 100px;
   font-size: x-small;
+  background-color: rgb(229, 229, 229);
+  position: absolute;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.huayra-track-step-container {
   position: relative;
+  left: 110px;
+  top: 7px;
 }
 
 
 * {
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: -moz-none;
--o-user-select: none;
-user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 .step {
@@ -152,13 +170,10 @@ user-select: none;
   border-color: #166B19 !important;
 }
 
-
-
-
 .huayra-player {
-  border: 1px solid red;
   padding: 10px;
   margin: 5px;
+  padding-left: 0;
 }
 
 .huayra-player-handler {
@@ -190,8 +205,6 @@ div.slider {
 }
 
 
-
-
 .modal {
   transition: opacity 0.1s, transform 0.2s !important;
   display: block !important;
@@ -201,4 +214,14 @@ div.slider {
 
 .overlay {
   background: rgba(0, 0, 0, 0.5) !important;
+}
+
+
+.main-title {
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgb(219, 219, 219);
+}
+
+.main-content {
+  padding-top: 30px;
 }

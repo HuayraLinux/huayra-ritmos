@@ -9,6 +9,8 @@
 
 </div>
 
-{{#each track.steps as |step index|}}
-  {{huayra-step index=index player=player sound=track.sound step=step}}
-{{/each}}
+<div class='huayra-track-step-container'>
+  {{#each track.steps as |step index|}}
+    {{huayra-step index=index player=player sound=track.sound step=step}}
+  {{/each}}
+</div>
