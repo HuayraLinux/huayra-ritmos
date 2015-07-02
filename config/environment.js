@@ -41,12 +41,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.baseURL = '/huayra-ritmos/';
+    ENV.baseURL = '/huayra-ritmos/';
   }
 
-  if (environment === 'ghpages') {
-	ENV.baseURL = 'http://hugoruscitti.github.io/huayra-ritmos/';
-  }
+  console.log(environment);
 
   return ENV;
 };

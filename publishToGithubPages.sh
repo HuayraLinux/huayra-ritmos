@@ -18,7 +18,7 @@ cd ..
 
 echo " ${V}Compilando el proyecto.${N}"
 # En ./
-ember build --environment ghpages --output-path dist_ghpages
+ember build -prod --output-path dist_ghpages
 #git rm -rf app addon config tests
 #git rm -rf Brocfile.js bower.json package.json testem.json
 #git rm -rf .bowerrc .editorconfig .jshintrc .travis.yml
