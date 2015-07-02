@@ -1,36 +1,21 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  player: {
-    currentStep: 0,
-    bpm: 120,
-    playing: false,
-  },
 
-  pattern: {
-    tracks: [
-      {id: 11,
-        enabled: true,
-        sound: '000_drum1.wav',
-        steps: [
-                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
-                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
-                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
-                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
-               ]},
-      {id: 22,
-        enabled: true,
-        sound: '002_drum3.wav',
-        steps: [
-                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
-                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
-                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
-                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
-              ]},
-    ]
-  },
+  pattern: {},     // se cargan desde el setupcontroller de route:pattern
+  player: {},      // se cargan desde el setupcontroller de route:pattern
 
+  actions: {
+    save: function() {
 
+      var record = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
+      var model = this.get('model').set('content', record);
 
+      model.save().then((data) => {
+          this.transitionToRoute('index');
+      });
+
+    }
+  }
 
 });

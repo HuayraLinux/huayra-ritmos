@@ -34,6 +34,7 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "ember-json-pretty": "0.1.1",
+    "ember-localstorage-adapter": "0.5.4",
     "ember-modals": "0.4.1",
     "liquid-fire": "0.19.0"
   },

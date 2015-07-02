@@ -4,8 +4,10 @@
 
 <div class='main-content'>
   <p>
-   {{#link-to "pattern" class='btn btn-success'}}{{fa-icon "plus"}} Crear un nuevo ritmo{{/link-to}}
+   <button {{action "new"}} class='btn btn-success'>{{fa-icon "plus"}} Crear un nuevo ritmo </button>
   </p>
 
   {{#link-to "playground"}}Ir al playgound (o zona de pruebas){{/link-to}}
 </div>
+
+{{huayra-project-list model=model onDelete='deleteRecord'}}

@@ -1,0 +1,13 @@
+{{#if model}}
+
+  <ul>
+    {{#each model as |pattern|}}
+      <li>{{#link-to "pattern" pattern}} {{pattern.title}} {{/link-to}} <button class="btn btn-xs btn-danger" {{action "delete" pattern}}>X</button></li>
+    {{/each}}
+  </ul>
+
+{{else}}
+
+  <p>No hay proyectos creados aún ...</p>
+
+{{/if}}

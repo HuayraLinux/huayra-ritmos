@@ -1,4 +1,7 @@
 {{#link-to "index" class='btn btn-warning'}}{{fa-icon "fa-chevron-left"}} Volver{{/link-to}}
+<button class="btn btn-info" {{action "save"}}>{{fa-icon "fa-save"}} Guardar</button>
+
+{{huayra-title-editable value=model.title}}
 
 {{huayra-player pattern=pattern player=player}}
 {{huayra-pattern pattern=pattern player=player}}

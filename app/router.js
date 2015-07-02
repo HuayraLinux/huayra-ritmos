@@ -7,6 +7,6 @@ var Router = Ember.Router.extend({
 
 export default Router.map(function() {
   this.route('tips');
-  this.route('pattern');
+  this.resource('pattern', {path: '/pattern/:pattern_id'});
   this.route('playground');
 });

@@ -225,3 +225,17 @@ div.slider {
 .main-content {
   padding-top: 30px;
 }
+
+.huayra-project-list-container {
+  margin-top: 50px;
+}
+
+
+.huayra-title-editable-container {
+  display: inline-block;
+}
+
+.huayra-title-editable-container:hover {
+  border-bottom: 1px dotted blue;
+  cursor: pointer;
+}
