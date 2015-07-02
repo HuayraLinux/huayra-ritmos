@@ -44,5 +44,9 @@ module.exports = function(environment) {
 
   }
 
+  if (environment === 'ghpages') {
+	ENV.baseURL = 'http://hugoruscitti.github.io/huayra-ritmos/';
+  }
+
   return ENV;
 };
