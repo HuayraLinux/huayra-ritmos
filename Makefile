@@ -27,7 +27,8 @@ comandos:
 	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
 	@echo "    ${G}log${N}             Muestra los cambios desde el ultimo tag."
 	@echo "    ${G}publicar${N}        Publica el cambio para el paquete deb."
-	@echo "    ${G}crear_deb${N}       Genera el paquete deb para huayra."
+	@echo ""
+	@echo "    ${G}actualizar_web${N}  Genera el paquete deb para huayra."
 	@echo ""
 
 
@@ -49,9 +50,6 @@ build: compilar
 
 publicar:
 	dch -i
-
-crear_deb:
-	dpkg-buildpackage -us -uc
 
 compilar:
 	./node_modules/ember-cli/bin/ember build
@@ -92,6 +90,9 @@ actualizar_theme:
 	mv tmp_theme/huayra-bootstrap-liso-master/destino/huayra-bootstrap.css public/
 	rm -r -f master.zip
 	rm -r -f tmp_theme
+
+actualizar_web:
+	sh publishToGithubPages.sh
 
 a_produccion:
 	cp public/package.prod.json public/package.json
