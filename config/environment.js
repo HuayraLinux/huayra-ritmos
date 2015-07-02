@@ -42,10 +42,8 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.baseURL = '/huayra-ritmos/';
-    ENV.baseURL = '/huayra-ritmos/';
   }
 
-  console.log(environment);
 
   return ENV;
 };
