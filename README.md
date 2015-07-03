@@ -1,6 +1,8 @@
 ¡Hola, esto es huayra-ritmos!
 ==========================
 
+[![Build Status](https://travis-ci.org/hugoruscitti/huayra-ritmos.svg?branch=master)](https://travis-ci.org/hugoruscitti/huayra-ritmos)
+
 Este proyecto está construido a partir de nwjs-ember-seed,
 un marco de aplicación pensado como punto de partida
 para hacer aplicaciones de escritorio usando javascript.
