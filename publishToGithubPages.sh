@@ -14,8 +14,8 @@ echo " ${V}Limpiando el directorio gitpages.${N}"
 #git branch -D gh-pages
 #git push origin --delete gh-pages
 git checkout -b gh-pages
-git pull origin gh-pages
 git checkout -f
+git pull origin gh-pages
 cd ..
 
 echo " ${V}Compilando el proyecto.${N}"
