@@ -4,11 +4,15 @@ import Ember from 'ember';
 //
 //   npm install tmp
 //
-var fs = require('fs');
-var path = require('path');
+var isNodeWebkit = (typeof process === "object");
 
-var tmp = require('tmp');
-var archiver = require('archiver');
+if (isNodeWebkit) {
+  var fs = require('fs');
+  var path = require('path');
+
+  var tmp = require('tmp');
+  var archiver = require('archiver');
+}
 
 
 var {Promise} = Ember.RSVP;
