@@ -11,6 +11,8 @@
 
 <div class='huayra-track-step-container'>
   {{#each track.steps as |step index|}}
-    {{huayra-step index=index player=player sound=track.sound step=step}}
+    {{huayra-step index=index player=player sound=track.sound step=step track=track}}
   {{/each}}
+
+  {{huayra-track-actions track=track}}
 </div>

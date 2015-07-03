@@ -31,4 +31,11 @@ export default Ember.Component.extend({
       }
   },
 
+  mouseEnter: function(){
+    var track = this.get('track');
+    if( track.paint ){
+      this.toggleProperty('step.active');
+    }
+  },
+
 });
