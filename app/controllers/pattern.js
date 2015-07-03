@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
       var record = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
       var model = this.get('model').set('content', record);
 
-      model.save().then((data) => {
+      model.save().then(() => {
           this.transitionToRoute('index');
       });
 

@@ -47,7 +47,7 @@ export default Ember.Controller.extend({
         t = t.then((d) => {
           alert("El archivo creado es " + d);
           alert("En el directorio " + directory);
-          return this.get('file').compress(directory, "/Users/hugoruscitti/tmp123/hola.ritmos")
+          return this.get('file').compress(directory, "/Users/hugoruscitti/tmp123/hola.ritmos");
         });
 
         t.catch((e) => {

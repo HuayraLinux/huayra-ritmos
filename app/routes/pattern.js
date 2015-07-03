@@ -19,7 +19,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    error: function(error, transition) {
+    error: function(error) {
       if (error) {
         console.error(error);
         return this.transitionTo('/');

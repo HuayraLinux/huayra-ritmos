@@ -23,7 +23,7 @@ export default Ember.Service.extend({
       function chooseFile(name) {
         var chooser = $(name);
 
-        chooser.change(function(evt) {
+        chooser.change(() => {
           var value = $(this).val();
 
           if (value) {
@@ -50,7 +50,7 @@ export default Ember.Service.extend({
       function chooseFile(name) {
         var chooser = $(name);
 
-        chooser.change(function(evt) {
+        chooser.change(() => {
           var value = $(this).val();
 
           if (value) {
