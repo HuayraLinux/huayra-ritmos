@@ -11,7 +11,7 @@ export default Ember.Service.extend({
   }.on('init'),
 
   loadSound: function(name) {
-    var path = "/sounds/" + name;
+    var path = "sounds/" + name;
 
     var options = {
       src: [{

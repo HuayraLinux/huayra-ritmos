@@ -42,7 +42,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.baseURL = '/huayra-ritmos/';
-    ENV.locationType = 'auto';
+    ENV.locationType = 'hash';
   }
 
 
