@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
           tracks: [
             {id: 11,
               enabled: true,
+              paint: false,
               sound: '000_drum1.wav',
               steps: [
                         {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
@@ -25,6 +26,7 @@ export default Ember.Controller.extend({
                      ]},
             {id: 22,
               enabled: true,
+              paint: false,
               sound: '002_drum3.wav',
               steps: [
                         {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
