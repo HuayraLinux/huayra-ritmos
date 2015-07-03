@@ -1,22 +1,14 @@
 {
   "main": "app://localhost/index.html",
   "name": "huayra-ritmos",
-<<<<<<< HEAD
   "version": "0.0.6",
-=======
-  "version": "0.0.4",
->>>>>>> e938f099d4e325a5fecfab22020f603e02d2d641
   "window": {
     "title": "huayra-ritmos",
     "width": 800,
     "height": 500,
     "min_width": 725,
     "min_height": 400,
-<<<<<<< HEAD
     "toolbar": false,
-=======
-    "toolbar": true,
->>>>>>> e938f099d4e325a5fecfab22020f603e02d2d641
     "position": "center"
   }
 }
