@@ -14,7 +14,15 @@ export default Ember.Controller.extend({
       model.save().then(() => {
           this.transitionToRoute('index');
       });
+    },
 
+    newTrack: function() {
+
+      this.showModal({
+        template: 'modals/modal-new',
+        controller: 'modal-new',
+        model: this.get('pattern')
+      });
     }
   }
 

@@ -5,8 +5,11 @@ export default Ember.Service.extend({
   loadSounds: function() {
     boombox.setup();
 
-    this.loadSound('000_drum1.wav');
-    this.loadSound('002_drum3.wav');
+    var files = fs.readdirSync('sounds').filter(function(e) {return e.indexOf('.wav') > 0});
+
+    files.forEach((name) => {
+      this.loadSound(name);
+    });
 
   }.on('init'),
 
@@ -21,7 +24,7 @@ export default Ember.Service.extend({
     };
 
     console.log('cargando sonido ' + name);
-    
+
     boombox.load(name, options, function (err, audio) {
       console.log("err", err);
       console.log("audio", audio);
