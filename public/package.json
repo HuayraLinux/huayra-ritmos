@@ -1,7 +1,7 @@
 {
   "main": "app://localhost/index.html",
   "name": "huayra-ritmos",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "window": {
     "title": "huayra-ritmos",
     "width": 800,
