@@ -1,6 +1,6 @@
-@import url("/assets/layout.css");
-@import url("/assets/style.css");
-@import url("/assets/animations/scale.css");
+@import url("./layout.css");
+@import url("./style.css");
+@import url("./animations/scale.css");
 
 html, body {
   margin: 20px;

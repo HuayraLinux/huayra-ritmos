@@ -7,11 +7,11 @@ import Ember from 'ember';
 var isNodeWebkit = (typeof process === "object");
 
 if (isNodeWebkit) {
-  var fs = require('fs');
-  var path = require('path');
+  var fs = window.requireNode('fs');
+  var path = window.requireNode('path');
 
-  var tmp = require('tmp');
-  var archiver = require('archiver');
+  var tmp = window.requireNode('tmp');
+  var archiver = window.requireNode('archiver');
 }
 
 

@@ -3,9 +3,10 @@ import Ember from 'ember';
 export default Ember.Service.extend({
 
   loadSounds: function() {
+    var fs = window.requireNode('fs');
     boombox.setup();
 
-    var files = fs.readdirSync('sounds').filter(function(e) {return e.indexOf('.wav') > 0});
+    var files = fs.readdirSync('dist/sounds').filter(function(e) {return e.indexOf('.wav') > 0});
 
     files.forEach((name) => {
       this.loadSound(name);
@@ -14,7 +15,7 @@ export default Ember.Service.extend({
   }.on('init'),
 
   loadSound: function(name) {
-    var path = "sounds/" + name;
+    var path = "app://./dist/sounds/" + name;
 
     var options = {
       src: [{
