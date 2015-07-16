@@ -50,7 +50,8 @@ export default Ember.Controller.extend({
     },
 
     deleteRecord: function(model) {
-      model.destroyRecord().save();
+      model.destroyRecord();
+      this.send('invalidateModel');
     }
   }
 });
