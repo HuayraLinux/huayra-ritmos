@@ -6,7 +6,7 @@ export default Ember.Service.extend({
     var fs = window.requireNode('fs');
     boombox.setup();
 
-    var files = fs.readdirSync('dist/sounds').filter(function(e) {return e.indexOf('.wav') > 0});
+    var files = fs.readdirSync('dist/sounds').filter(function(e) {return e.indexOf('.wav') > 0;});
 
     files.forEach((name) => {
       this.loadSound(name);
