@@ -27,8 +27,10 @@ export default Ember.Service.extend({
     console.log('cargando sonido ' + name);
 
     boombox.load(name, options, function (err, audio) {
-      console.log("err", err);
-      console.log("audio", audio);
+      if (err) {
+        console.log("err", err);
+        console.log("audio", audio);
+      }
     });
 
   },
