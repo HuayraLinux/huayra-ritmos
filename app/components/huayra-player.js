@@ -34,7 +34,6 @@ export default Ember.Component.extend({
 
   },
 
-
   play: function() {
     this.playStep();
   },

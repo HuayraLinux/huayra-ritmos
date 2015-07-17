@@ -1,0 +1,7 @@
+<p>Selected: {{active_id}}</p>
+
+
+
+{{#each sound in sounds}}
+  <a href {{action "select" sound}} class="list-group-item">{{sound.title}}</a>
+{{/each}}
