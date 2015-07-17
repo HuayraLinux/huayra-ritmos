@@ -1,5 +1,5 @@
 {
-  "main": "app://localhost/index.html",
+  "main": "dist/index.html",
   "name": "huayra-ritmos",
   "version": "0.0.8",
   "window": {
