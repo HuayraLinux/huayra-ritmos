@@ -15,6 +15,7 @@ export default Ember.Component.extend({
   }.on('didInsertElement'),
 
   disconnectKeyHandlers: function() {
+    this.stop();
     this.$(document).unbind('keydown', this.get('eventHandler'));
   }.on('willClearRender'),
 

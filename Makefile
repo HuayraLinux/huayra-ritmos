@@ -42,7 +42,7 @@ ejecutar_linux:
 	nw dist
 
 ejecutar_mac:
-	/Applications/nwjs.app/Contents/MacOS/nwjs dist
+	ember nw
 
 test_mac: ejecutar_mac
 
