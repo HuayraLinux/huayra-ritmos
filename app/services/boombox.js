@@ -35,7 +35,11 @@ export default Ember.Service.extend({
 
   },
 
-  play: function(name) {
+  play(name) {
     boombox.get(name).play();
+  },
+
+  previewSound(name) {
+    this.play(name);
   }
 });

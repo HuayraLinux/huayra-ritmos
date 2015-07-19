@@ -267,3 +267,12 @@ a.list-group-item:focus {
   margin-bottom: 10px;
   padding: 7px;
 }
+
+
+.center {
+  text-align:center;
+}
+
+.padding {
+  padding: 20px;
+}

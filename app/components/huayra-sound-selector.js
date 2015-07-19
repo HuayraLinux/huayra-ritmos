@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   active_id: null,
   classNames: ['ember-sound-selector'],
-  
+  boombox: Ember.inject.service(),
 
   loadSounds: function() {
     var fs = window.requireNode('fs');
@@ -25,6 +25,7 @@ export default Ember.Component.extend({
     select(sound) {
       this.set('active_id', sound.id);
       this.sendAction('onSelect', sound.id);
+      this.get('boombox').previewSound(sound.id);
     }
   }
 
