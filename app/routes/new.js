@@ -13,7 +13,7 @@ export default Ember.Route.extend({
 
           pattern: {
             tracks: [
-               Ember.Object.create({ enabled: true,
+              { enabled: true,
                 paint: false,
                 sound: '000_drum1.wav',
                 steps: [
@@ -21,7 +21,7 @@ export default Ember.Route.extend({
                           {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
                           {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
                           {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
-                       ]}),
+                       ]},
               { enabled: true,
                 paint: false,
                 sound: '002_drum3.wav',
@@ -41,7 +41,7 @@ export default Ember.Route.extend({
 
           var initial_record = this._get_initial_record();
           var record = this.get('store').createRecord('pattern', {
-            title: "TITLE",
+            title: "Sin título",
             content: JSON.stringify(initial_record),
           });
 

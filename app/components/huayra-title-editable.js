@@ -7,9 +7,14 @@ export default Ember.Component.extend({
     var new_value = prompt("Ingresa el nuevo título", this.get('value'));
 
     if (new_value) {
-      this.set('value', new_value);
-    } else {
-      this.set('value', 'sin título');
+
+      if (new_value === "") {
+        this.set('value', 'sin título');
+      } else {
+        this.set('value', new_value);
+      }
+
+      this.sendAction('onChange');
     }
 
   }

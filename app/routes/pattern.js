@@ -9,9 +9,16 @@ export default Ember.Route.extend({
 
   setupController: function(controller, model) {
     var record = JSON.parse(model.get('content'));
+
     controller.set('player', record.player);
     controller.set('pattern', record.pattern);
     controller.set('model', model);
+    controller.set('unsavedChanges', false);
+    controller.notifyEnterTransition();
+  },
+
+  deactivate: function() {
+    this.controllerFor('pattern').notifyLeaveTransition();
   },
 
   activate: function() {
@@ -20,8 +27,8 @@ export default Ember.Route.extend({
 
   actions: {
     error: function(error) {
-      if (error) {
-        //console.error(error);
+      if (error.message.indexOf('as id to the store') > -1) {
+        console.error(error);
         console.log("Redireccionando a /new (no se encontró la canción.)");
         return this.transitionTo('new');
       }

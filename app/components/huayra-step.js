@@ -29,12 +29,15 @@ export default Ember.Component.extend({
       if (! this.get('player.playing')) {
         this.get('boombox').play(this.get('sound'));
       }
+
+      this.sendAction('onChange');
   },
 
   mouseEnter: function(){
     var track = this.get('track');
-    if( track.paint ){
+    if (track.paint) {
       this.toggleProperty('step.active');
+      this.sendAction('onChange');
     }
   },
 

@@ -1,10 +1,27 @@
+<h3>Mis Proyectos:</h3>
+
 {{#if model}}
 
-  <ul>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
     {{#each model as |pattern|}}
-      <li>{{#link-to "pattern" pattern}} {{pattern.title}} {{/link-to}} <button class="btn btn-xs btn-danger" {{action "delete" pattern}}>X</button></li>
+      <tr>
+        <td>{{#link-to "pattern" pattern}} {{pattern.title}} {{/link-to}}</td>
+        <td><button class="btn btn-xs btn-danger" {{action "delete" pattern}}> eliminar </button></td>
+      </tr>
     {{/each}}
-  </ul>
+
+    </tbody>
+  </table>
+
 
 {{else}}
 

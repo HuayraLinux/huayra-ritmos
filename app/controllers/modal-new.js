@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
       this.set('selectedSound', sound_id);
     },
 
-    accept: function() {
+    accept() {
 
       var newTrack = {
         enabled: true,
@@ -26,8 +26,16 @@ export default Ember.Controller.extend({
       ]};
 
       this.get('modal.model.tracks').pushObject(newTrack);
+      this.controllerFor('pattern').send('onChange');
+    },
 
+    acceptAndClose() {
+      this.send('accept');
       this.send('closeModal');
-    }
-  }
+    },
+
+  },
+
+
+
 });

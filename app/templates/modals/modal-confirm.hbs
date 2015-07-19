@@ -1,5 +1,10 @@
-{{!-- All content below is used for testing --}}
+<h1 data-test="modal-title">¡Epa!, no guardaste aún</h1>
 
-<h1 data-test="modal-title">Modal</h1>
+<p>Parece que hay cambios sin guardar en el proyecto...</p>
 
-<button class='btn btn-success' {{action "accept"}}> Aceptar</button>
+<p><strong>¿Que te gustaría hacer?</strong></p>
+
+<div class='center padding'>
+  <button class='btn btn-success' {{action "accept"}}> Guardar ahora </button>
+  <button class='btn btn-danger' {{action "cancel"}}> Descartar los cambios </button>
+</div>

@@ -11,4 +11,10 @@ export default Ember.Component.extend({
     return this.get('track.sound').split('.')[0];
   }.property('track.sound'),
 
+  actions: {
+    onChange() {
+      this.sendAction('onChange');
+    }
+  }
+
 });
