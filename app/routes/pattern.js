@@ -21,8 +21,9 @@ export default Ember.Route.extend({
   actions: {
     error: function(error) {
       if (error) {
-        console.error(error);
-        return this.transitionTo('/');
+        //console.error(error);
+        console.log("Redireccionando a /new (no se encontró la canción.)");
+        return this.transitionTo('new');
       }
     }
   }

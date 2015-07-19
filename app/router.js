@@ -10,4 +10,5 @@ export default Router.map(function() {
   this.route('tips');
   this.resource('pattern', {path: '/pattern/:pattern_id'});
   this.route('playground');
+  this.route('new');
 });

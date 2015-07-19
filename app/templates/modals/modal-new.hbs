@@ -2,4 +2,6 @@
 
 <h1 data-test="modal-title">Crear una pista</h1>
 
-<button class='btn btn-success' {{action "accept"}}> Agregar</button>
+{{huayra-sound-selector onSelect="onSelectSound"}}
+
+<button disabled={{emptySelection}} class='btn btn-success' {{action "accept"}}> Agregar</button>
