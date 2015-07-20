@@ -12,6 +12,9 @@ export default Ember.Component.extend({
       return e.indexOf('.wav') > 0;
     });
 
+    files.alphanumSort = Array.prototype.alphanumSort;
+    files.alphanumSort();
+
     files.forEach((name) => {
       let title = name.replace('.wav', '');
       this.sounds.pushObject({id: name, title: title});
