@@ -26,14 +26,27 @@ export default Ember.Controller.extend({
     win.removeAllListeners('close');
   },
 
+  forceCloseWindow() {
+    var gui = window.requireNode('nw.gui');
+    var win = gui.Window.get();
+    win.close(true);
+  },
+
   onClose() {
 
     if (this.get('unsavedChanges')) {
-      this.send('showUnsavedChangesDialog');
+      let options = {
+        callback_ok: () => {
+          this.send('save');
+        },
+        callback_cancel: () => {
+          this.forceCloseWindow();
+        }
+      };
+
+      this.send('showUnsavedChangesDialog', options);
     } else {
-      var gui = window.requireNode('nw.gui');
-      var win = gui.Window.get();
-      win.close(true);
+      this.forceCloseWindow();
     }
   },
 
@@ -60,10 +73,29 @@ export default Ember.Controller.extend({
       this.set('unsavedChanges', true);
     },
 
-    showUnsavedChangesDialog() {
+    goIndex() {
+      if (this.get('unsavedChanges')) {
+        let options = {
+          callback_ok: () => {
+            this.send('save');
+            this.transitionToRoute('index');
+          },
+          callback_cancel: () => {
+            this.transitionToRoute('index');
+          }
+        };
+
+        this.send('showUnsavedChangesDialog', options);
+      } else {
+        this.transitionToRoute('index');
+      }
+    },
+
+    showUnsavedChangesDialog(options) {
       this.showModal({
         template: 'modals/modal-confirm',
         controller: 'modal-confirm',
+        model: options
       });
     }
   }

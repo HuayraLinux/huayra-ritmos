@@ -6,7 +6,7 @@
     <thead>
       <tr>
         <th>Título</th>
-        <th>Acciones</th>
+        <th class='actions'>Acciones</th>
       </tr>
     </thead>
 
@@ -15,7 +15,7 @@
     {{#each model as |pattern|}}
       <tr>
         <td>{{#link-to "pattern" pattern}} {{pattern.title}} {{/link-to}}</td>
-        <td><button class="btn btn-xs btn-danger" {{action "delete" pattern}}> eliminar </button></td>
+        <td class='actions'><button class="btn btn-xs btn-danger" {{action "delete" pattern}}> eliminar </button></td>
       </tr>
     {{/each}}
 

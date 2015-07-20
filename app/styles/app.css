@@ -276,3 +276,12 @@ a.list-group-item:focus {
 .padding {
   padding: 20px;
 }
+
+th.actions {
+  text-align: center;
+  width: 200px;
+}
+
+td.actions {
+  text-align: center;
+}
