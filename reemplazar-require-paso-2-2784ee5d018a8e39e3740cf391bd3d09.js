@@ -1,0 +1,1 @@
+var is_nodewebkit="object"==typeof process;is_nodewebkit&&(window.ember_require=window.require,window.require=function(e){try{return window.ember_require(e)}catch(r){return window.node_require(e)}});
