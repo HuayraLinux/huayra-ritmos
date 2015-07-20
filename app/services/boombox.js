@@ -3,14 +3,21 @@ import Ember from 'ember';
 export default Ember.Service.extend({
 
   loadSounds: function() {
-    var fs = window.requireNode('fs');
-    boombox.setup();
+    var isNodeWebkit = (typeof process === "object");
 
-    var files = fs.readdirSync('dist/sounds').filter(function(e) {return e.indexOf('.wav') > 0;});
+    if (isNodeWebkit) {
+      var fs = window.requireNode('fs');
+      boombox.setup();
 
-    files.forEach((name) => {
-      this.loadSound(name);
-    });
+      var files = fs.readdirSync('dist/sounds').filter(function(e) {return e.indexOf('.wav') > 0;});
+
+      files.forEach((name) => {
+        this.loadSound(name);
+      });
+    } else {
+      this.loadSound('/huayra-ritmos/sounds/000_drum1.wav');
+      this.loadSound('/huayra-ritmos/sounds/002_drum3.wav');
+    }
 
   }.on('init'),
 
