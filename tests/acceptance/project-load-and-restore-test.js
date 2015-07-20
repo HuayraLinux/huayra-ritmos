@@ -17,7 +17,6 @@ module('Acceptance | project load and restore', {
 test('Puedo ir a la vista edición haciendo click en nuevo', function(assert) {
   visit('/');
 
-   pauseTest();
 
   andThen(function() {
     assert.equal(find('h2').text().indexOf('huayra-ritmos'), 0, 'El título de la aplicación está presente');
