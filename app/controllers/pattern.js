@@ -69,6 +69,19 @@ export default Ember.Controller.extend({
       });
     },
 
+    editTrack: function(track) {
+      let model = {
+        pattern: this.get('pattern'),
+        track: track,
+      };
+
+      this.showModal({
+        template: 'modals/modal-track',
+        controller: 'modal-track',
+        model: model
+      });
+    },
+
     onChange() {
       this.set('unsavedChanges', true);
     },
