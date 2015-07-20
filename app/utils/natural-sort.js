@@ -1,3 +1,4 @@
+// jshint ignore: start
 export default function naturalSort() {
   /*
        FILE ARCHIVED ON 10:47:54 ene 17, 2013 AND RETRIEVED FROM THE
@@ -40,7 +41,7 @@ export default function naturalSort() {
       var x = 0, y = -1, n = 0, i, j;
 
       while (i = (j = t.charAt(x++)).charCodeAt(0)) {
-        var m = (i == 46 || (i >=48 && i <= 57));
+        var m = (i === 46 || (i >=48 && i <= 57));
         if (m !== n) {
           this[z][++y] = "";
           n = m;
@@ -57,7 +58,7 @@ export default function naturalSort() {
         }
         if (aa !== bb) {
           var c = Number(aa), d = Number(bb);
-          if (c == aa && d == bb) {
+          if (c === aa && d === bb) {
             return c - d;
           } else return (aa > bb) ? 1 : -1;
         }
@@ -95,7 +96,7 @@ export default function naturalSort() {
     var aa = chunkify(a);
     var bb = chunkify(b);
 
-    for (x = 0; aa[x] && bb[x]; x++) {
+    for (var x = 0; aa[x] && bb[x]; x++) {
       if (aa[x] !== bb[x]) {
         var c = Number(aa[x]), d = Number(bb[x]);
         if (c == aa[x] && d == bb[x]) {
@@ -132,7 +133,7 @@ export default function naturalSort() {
     var aa = chunkify(a.toLowerCase());
     var bb = chunkify(b.toLowerCase());
 
-    for (x = 0; aa[x] && bb[x]; x++) {
+    for (var x = 0; aa[x] && bb[x]; x++) {
       if (aa[x] !== bb[x]) {
         var c = Number(aa[x]), d = Number(bb[x]);
         if (c == aa[x] && d == bb[x]) {
