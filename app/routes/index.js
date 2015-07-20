@@ -13,7 +13,7 @@ export default Ember.Route.extend({
           }
         });
 
-        resolve(newArray);
+        resolve(newArray.reverse());
       });
     });
   },

@@ -285,3 +285,8 @@ th.actions {
 td.actions {
   text-align: center;
 }
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
