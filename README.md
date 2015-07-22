@@ -7,7 +7,9 @@ Este proyecto está construido a partir de nwjs-ember-seed,
 un marco de aplicación pensado como punto de partida
 para hacer aplicaciones de escritorio usando javascript.
 
-![](public/preview.png)
+![](preview/1.png)
+
+![](preview/2.png)
 
 Esta aplicación integra las herramientas [ember](http://emberjs.com/), [ember-cli](http://www.ember-cli.com/)
 y [nwjs](http://nwjs.io/) junto a unas configuraciones iniciales

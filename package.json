@@ -48,6 +48,7 @@
   },
   "main": "dist/index.html",
   "window": {
+    "toolbar": false,
     "width": 960,
     "height": 600
   }
