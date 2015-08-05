@@ -4,5 +4,7 @@
 
 {{huayra-sound-selector onSelect="onSelectSound"}}
 
-<button disabled={{emptySelection}} class='btn btn-success' {{action "accept"}}> Agregar </button>
-<button disabled={{emptySelection}} class='btn btn-success' {{action "acceptAndClose"}}> Agregar y cerrar</button>
+<div class="bottom-bar">
+  <button disabled={{emptySelection}} class='btn btn-success' {{action "accept"}}> Agregar </button>
+  <button disabled={{emptySelection}} class='btn btn-success' {{action "acceptAndClose"}}> Agregar y cerrar</button>
+</div>

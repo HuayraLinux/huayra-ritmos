@@ -262,10 +262,9 @@ a.list-group-item:focus {
 .ember-sound-selector {
   overflow: hidden;
   overflow-y: scroll;
-  height: 300px;
   border: 1px solid rgb(203, 203, 203);
-  margin-bottom: 10px;
   padding: 7px;
+  height: calc(100% - 152px);
 }
 
 
@@ -293,4 +292,9 @@ td.actions {
 
 
 .project-title {
+}
+
+.bottom-bar {
+  position: absolute;
+  bottom: 20px;
 }
