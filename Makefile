@@ -39,7 +39,7 @@ iniciar:
 dist: compilar
 
 ejecutar_linux: 
-	nw dist
+	./node_modules/ember-cli/bin/ember nw
 
 ejecutar_mac:
 	ember nw
