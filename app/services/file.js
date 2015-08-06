@@ -75,7 +75,7 @@ export default Ember.Service.extend({
 
   createTemporallyDirectory: function() {
     return new Promise((resolve, reject) => {
-      let options = {mode: 0750, prefix: 'myTmpDir_'};
+      let options = {mode: '0750', prefix: 'myTmpDir_'};
 
       tmp.dir(options, function(err, path) {
         if (err) {
