@@ -3,13 +3,13 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['huayra-track'],
 
-  indexNumber: function() {
+  indexNumber: Ember.computed('index', function() {
     return this.get('index') + 1;
-  }.property('index'),
+  }),
 
-  trackName: function() {
+  trackName: Ember.computed('track.sound', function() {
     return this.get('track.sound').split('.')[0];
-  }.property('track.sound'),
+  }),
 
   actions: {
     onChange() {

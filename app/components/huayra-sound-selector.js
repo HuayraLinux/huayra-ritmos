@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   classNames: ['ember-sound-selector'],
   boombox: Ember.inject.service(),
 
-  loadSounds: function() {
+  loadSounds: Ember.on('init', function() {
     var fs = window.requireNode('fs');
 
     var files = fs.readdirSync('dist/sounds').filter((e) => {
@@ -20,7 +20,7 @@ export default Ember.Component.extend({
       this.sounds.pushObject({id: name, title: title});
     });
 
-  }.on('init'),
+  }),
 
   sounds: [],
 

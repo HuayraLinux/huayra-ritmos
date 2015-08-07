@@ -3,9 +3,9 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   selectedSound: null,
 
-  emptySelection: function() {
+  emptySelection: Ember.computed('selectedSound', function() {
     return (! this.get('selectedSound'));
-  }.property('selectedSound'),
+  }),
 
   actions: {
     onSelectSound(sound_id) {

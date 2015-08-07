@@ -9,15 +9,15 @@ export default Ember.Component.extend({
   playing: false,
   timer: null,
 
-  connectKeyHandlers: function() {
+  connectKeyHandlers: Ember.on('didInsertElement', function() {
     this.set('eventHandler', this.keyHandler.bind(this));
     this.$(document).bind('keydown', this.get('eventHandler'));
-  }.on('didInsertElement'),
+  }),
 
-  disconnectKeyHandlers: function() {
+  disconnectKeyHandlers: Ember.on('willClearRender', function() {
     this.stop();
     this.$(document).unbind('keydown', this.get('eventHandler'));
-  }.on('willClearRender'),
+  }),
 
   keyHandler(e) {
 

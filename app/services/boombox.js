@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
 
-  loadSounds: function() {
+  loadSounds: Ember.on('init', function() {
     var isNodeWebkit = (typeof process === "object");
 
     if (isNodeWebkit) {
@@ -19,7 +19,7 @@ export default Ember.Service.extend({
       this.loadSound('/huayra-ritmos/sounds/002_drum3.wav');
     }
 
-  }.on('init'),
+  }),
 
   loadSound(name) {
     var path = "app://./dist/sounds/" + name;

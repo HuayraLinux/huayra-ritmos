@@ -6,9 +6,9 @@ export default Ember.Controller.extend({
   player: {},      // se cargan desde el setupcontroller de route:pattern
   unsavedChanges: false,
 
-  savedChanges: function() {
+  savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
-  }.property('unsavedChanges'),
+  }),
 
   notifyEnterTransition() {
     var gui = window.requireNode('nw.gui');

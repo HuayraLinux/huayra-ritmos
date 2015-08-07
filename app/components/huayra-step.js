@@ -11,9 +11,9 @@ export default Ember.Component.extend({
   activeBinding: "step.active",
   variantBinding: "step.variant",
 
-  playing: function() {
+  playing: Ember.computed('player.currentStep', 'player.playing', function() {
     return (this.get('player.playing') && (this.get('player.currentStep') === this.get('index')));
-  }.property('player.currentStep', 'player.playing'),
+  }),
 
   step: null,
   sound: null,
