@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function() {
+  model() {
     return new Ember.RSVP.Promise((resolve) => {
       var patterns = this.store.find('pattern');
       var newArray = Ember.A();
@@ -19,7 +19,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    invalidateModel: function() {
+    invalidateModel() {
       Ember.Logger.log('Route is now refreshing...');
       this.refresh();
     }

@@ -5,11 +5,11 @@ export default Ember.Controller.extend({
 
 
   actions: {
-    new: function() {
+    new() {
       this.transitionToRoute('new');
     },
 
-    deleteRecord: function(model) {
+    deleteRecord(model) {
       model.destroyRecord();
       this.send('invalidateModel');
     }

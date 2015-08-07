@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
   }.property('selectedSound'),
 
   actions: {
-    onSelectSound: function(sound_id) {
+    onSelectSound(sound_id) {
       this.set('selectedSound', sound_id);
     },
 

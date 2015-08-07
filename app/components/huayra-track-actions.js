@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   itsEmpty: false,
 
   actions: {
-    clean: function(){
+    clean() {
       var track = this.get('track');
 
       track.steps.forEach((s) => {
@@ -15,7 +15,7 @@ export default Ember.Component.extend({
       this.sendAction('onChange');
     },
 
-    pintar: function(){
+    pintar() {
       var track = this.get('track');
       Ember.set(track, "paint", !track.paint);
     }

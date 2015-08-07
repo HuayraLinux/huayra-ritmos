@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   classNames: ['huayra-project-list-container'],
 
   actions: {
-    delete: function(model) {
+    delete(model) {
       this.sendAction('onDelete', model);
     }
   }

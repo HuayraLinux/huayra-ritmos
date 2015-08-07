@@ -21,7 +21,7 @@ export default Ember.Component.extend({
   index: null,
   player: null,
 
-  mouseDown: function() {
+  mouseDown() {
       this.toggleProperty('step.active');
 
       // Solo reproduce cuando se hace click pero no está
@@ -33,7 +33,7 @@ export default Ember.Component.extend({
       this.sendAction('onChange');
   },
 
-  mouseEnter: function(){
+  mouseEnter() {
     var track = this.get('track');
     if (track.paint) {
       this.toggleProperty('step.active');

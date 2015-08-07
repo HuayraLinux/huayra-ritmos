@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-    _get_initial_record: function() {
+    _get_initial_record() {
       return {
 
           player: {

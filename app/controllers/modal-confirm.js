@@ -19,12 +19,12 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    cancel: function() {
+    cancel() {
       this.onCancel();
       this.send('closeModal');
     },
 
-    accept: function() {
+    accept() {
       this.onOk();
       this.send('closeModal');
     }

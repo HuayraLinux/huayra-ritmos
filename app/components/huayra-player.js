@@ -19,7 +19,7 @@ export default Ember.Component.extend({
     this.$(document).unbind('keydown', this.get('eventHandler'));
   }.on('willClearRender'),
 
-  keyHandler: function(e) {
+  keyHandler(e) {
 
     // Si es la tecla SPACE
     if (e.keyCode === 32) {
@@ -34,7 +34,7 @@ export default Ember.Component.extend({
 
   },
 
-  play: function() {
+  play() {
     this.playStep();
   },
 
@@ -53,7 +53,7 @@ export default Ember.Component.extend({
     });
   },
 
-  playStep: function() {
+  playStep() {
     var delay = ((1000 * 60)/4) / this.get('player.bpm');
 
     this.playCurrentStepSound();
@@ -71,7 +71,7 @@ export default Ember.Component.extend({
     this.set('timer', timer);
   },
 
-  stop: function() {
+  stop() {
     this.set('player.currentStep', 0);
 
     if (this.get('timer')) {
@@ -85,7 +85,7 @@ export default Ember.Component.extend({
     /*
      * Intenta habilitar o deshabilitar un track dado un número o posición.
      */
-    toggleEnabledTrackByIndex: function(index) {
+    toggleEnabledTrackByIndex(index) {
       var track = this.get('pattern.tracks')[index-1];
 
       if (track) {
@@ -97,7 +97,7 @@ export default Ember.Component.extend({
     /*
      * Alterna la reproducción del track.
      */
-    togglePlay: function() {
+    togglePlay() {
       this.toggleProperty('playing');
 
       if (this.get('playing')) {

@@ -19,7 +19,7 @@ var {Promise} = Ember.RSVP;
 
 export default Ember.Service.extend({
 
-  openDialog: function() {
+  openDialog() {
     var $ = Ember.$;
 
     return new Promise((resolve, reject) => {
@@ -46,7 +46,7 @@ export default Ember.Service.extend({
     });
   },
 
-  saveDialog: function() {
+  saveDialog() {
     var $ = Ember.$;
 
     return new Promise((resolve, reject) => {
@@ -73,7 +73,7 @@ export default Ember.Service.extend({
     });
   },
 
-  createTemporallyDirectory: function() {
+  createTemporallyDirectory() {
     return new Promise((resolve, reject) => {
       let options = {mode: '0750', prefix: 'myTmpDir_'};
 
@@ -87,7 +87,7 @@ export default Ember.Service.extend({
     });
   },
 
-  copyFile: function(file_path, directory_path) {
+  copyFile(file_path, directory_path) {
     var path_from = file_path;
     var path_to = path.join(directory_path, path.basename(file_path));
 
@@ -109,7 +109,7 @@ export default Ember.Service.extend({
 
   },
 
-  compress: function(path, target_file_path) {
+  compress(path, target_file_path) {
     return new Promise((resolve, reject) => {
 
       var output = fs.createWriteStream(target_file_path);

@@ -51,7 +51,7 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    save: function() {
+    save() {
 
       var record = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
       var model = this.get('model').set('content', record);
@@ -61,7 +61,7 @@ export default Ember.Controller.extend({
       });
     },
 
-    newTrack: function() {
+    newTrack() {
       this.showModal({
         template: 'modals/modal-new',
         controller: 'modal-new',
@@ -69,7 +69,7 @@ export default Ember.Controller.extend({
       });
     },
 
-    editTrack: function(track) {
+    editTrack(track) {
       let model = {
         pattern: this.get('pattern'),
         track: track,

@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   value: null,
   classNames: ['huayra-sound-switch'],
 
-  mouseDown: function() {
+  mouseDown() {
     this.toggleProperty('value');
   }
 });
