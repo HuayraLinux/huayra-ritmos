@@ -6,6 +6,16 @@ html, body {
   margin: 20px;
 }
 
+html {
+  background: url("../img/fondo.png") no-repeat top right !important;
+  background-size: cover !important;
+
+}
+
+body {
+  background-color: transparent !important;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   font-family: "Roboto" !important;
 }
@@ -218,8 +228,22 @@ div.slider {
 
 
 .main-title {
+  display: block;
+  height: 100px;
   padding-bottom: 30px;
-  border-bottom: 2px solid rgb(219, 219, 219);
+  /*border-bottom: 2px solid rgb(219, 219, 219);*/
+  background: url("../img/huayra-ritmos-logo.png") no-repeat top left;
+  border-width: 0 0 2px 0;
+  border-style: solid;
+  -webkit-border-image: -webkit-linear-gradient(left, #3b8a19, rgba(150, 250, 110, 0)) 100 0%;
+}
+
+.version {
+  display: block;
+  float: right;
+  padding-top: 75px;
+  font-size: 1em;
+  color: #005544;
 }
 
 .main-content {
@@ -230,6 +254,18 @@ div.slider {
   margin-top: 50px;
 }
 
+.huayra-project-list-container h3 {
+  height: 30px;
+  padding: 5px 0 5px 10px;
+  background: -webkit-linear-gradient(left, rgba(22,80,68,1) 0%, rgba(22,80,68,0) 105%);
+  font-size: 1.2em;
+  font-weight: 400 !important;
+  color: #d7f4ee;
+}
+
+.huayra-project-list-container table tbody tr {
+  background: -webkit-linear-gradient(left, rgba(22,80,68,1) 0%, rgba(22,80,68,0) 105%);
+}
 
 .huayra-title-editable-container {
   display: inline-block;
