@@ -254,6 +254,12 @@ div.slider {
   margin-top: 50px;
 }
 
+.huayra-project-list-container table {
+  border-collapse: separate;
+  border: 0;
+  border-spacing: 0 5px;
+}
+
 .huayra-project-list-container h3 {
   height: 30px;
   padding: 5px 0 5px 10px;
@@ -264,8 +270,31 @@ div.slider {
 }
 
 .huayra-project-list-container table tbody tr {
-  background: -webkit-linear-gradient(left, rgba(22,80,68,1) 0%, rgba(22,80,68,0) 105%);
+  background: -webkit-linear-gradient(left, rgba(0,136,170,1) 0%, rgba(0,136,170,0) 105%);
+  background-attachment: fixed;
 }
+
+.huayra-project-list-container table tbody tr td {
+  border: 0;
+  padding: 5px 0 4px 4px;
+  margin: 8px 0;
+}
+
+.huayra-project-list-container table tbody tr td a {
+  color: #d7f4ee;
+  margin-left: 12px;
+  text-decoration: none !important;
+}
+
+.project-item-bullet {
+  width: 18px;
+  height: 18px;
+  background-color: #82ecdb;
+  border-radius: 5px;
+  float: left;
+  margin: 2px 0 0 4px;
+}
+
 
 .huayra-title-editable-container {
   display: inline-block;

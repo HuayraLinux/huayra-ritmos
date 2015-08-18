@@ -8,7 +8,7 @@
 
     {{#each model as |pattern|}}
       <tr>
-        <td>{{#link-to "pattern" pattern}} {{pattern.title}} {{/link-to}}</td>
+        <td><div class="project-item-bullet"></div>{{#link-to "pattern" pattern}} {{pattern.title}} {{/link-to}}</td>
         <td class='actions'><button class="btn btn-xs btn-danger" {{action "delete" pattern}}> eliminar </button></td>
       </tr>
     {{/each}}
