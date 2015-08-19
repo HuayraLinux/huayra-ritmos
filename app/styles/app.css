@@ -47,14 +47,97 @@ a.active {
   font-size: x-small;
   background-color: rgb(229, 229, 229);
   position: absolute;
-  padding-top: 5px;
-  padding-left: 5px;
+  border-radius: 8px;
 }
 
 .huayra-track-step-container {
   position: relative;
   left: 110px;
   top: 7px;
+}
+
+/* Colores de pistas */
+/* Verde */
+.huayra-track-id.huayra-track-verde {
+  background-color: #afe9dd !important;
+}
+
+.huayra-track-id.huayra-track-verde .huayra-sound-switch button,
+.huayra-track-id.huayra-track-verde .huayra-track-ix,
+.huayra-track-id.huayra-track-verde .huayra-track-name {
+  color: #d5fff6;
+  background-color: #2ca089 !important;
+}
+
+.huayra-track-step-container.huayra-track-verde .step-active {
+  background-color: #2ca089!important;
+  border-color: #217867 !important;
+}
+
+.huayra-track-id .huayra-sound-switch {
+  top: 0;
+  right: 0;
+}
+
+.huayra-track-id .huayra-sound-switch button {
+  border-radius: 0 8px 0 8px;
+  padding: 2px 4px 2px 5px;
+}
+
+.huayra-track-id .huayra-sound-switch button.btn-danger {
+  padding: 3px 6px 3px 6px;
+  border: 0;
+}
+
+p.huayra-track-ix {
+  width: 22px;
+  padding: 6px 0 5px 8px;
+  border-radius: 8px 0 8px 0;
+}
+p.huayra-track-name {
+  width: auto;
+  padding: 4px;
+  margin-bottom: 0;
+  border-radius: 0 0 8px 8px;
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 2px solid #006f9d;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  height: 30px;
+  width: 12px;
+  border-radius: 5px;
+  background: #22beff;
+  cursor: pointer;
+  margin-top: -12px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: -webkit-linear-gradient(left, #006f9d 0%,#75d6ff 50%,#006f9d 100%);
+  border-radius: 1.3px;
+  border: 0;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: -webkit-linear-gradient(left, #006f9d 0%,#75d6ff 50%,#7db9e8 100%);
 }
 
 
@@ -192,6 +275,23 @@ a.active {
   font-size: x-small;
 }
 
+span.huayra-player-bpm,
+span.huayra-player-step {
+  color: #d7f4ee;
+  background-color: #004455;
+}
+
+span.huayra-player-bpm {
+  padding: 4px 8px 4px 8px;
+  border-radius: 8px 0 0 8px;
+  margin-right: 0;
+}
+
+span.huayra-player-step {
+  padding: 4px 8px 4px 8px;
+  border-radius: 0 8px 8px 0;
+  margin-left: -4px;
+}
 
 div.slider {
   width: 300px;
@@ -298,11 +398,26 @@ div.slider {
 
 .huayra-title-editable-container {
   display: inline-block;
+  padding: 5px 0 5px 10px;
+  background: -webkit-linear-gradient(left, rgba(0,136,170,1) 0%, rgba(0,136,170,0) 105%);
+  font-size: 1.2em;
+  font-weight: 400 !important;
+  color: #d7f4ee;
+  width: 75%;
+  vertical-align: middle;
 }
 
 .huayra-title-editable-container:hover {
-  border-bottom: 1px dotted blue;
+  /*border-bottom: 1px dotted blue;*/
   cursor: pointer;
+}
+
+.huayra-title-editable-container .project-item-bullet {
+  margin-top: 4px;
+}
+
+.project-title {
+  margin-left: 10px;
 }
 
 .huayra-track-actions {
@@ -353,10 +468,6 @@ td.actions {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-
-.project-title {
 }
 
 .bottom-bar {
