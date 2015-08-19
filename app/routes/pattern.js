@@ -27,11 +27,15 @@ export default Ember.Route.extend({
 
   actions: {
     error(error) {
-      //if (error.message.indexOf('as id to the store') > -1) {
+      if (error.message.indexOf('as id to the store') > -1) {
         console.error(error);
         console.log("Redireccionando a /new (no se encontró la canción.)");
         return this.transitionTo('new');
-     // }
+      } else {
+        console.error(error);
+        alert(error);
+        return this.transitionTo('index');
+      }
     }
   }
 

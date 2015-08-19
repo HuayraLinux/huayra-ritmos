@@ -4,15 +4,16 @@ export default Ember.Component.extend({
   active_id: null,
   classNames: ['ember-sound-selector'],
   boombox: Ember.inject.service(),
+  settings: Ember.inject.service(),
 
   loadSounds: Ember.on('init', function() {
     var fs = window.requireNode('fs');
 
-    var files = fs.readdirSync('dist/sounds').filter((e) => {
+    var prefix = this.get('settings').getPrefix();
+
+    var files = fs.readdirSync('${prefix}sounds').filter((e) => {
       return e.indexOf('.wav') > 0;
     });
-
-
 
     function naturalSort (a, b) {
        var re = /(^-?[0-9]+(\.?[0-9]*)[df]?e?[0-9]?$|^0x[0-9a-f]+$|[0-9]+)/gi,
