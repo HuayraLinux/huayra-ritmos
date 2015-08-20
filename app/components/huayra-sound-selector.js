@@ -11,7 +11,7 @@ export default Ember.Component.extend({
 
     var prefix = this.get('settings').getPrefix();
 
-    var files = fs.readdirSync('${prefix}sounds').filter((e) => {
+    var files = fs.readdirSync(`${prefix}sounds`).filter((e) => {
       return e.indexOf('.wav') > 0;
     });
 
