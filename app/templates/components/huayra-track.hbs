@@ -1,15 +1,15 @@
-<div class="huayra-track-id">
+<div class="huayra-track-id huayra-track-verde">
   {{huayra-sound-switch value=track.enabled}}
 
-  <p>{{indexNumber}}</p>
+  <p class="huayra-track-ix">{{indexNumber}}</p>
 
-  <p>
+  <p class="huayra-track-name">
     <span class='cursor-pointer' {{action "onEditTrack" track}}>{{trackName}}</span>
   </p>
 
 </div>
 
-<div class='huayra-track-step-container'>
+<div class='huayra-track-step-container huayra-track-verde'>
   {{#each track.steps as |step index|}}
     {{huayra-step index=index player=player sound=track.sound step=step track=track onChange='onChange'}}
   {{/each}}
