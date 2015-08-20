@@ -282,13 +282,18 @@ span.huayra-player-step {
 }
 
 span.huayra-player-bpm {
-  padding: 4px 8px 4px 8px;
+  padding: 5px 8px 7px 8px;
   border-radius: 8px 0 0 8px;
   margin-right: 0;
 }
 
+span.huayra-player-bpm .adjustable-number {
+  border-bottom: 1px dashed #d7f4ee !important;
+  color: #d7f4ee;
+}
+
 span.huayra-player-step {
-  padding: 4px 8px 4px 8px;
+  padding: 5px 8px 7px 8px;
   border-radius: 0 8px 8px 0;
   margin-left: -4px;
 }
@@ -360,7 +365,8 @@ div.slider {
   border-spacing: 0 5px;
 }
 
-.huayra-project-list-container h3 {
+.huayra-project-list-container h3,
+.huayra-modal-title {
   height: 30px;
   padding: 5px 0 5px 10px;
   background: -webkit-linear-gradient(left, rgba(22,80,68,1) 0%, rgba(22,80,68,0) 105%);
@@ -368,6 +374,7 @@ div.slider {
   font-weight: 400 !important;
   color: #d7f4ee;
 }
+
 
 .huayra-project-list-container table tbody tr {
   background: -webkit-linear-gradient(left, rgba(0,136,170,1) 0%, rgba(0,136,170,0) 105%);
@@ -396,15 +403,20 @@ div.slider {
 }
 
 
-.huayra-title-editable-container {
+.huayra-title-editable-container,
+.huayra-modal-track-title {
   display: inline-block;
   padding: 5px 0 5px 10px;
-  background: -webkit-linear-gradient(left, rgba(0,136,170,1) 0%, rgba(0,136,170,0) 105%);
+  background: -webkit-linear-gradient(left, rgba(0,136,170,1) 0%, rgba(0,136,170,0) 101%);
   font-size: 1.2em;
   font-weight: 400 !important;
   color: #d7f4ee;
-  width: 75%;
+  width: 60%;
   vertical-align: middle;
+}
+
+.huayra-modal-track-title {
+  width: 100%;
 }
 
 .huayra-title-editable-container:hover {
@@ -424,6 +436,11 @@ div.slider {
   display: inline-block;
 }
 
+.vaca-warning {
+  width: 213px;
+  height: 165px;
+  background: url("../img/vaca-warning.png") no-repeat center center;
+}
 
 body {
   overflow-x: hidden;
