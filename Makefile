@@ -34,7 +34,7 @@ comandos:
 
 iniciar:
 	npm install
-	./node_modules/bower/bin/bower install
+	./node_modules/bower/bin/bower install --allow-root
 
 dist: compilar
 
