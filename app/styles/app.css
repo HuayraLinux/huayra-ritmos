@@ -437,9 +437,12 @@ div.slider {
 }
 
 .vaca-warning {
+  position: absolute;
   width: 213px;
   height: 165px;
   background: url("../img/vaca-warning.png") no-repeat center center;
+  bottom: 0;
+  right: 0;
 }
 
 body {
