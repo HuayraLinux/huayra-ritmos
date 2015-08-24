@@ -1,4 +1,4 @@
-VERSION=0.4.1
+VERSION=0.5.1
 NOMBRE="huayra-ritmos"
 
 N=[0m
@@ -34,7 +34,7 @@ comandos:
 
 iniciar:
 	npm install
-	./node_modules/bower/bin/bower install
+	./node_modules/bower/bin/bower install --allow-root
 
 dist: compilar
 
@@ -59,7 +59,7 @@ compilar_live:
 
 version:
 	# patch || minor
-	@bumpversion minor --current-version ${VERSION} public/package.dev.json public/package.prod.json public/package.json Makefile --list
+	@bumpversion patch --current-version ${VERSION} public/package.dev.json public/package.prod.json public/package.json Makefile --list
 	make to_production
 	make build
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
