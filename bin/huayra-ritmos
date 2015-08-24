@@ -1,2 +1,2 @@
 #!/bin/bash
-nw /usr/share/huayra-ritmos
+nw /usr/share/huayra-ritmos/dist
