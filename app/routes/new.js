@@ -16,6 +16,7 @@ export default Ember.Route.extend({
               { enabled: true,
                 paint: false,
                 sound: '000_drum1.wav',
+                volume: 1,
                 steps: [
                           {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
                           {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
@@ -25,6 +26,7 @@ export default Ember.Route.extend({
               { enabled: true,
                 paint: false,
                 sound: '002_drum3.wav',
+                volume: 1,
                 steps: [
                           {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
                           {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},

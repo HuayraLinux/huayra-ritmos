@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  boombox: Ember.inject.service(),
+  audio: Ember.inject.service(),
 
   model(params) {
     return this.store.find('pattern', params.id);
@@ -22,7 +22,7 @@ export default Ember.Route.extend({
   },
 
   activate() {
-    this.get('boombox');
+    this.get('audio');
   },
 
   actions: {

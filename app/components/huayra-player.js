@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   pattern: null,
   player: null,
 
-  boombox: Ember.inject.service(),
+  audio: Ember.inject.service(),
   playing: false,
   timer: null,
 
@@ -46,7 +46,11 @@ export default Ember.Component.extend({
 
       if (t.enabled) {
         if (t.steps[currentStep].active) {
-          this.get('boombox').play(t.sound);
+          let volume = t.volume || 1;            // aplica el volumen global.
+          volume = parseFloat(volume, 10);
+          volume *= (t.steps[currentStep].volume || 1); // aplica el volumen del step.
+
+          this.get('audio').play(t.sound, volume);
         }
       }
 

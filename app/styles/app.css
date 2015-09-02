@@ -494,3 +494,8 @@ td.actions {
   position: absolute;
   bottom: 20px;
 }
+
+
+.vaca-warning {
+  z-index: -1;
+}

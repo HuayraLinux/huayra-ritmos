@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  boombox: Ember.inject.service(),
+  audio: Ember.inject.service(),
   classNames: ['step', 'step-default', 'huayra-step'],
 
   classNameBindings: ['active:step-active', 'active:step-success', //estados para el step seleccionado
@@ -27,7 +27,7 @@ export default Ember.Component.extend({
       // Solo reproduce cuando se hace click pero no está
       // reproduciendo.
       if (! this.get('player.playing')) {
-        this.get('boombox').play(this.get('sound'));
+        this.get('audio').play(this.get('sound'));
       }
 
       this.sendAction('onChange');

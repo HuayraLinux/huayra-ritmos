@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   active_id: null,
   classNames: ['ember-sound-selector'],
-  boombox: Ember.inject.service(),
+  audio: Ember.inject.service(),
   settings: Ember.inject.service(),
 
   loadSounds: Ember.on('init', function() {
@@ -69,7 +69,7 @@ export default Ember.Component.extend({
     select(sound) {
       this.set('active_id', sound.id);
       this.sendAction('onSelect', sound.id);
-      this.get('boombox').previewSound(sound.id);
+      this.get('audio').previewSound(sound.id);
     }
   }
 
