@@ -26,35 +26,13 @@ export default Ember.Service.extend({
 
   loadSound(prefix, name) {
     var path = `app://./${prefix}sounds/${name}`;
-    /*
-
-    var options = {
-      src: [{
-            media: 'audio/mp4',
-            path: path,
-        }]
-    };
-
-    */
 
     console.log('cargando sonido ' + name);
     this.sounds[name] = new Wad({source : path});
-
-    /*
-    boombox.load(name, options, function (err, audio) {
-      if (err) {
-        console.log("err", err);
-        console.log("audio", audio);
-      }
-    });
-    */
-
   },
 
   play(name, volume) {
     volume = volume || 1;
-
-    console.log(["play"], volume);
 
     this.sounds[name].setVolume(volume);
     this.sounds[name].play();

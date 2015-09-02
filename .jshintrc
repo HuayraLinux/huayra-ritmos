@@ -4,7 +4,8 @@
     "window",
     "-Promise",
     "boombox",
-    "require"
+    "require",
+    "Wad"
   ],
   "browser": true,
   "boss": true,
