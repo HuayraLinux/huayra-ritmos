@@ -13,11 +13,6 @@ export default Ember.Component.extend({
       });
 
       this.sendAction('onChange');
-    },
-
-    pintar() {
-      var track = this.get('track');
-      Ember.set(track, "paint", !track.paint);
     }
   },
 });
