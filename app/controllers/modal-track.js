@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
     setcolor(color) {
       let track = this.get('modal.model.track');
       Ember.set(track, "color", color);
+      this.controllerFor('pattern').send('onChange');
       this.send('closeModal');
     }
   }
