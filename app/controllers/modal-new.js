@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
 
       var newTrack = {
         enabled: true,
+        color: "verde",
         paint: false,
         sound: this.get('selectedSound'),
         steps: [

@@ -15,6 +15,7 @@ export default Ember.Route.extend({
             tracks: [
               { enabled: true,
                 paint: false,
+                color: "verde",
                 sound: '000_drum1.wav',
                 volume: 1,
                 steps: [
@@ -25,6 +26,7 @@ export default Ember.Route.extend({
                        ]},
               { enabled: true,
                 paint: false,
+                color: "amarillo",
                 sound: '002_drum3.wav',
                 volume: 1,
                 steps: [

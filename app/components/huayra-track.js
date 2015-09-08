@@ -11,6 +11,10 @@ export default Ember.Component.extend({
     return this.get('track.sound').split('.')[0];
   }),
 
+  trackColor: Ember.computed('track.color', function() {
+    return "huayra-track-"+this.get('track.color');
+  }),
+
   actions: {
     onChange() {
       this.sendAction('onChange');

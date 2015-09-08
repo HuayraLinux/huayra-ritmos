@@ -57,11 +57,25 @@ a.active {
 }
 
 /* Colores de pistas */
-/* Verde */
-.huayra-track-id.huayra-track-verde {
-  background-color: #afe9dd !important;
+.color-picker{
+  margin-top:20px;
+}
+.huayra-track-color-picker {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  display:inline-block;
+  width:23px;
+  height:23px;
+  border:1px solid #fff;
+  cursor:pointer;
 }
 
+/* Verde */
+.huayra-track-picker-verde,
+.huayra-track-id.huayra-track-verde {
+  background-color: #2ca089 !important;
+}
 .huayra-track-id.huayra-track-verde .huayra-sound-switch button,
 .huayra-track-id.huayra-track-verde .huayra-track-ix,
 .huayra-track-id.huayra-track-verde .huayra-track-name {
@@ -73,6 +87,94 @@ a.active {
   background-color: #2ca089!important;
   border-color: #217867 !important;
 }
+
+/* Amarillo */
+.huayra-track-picker-amarillo,
+.huayra-track-id.huayra-track-amarillo {
+  background-color: #F2D600 !important;
+}
+.huayra-track-id.huayra-track-amarillo .huayra-sound-switch button,
+.huayra-track-id.huayra-track-amarillo .huayra-track-ix,
+.huayra-track-id.huayra-track-amarillo .huayra-track-name {
+  color:#000;
+  background-color: #F2D600 !important;
+}
+
+.huayra-track-step-container.huayra-track-amarillo .step-active {
+  background-color: #F2D600 !important;
+  border-color: #F29700 !important;
+}
+
+/* Naranja */
+.huayra-track-picker-naranja,
+.huayra-track-id.huayra-track-naranja {
+  background-color: #FFAB4A !important;
+}
+.huayra-track-id.huayra-track-naranja .huayra-sound-switch button,
+.huayra-track-id.huayra-track-naranja .huayra-track-ix,
+.huayra-track-id.huayra-track-naranja .huayra-track-name {
+  color:#000;
+  background-color: #FFAB4A !important;
+}
+
+.huayra-track-step-container.huayra-track-naranja .step-active {
+  background-color: #FFAB4A !important;
+  border-color: #FF674A !important;
+}
+
+
+/* Rojo */
+.huayra-track-picker-rojo,
+.huayra-track-id.huayra-track-rojo {
+  background-color: #EB5A46 !important;
+}
+.huayra-track-id.huayra-track-rojo .huayra-sound-switch button,
+.huayra-track-id.huayra-track-rojo .huayra-track-ix,
+.huayra-track-id.huayra-track-rojo .huayra-track-name {
+  color:#000;
+  background-color: #EB5A46 !important;
+}
+
+.huayra-track-step-container.huayra-track-rojo .step-active {
+  background-color: #EB5A46 !important;
+  border-color: #B11500 !important;
+}
+
+/* Violeta */
+.huayra-track-picker-violeta,
+.huayra-track-id.huayra-track-violeta {
+  background-color: #C377E0 !important;
+}
+.huayra-track-id.huayra-track-violeta .huayra-sound-switch button,
+.huayra-track-id.huayra-track-violeta .huayra-track-ix,
+.huayra-track-id.huayra-track-violeta .huayra-track-name {
+  color:#fff;
+  background-color: #C377E0 !important;
+}
+
+.huayra-track-step-container.huayra-track-violeta .step-active {
+  background-color: #C377E0 !important;
+  border-color: #4C0069 !important;
+}
+
+/* Azul */
+.huayra-track-picker-azul,
+.huayra-track-id.huayra-track-azul {
+  background-color: #0079BF !important;
+}
+
+.huayra-track-id.huayra-track-azul .huayra-sound-switch button,
+.huayra-track-id.huayra-track-azul .huayra-track-ix,
+.huayra-track-id.huayra-track-azul .huayra-track-name {
+  color:#fff;
+  background-color: #0079BF !important;
+}
+
+.huayra-track-step-container.huayra-track-azul .step-active {
+  background-color: #0079BF !important;
+  border-color: #00446D !important;
+}
+/* fin de colores*/
 
 .huayra-track-id .huayra-sound-switch {
   top: 0;

@@ -4,9 +4,28 @@
   Título: {{modal.model.track.sound}}
 </p>
 
-  <div class='slider'>
-    Volúmen global: {{x-slider min=0 max=1 step=0.05 value=modal.model.track.volume}}
-  </div>
+<div class='slider'>
+  Volúmen global: {{x-slider min=0 max=1 step=0.05 value=modal.model.track.volume}}
+</div>
+
+
+<div class="color-picker">
+  <p>Color de la pista</p>
+
+  <span {{action "setcolor" 'verde'}}
+        class="huayra-track-color-picker huayra-track-picker-verde">&nbsp;</span>
+  <span {{action "setcolor" 'amarillo'}}
+        class="huayra-track-color-picker huayra-track-picker-amarillo">&nbsp;</span>
+  <span {{action "setcolor" 'naranja'}}
+        class="huayra-track-color-picker huayra-track-picker-naranja">&nbsp;</span>
+  <span {{action "setcolor" 'rojo'}}
+        class="huayra-track-color-picker huayra-track-picker-rojo">&nbsp;</span>
+  <span {{action "setcolor" 'violeta'}}
+        class="huayra-track-color-picker huayra-track-picker-violeta">&nbsp;</span>
+  <span {{action "setcolor" 'azul'}}
+        class="huayra-track-color-picker huayra-track-picker-azul">&nbsp;</span>
+</div>
+
 
 <div class="bottom-bar">
   <button class='btn btn-danger' {{action "remove"}}> Eliminar pista</button>
