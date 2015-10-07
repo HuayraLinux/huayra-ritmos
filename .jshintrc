@@ -5,7 +5,11 @@
     "-Promise",
     "boombox",
     "require",
-    "Wad"
+    "Wad",
+    "p5",
+    "process",
+    "loadSound",
+    "$"
   ],
   "browser": true,
   "boss": true,
