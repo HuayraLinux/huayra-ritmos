@@ -5,8 +5,6 @@ export default Ember.Service.extend({
   sounds: {},
 
   init() {
-    var self = this;
-
     window.setup = () => {
       this.set('analyzer', new p5.Amplitude());
 
