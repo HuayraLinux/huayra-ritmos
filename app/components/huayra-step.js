@@ -42,15 +42,16 @@ export default Ember.Component.extend({
   },
   didInsertElement: function() {
     var track = this.get('track');
-    var body = $('body');
     var step = this.$();
     var track_elm = step.eq(0).parent();
-    step.on('mousedown', (e) => {
+
+    step.on('mousedown', () => {
       Ember.set(track, "paint", true);
-    }).on('mouseup', (eb) => {
+    }).on('mouseup', () => {
       Ember.set(track, "paint", false);
     });
-    track_elm.on('mouseleave', (eb) => {
+
+    track_elm.on('mouseleave', () => {
       Ember.set(track, "paint", false);
     });
   }
