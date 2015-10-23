@@ -7,15 +7,8 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
-  this.route('tips');
   
   this.resource('pattern', {path: '/pattern/:pattern_id'}, function() {
     this.route('newTrack');
   });
-
-  this.resource('playground', function() {
-    this.route('modal');
-  });
-
-  this.route('new');
 });
