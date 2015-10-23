@@ -1,0 +1,17 @@
+{{#modal-dialog
+    targetAttachment="center"
+    close="close"
+    translucentOverlay=true}}
+
+    <h1 data-test="modal-title" class="huayra-modal-title">Crear una pista</h1>
+
+    <p>Seleccioná alguno de los siguientes sonidos:</p>
+
+    {{huayra-sound-selector onSelect="onSelectSound"}}
+
+    <div class="bottom-bar">
+      <button disabled={{emptySelection}} class='btn btn-success' {{action "accept"}}> Agregar </button>
+      <button disabled={{emptySelection}} class='btn btn-success' {{action "acceptAndClose"}}> Agregar y cerrar</button>
+    </div>
+
+{{/modal-dialog}}

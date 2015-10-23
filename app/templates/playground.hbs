@@ -4,6 +4,10 @@
 </div>
 
 <div class="buttons">
+  {{#link-to "playground.modal" "Hola mundo" class='btn btn-success'}}modal{{/link-to}}
+</div>
+
+<div class="buttons">
   <button class="btn btn-success" {{action 'openDialog'}}>openDialog</button>
   <button class="btn btn-success" {{action 'saveDialog'}}>saveDialog</button>
   <button class="btn btn-success" {{action 'createTemporallyDirectory'}}>createTemporallyDirectory</button>
@@ -17,3 +21,5 @@
 
 
 {{huayra-sound-selector}}
+
+{{outlet}}

@@ -49,7 +49,7 @@ export default Ember.Service.extend({
     var main_path = process.cwd();
     var path = `file://${main_path}/${prefix}sounds/${name}`;
 
-    console.log('cargando sonido ' + name);
+    console.log('cargando sonido ' + name, path);
     //this.sounds[name] = new Wad({source : path});
     this.sounds[name] = loadSound(path);
   },

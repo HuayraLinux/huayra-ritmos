@@ -2,9 +2,27 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   audio: Ember.inject.service(),
+  modelFactory: Ember.inject.service(),
 
   model(params) {
-    return this.store.find('pattern', params.id);
+    // Intenta cargar el modelo desde el ID de la URL o
+    // directamente contruye un track nuevo.
+    return new Ember.RSVP.Promise((success) => {
+
+      this.store.find('pattern', params.pattern_id).
+        then((model) => {
+          success(model);
+        }).
+        catch(() => {
+          var initial_record = this.get('modelFactory').get_initial_record();
+          var record = this.get('store').createRecord('pattern', {
+            title: "Sin título",
+            content: JSON.stringify(initial_record),
+          });
+
+          success(record);
+        });
+    });
   },
 
   setupController(controller, model) {
@@ -24,19 +42,5 @@ export default Ember.Route.extend({
   activate() {
     this.get('audio');
   },
-
-  actions: {
-    error(error) {
-      if (error.message.indexOf('as id to the store') > -1) {
-        console.error(error);
-        console.log("Redireccionando a /new (no se encontró la canción.)");
-        return this.transitionTo('new');
-      } else {
-        console.error(error);
-        alert(error);
-        return this.transitionTo('index');
-      }
-    }
-  }
 
 });

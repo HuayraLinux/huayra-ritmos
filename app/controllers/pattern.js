@@ -61,12 +61,17 @@ export default Ember.Controller.extend({
       });
     },
 
+
     newTrack() {
+      this.transitionToRoute('pattern.newTrack');
+
+      /*
       this.showModal({
         template: 'modals/modal-new',
         controller: 'modal-new',
         model: this.get('pattern')
       });
+      */
     },
 
     editTrack(track) {

@@ -1,3 +1,13 @@
-{{#each sound in sounds}}
-  <a href {{action "select" sound}} class="list-group-item">{{sound.title}}</a>
-{{/each}}
+<div class="row">
+  <div class="col-xs-4">
+    <div class="sound-category">
+      asdasd
+    </div>
+  </div>
+
+  <div class="col-xs-8">
+    {{#each sound in sounds}}
+      <a href {{action "select" sound}} class="list-group-item">{{sound.title}}</a>
+    {{/each}}
+  </div>
+</div>
