@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  pattern: Ember.inject.pattern(),
+
   actions: {
     remove() {
       let tracks = this.get('modal.model.pattern.tracks');
@@ -10,13 +12,13 @@ export default Ember.Controller.extend({
 
       tracks.removeObject(track);
 
-      this.controllerFor('pattern').send('onChange');
+      this.get('pattern').send('onChange');
       this.send('closeModal');
     },
     setcolor(color) {
       let track = this.get('modal.model.track');
       Ember.set(track, "color", color);
-      this.controllerFor('pattern').send('onChange');
+      this.get('pattern').send('onChange');
       this.send('closeModal');
     }
   }

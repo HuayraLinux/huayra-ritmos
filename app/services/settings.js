@@ -6,8 +6,9 @@ export default Ember.Service.extend({
 
     if (isNodeWebkit) {
       var fs = window.requireNode('fs');
-      if (fs.existsSync('dist')) {
-        return "dist/";
+      
+      if (fs.existsSync('../dist')) {
+        return "../dist/";
       } else {
         return "";
       }

@@ -694,3 +694,9 @@ td.actions {
   height: 100px;
   text-align: center;
 }
+
+.sound-category {
+  position: absolute;
+  right: 0;
+  left: 20px;
+}
