@@ -61,17 +61,25 @@ export default Ember.Controller.extend({
       });
     },
 
+    createNewTrackWithSound(sound) {
+      var newTrack = {
+        enabled: true,
+        color: "verde",
+        paint: false,
+        sound: sound,
+        steps: [
+                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
+                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
+                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+      ]};
+
+      this.get('pattern.tracks').pushObject(newTrack);
+      this.send('onChange');
+    },
 
     newTrack() {
       this.transitionToRoute('pattern.newTrack');
-
-      /*
-      this.showModal({
-        template: 'modals/modal-new',
-        controller: 'modal-new',
-        model: this.get('pattern')
-      });
-      */
     },
 
     editTrack(track) {

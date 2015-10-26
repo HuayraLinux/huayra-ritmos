@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   audio: Ember.inject.service(),
   modelFactory: Ember.inject.service(),
+  soundGallery: Ember.inject.service(),
 
   model(params) {
     // Intenta cargar el modelo desde el ID de la URL o
@@ -42,5 +43,9 @@ export default Ember.Route.extend({
   activate() {
     this.get('audio');
   },
+
+  afterModel() {
+    return this.get('soundGallery').loadSounds();
+  }
 
 });
