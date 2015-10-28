@@ -19,8 +19,8 @@ export default Ember.Component.extend({
   actions: {
     select(sound) {
       this.set('active_id', sound.id);
-      this.sendAction('onSelect', sound.id);
-      this.get('audio').previewSound(sound.id);
+      this.sendAction('onSelect', sound);
+      this.get('audio').previewSound(sound);
     },
 
     selectCategory(category) {

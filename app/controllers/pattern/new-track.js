@@ -9,8 +9,8 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    onSelectSound(sound_id) {
-      this.set('selectedSound', sound_id);
+    onSelectSound(sound) {
+      this.set('selectedSound', sound);
     },
     accept() {
       var controller = this.get('pattern');

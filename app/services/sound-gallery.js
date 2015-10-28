@@ -4,6 +4,7 @@ export default Ember.Service.extend({
   settings: Ember.inject.service(),
   sounds: {},
   categories: [],
+  p5: null,
 
   getSoundsByCategory(category) {
     return this.get('sounds')[category];
@@ -80,9 +81,15 @@ export default Ember.Service.extend({
     files.sort(naturalSort);
 
     files.forEach((name) => {
+      let path_to_filename = `sounds/${foldername}/${name}`;
       let title = name.replace('.wav', '');
-      console.log(`Cargando ${title} en la categoria ${foldername}`);
-      sounds.pushObject({id: name, title: title});
+      let audioClip = loadSound(path_to_filename);
+
+      sounds.pushObject({id: name,
+                         title: title,
+                         category: foldername,
+                         audioClip: audioClip,
+                       });
     });
 
     return sounds;
@@ -102,8 +109,6 @@ export default Ember.Service.extend({
       return fs.statSync(path.join(basePath, file)).isDirectory();
     }
 
-    this.get('categories').pushObject('basicos');
-
     fs.readdirSync(basePath).filter(isFolder).forEach((e) => {
       this.get('categories').pushObject(e);
     });
@@ -113,11 +118,11 @@ export default Ember.Service.extend({
   loadSounds() {
 
     return new Ember.RSVP.Promise((success) => {
+      this.set('p5', new p5());
 
       this.reloadCategories();
 
       this.getCategories().forEach((category) => {
-        console.log(category);
         this.get('sounds')[category] = this.readSoundFilesFromFolder(category);
       });
 
