@@ -12,6 +12,17 @@
     <!-- AGREGADOS PARA NODEWEBKIT -->
     <script src='atajo-inspector.js'></script>
 
+    <script>
+    var fs = requireNode('fs');
+
+    fs.watchFile('./index.html', function() {
+      console.log("Reiniciando...");
+      setTimeout(function() {
+        window.location.reload();
+      }, 3000);
+    });
+    </script>
+
     {{content-for 'head'}}
 
     <!-- AGREGADOS POR EMBERCLI -->

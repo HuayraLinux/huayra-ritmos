@@ -8,9 +8,11 @@ export default Ember.Service.extend({
     volume = volume || 1;
     rate = rate || 1;
 
-    sound.audioClip.setVolume(volume);
-    sound.audioClip.rate(rate);
-    sound.audioClip.play(0, rate);
+    var audioClip = this.get('soundGallery').getAudioClip(sound);
+
+    audioClip.setVolume(volume);
+    audioClip.rate(rate);
+    audioClip.play(0, rate);
   },
 
   previewSound(sound) {

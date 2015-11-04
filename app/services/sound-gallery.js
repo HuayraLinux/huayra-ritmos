@@ -14,9 +14,16 @@ export default Ember.Service.extend({
     return this.get('categories');
   },
 
+  getAudioClip(fullname) {
+    var category = fullname.split('/')[0];
+    var filename = fullname.split('/')[1];
+
+    return this.get('sounds')[category][filename].audioClip;
+  },
+
   readSoundFilesFromFolder(foldername) {
     var fs = window.requireNode('fs');
-    var sounds = [];
+    var sounds = {};
     var path = this.getSoundPath();
 
     if (foldername) {
@@ -85,11 +92,11 @@ export default Ember.Service.extend({
       let title = name.replace('.wav', '');
       let audioClip = loadSound(path_to_filename);
 
-      sounds.pushObject({id: name,
+      sounds[name] = {id: name,
                          title: title,
                          category: foldername,
                          audioClip: audioClip,
-                       });
+                      };
     });
 
     return sounds;
