@@ -10,6 +10,16 @@ export default Ember.Service.extend({
     return this.get('sounds')[category];
   },
 
+  getSoundsByCategoryAsList(category) {
+    var dictionary = this.getSoundsByCategory(category);
+
+    var values = Object.keys(dictionary).map(function(key){
+      return dictionary[key];
+    });
+
+    return values;
+  },
+
   getCategories() {
     return this.get('categories');
   },
@@ -123,6 +133,9 @@ export default Ember.Service.extend({
   },
 
   loadSounds() {
+
+    this.set('sounds', {});
+    this.set('categories', []);
 
     return new Ember.RSVP.Promise((success) => {
       this.set('p5', new p5());

@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   currentCategory: 'basic',
 
   soundsInThisCategory: Ember.computed('currentCategory', 'soundGallery', function() {
-    return this.get('soundGallery').getSoundsByCategory(this.get('currentCategory'));
+    return this.get('soundGallery').getSoundsByCategoryAsList(this.get('currentCategory'));
   }),
 
   categories: Ember.computed('soundGallery', function() {

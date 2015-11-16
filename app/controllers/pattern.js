@@ -6,6 +6,10 @@ export default Ember.Controller.extend({
   player: {},      // se cargan desde el setupcontroller de route:pattern
   unsavedChanges: false,
 
+  showConfirmModal: false,
+  queryParams: ["showConfirmModal"],
+
+
   savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
   }),
@@ -35,16 +39,7 @@ export default Ember.Controller.extend({
   onClose() {
 
     if (this.get('unsavedChanges')) {
-      let options = {
-        callback_ok: () => {
-          this.send('save');
-        },
-        callback_cancel: () => {
-          this.forceCloseWindow();
-        }
-      };
-
-      this.send('showUnsavedChangesDialog', options);
+      this.send('showUnsavedChangesDialog');
     } else {
       this.forceCloseWindow();
     }
@@ -101,29 +96,50 @@ export default Ember.Controller.extend({
 
     goIndex() {
       if (this.get('unsavedChanges')) {
-        let options = {
-          callback_ok: () => {
-            this.send('save');
-            this.transitionToRoute('index');
-          },
-          callback_cancel: () => {
-            this.transitionToRoute('index');
-          }
-        };
-
-        this.send('showUnsavedChangesDialog', options);
+        this.send('showUnsavedChangesDialog');
       } else {
         this.transitionToRoute('index');
       }
     },
 
-    showUnsavedChangesDialog(options) {
-      this.showModal({
-        template: 'modals/modal-confirm',
-        controller: 'modal-confirm',
-        model: options
-      });
-    }
+    closeConfirmModal() {
+      this.set('showConfirmModal', false);
+    },
+
+    showUnsavedChangesDialog() {
+      this.set('showConfirmModal', true);
+    },
+
+    saveFromConfirmModal() {
+      this.send('save');
+      this.transitionToRoute('index');
+    },
+
+    cancelFromConfirmModal() {
+      
+    },
+
+/*
+    let options = {
+      callback_ok: () => {
+      },
+      callback_cancel: () => {
+        this.forceCloseWindow();
+      }
+    };
+
+    let options = {
+      callback_ok: () => {
+        this.send('save');
+        this.transitionToRoute('index');
+      },
+      callback_cancel: () => {
+        this.transitionToRoute('index');
+      }
+    };
+*/
+
+
   }
 
 });

@@ -1,0 +1,19 @@
+{{#modal-dialog
+    close="closeConfirmModal"
+    targetAttachment="center"
+    translucentOverlay=true}}
+
+<h1 data-test="modal-title">¡Epa!, no guardaste aún</h1>
+
+<p>Parece que hay cambios sin guardar en el proyecto...</p>
+
+<p><strong>¿Que te gustaría hacer?</strong></p>
+
+<div class="vaca-warning"></div>
+
+<div class='center padding'>
+  <button class='btn btn-success' {{action "saveFromConfirmModal"}}> Guardar ahora </button>
+  <button class='btn btn-danger' {{action "cancelFromConfirmModal"}}> Descartar los cambios </button>
+</div>
+
+{{/modal-dialog}}
