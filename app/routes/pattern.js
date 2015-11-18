@@ -32,6 +32,7 @@ export default Ember.Route.extend({
     controller.set('player', record.player);
     controller.set('pattern', record.pattern);
     controller.set('model', model);
+    controller.set('showConfirmModal', false);
     controller.set('unsavedChanges', false);
     controller.notifyEnterTransition();
   },

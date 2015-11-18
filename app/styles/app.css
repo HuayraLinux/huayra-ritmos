@@ -700,13 +700,3 @@ td.actions {
   right: 0;
   left: 20px;
 }
-
-
-.huayra-debug-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 5px;
-  background-color: yellow;
-}

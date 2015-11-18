@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
   onClose() {
 
     if (this.get('unsavedChanges')) {
-      this.send('showUnsavedChangesDialog');
+      this.send('showUnsavedChangesDialog', true);
     } else {
       this.forceCloseWindow();
     }
@@ -96,7 +96,7 @@ export default Ember.Controller.extend({
 
     goIndex() {
       if (this.get('unsavedChanges')) {
-        this.send('showUnsavedChangesDialog');
+        this.send('showUnsavedChangesDialog', false);
       } else {
         this.transitionToRoute('index');
       }
@@ -106,7 +106,8 @@ export default Ember.Controller.extend({
       this.set('showConfirmModal', false);
     },
 
-    showUnsavedChangesDialog() {
+    showUnsavedChangesDialog(mustCloseWindowOnDismiss) {
+      this.set('mustCloseWindowOnDismiss', mustCloseWindowOnDismiss);
       this.set('showConfirmModal', true);
     },
 
@@ -116,7 +117,7 @@ export default Ember.Controller.extend({
     },
 
     cancelFromConfirmModal() {
-      
+      this.transitionToRoute('index');
     },
 
 /*
