@@ -1,7 +1,7 @@
 {
   "main": "index.html",
   "name": "huayra-ritmos",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "window": {
     "title": "huayra-ritmos",
     "width": 800,
