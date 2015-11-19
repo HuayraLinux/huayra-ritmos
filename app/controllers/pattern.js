@@ -7,8 +7,6 @@ export default Ember.Controller.extend({
   unsavedChanges: false,
 
   showConfirmModal: false,
-  queryParams: ["showConfirmModal"],
-
 
   savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
@@ -116,31 +114,22 @@ export default Ember.Controller.extend({
       this.transitionToRoute('index');
     },
 
+    cancelAndDontCloseFromConfirmModal() {
+      this.send("closeConfirmModal");
+    },
+
     cancelFromConfirmModal() {
       this.transitionToRoute('index');
     },
 
-/*
-    let options = {
-      callback_ok: () => {
-      },
-      callback_cancel: () => {
-        this.forceCloseWindow();
-      }
-    };
+    saveAndCloseFromConfirmModal() {
+      this.send('save');
+      this.forceCloseWindow();
+    },
 
-    let options = {
-      callback_ok: () => {
-        this.send('save');
-        this.transitionToRoute('index');
-      },
-      callback_cancel: () => {
-        this.transitionToRoute('index');
-      }
-    };
-*/
-
+    cancelAndCloseFromConfirmModal() {
+      this.forceCloseWindow();
+    },
 
   }
-
 });

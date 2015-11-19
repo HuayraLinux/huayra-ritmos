@@ -34,6 +34,7 @@ export default Ember.Route.extend({
     controller.set('model', model);
     controller.set('showConfirmModal', false);
     controller.set('unsavedChanges', false);
+    
     controller.notifyEnterTransition();
   },
 
