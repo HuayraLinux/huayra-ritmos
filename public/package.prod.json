@@ -6,7 +6,7 @@
     "title": "huayra-ritmos",
     "width": 800,
     "height": 500,
-    "min_width": 725,
+    "min_width": 800,
     "min_height": 400,
     "toolbar": false,
     "position": "center"

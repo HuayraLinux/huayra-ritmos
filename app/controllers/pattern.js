@@ -6,6 +6,8 @@ export default Ember.Controller.extend({
   player: {},      // se cargan desde el setupcontroller de route:pattern
   unsavedChanges: false,
 
+  showConfirmModal: false,
+
   savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
   }),
@@ -35,16 +37,7 @@ export default Ember.Controller.extend({
   onClose() {
 
     if (this.get('unsavedChanges')) {
-      let options = {
-        callback_ok: () => {
-          this.send('save');
-        },
-        callback_cancel: () => {
-          this.forceCloseWindow();
-        }
-      };
-
-      this.send('showUnsavedChangesDialog', options);
+      this.send('showUnsavedChangesDialog', true);
     } else {
       this.forceCloseWindow();
     }
@@ -61,12 +54,25 @@ export default Ember.Controller.extend({
       });
     },
 
+    createNewTrackWithSound(sound) {
+      var newTrack = {
+        enabled: true,
+        color: "verde",
+        paint: false,
+        sound: sound,
+        steps: [
+                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
+                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+                  {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
+                  {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+      ]};
+
+      this.get('pattern.tracks').pushObject(newTrack);
+      this.send('onChange');
+    },
+
     newTrack() {
-      this.showModal({
-        template: 'modals/modal-new',
-        controller: 'modal-new',
-        model: this.get('pattern')
-      });
+      this.transitionToRoute('pattern.newTrack');
     },
 
     editTrack(track) {
@@ -88,29 +94,42 @@ export default Ember.Controller.extend({
 
     goIndex() {
       if (this.get('unsavedChanges')) {
-        let options = {
-          callback_ok: () => {
-            this.send('save');
-            this.transitionToRoute('index');
-          },
-          callback_cancel: () => {
-            this.transitionToRoute('index');
-          }
-        };
-
-        this.send('showUnsavedChangesDialog', options);
+        this.send('showUnsavedChangesDialog', false);
       } else {
         this.transitionToRoute('index');
       }
     },
 
-    showUnsavedChangesDialog(options) {
-      this.showModal({
-        template: 'modals/modal-confirm',
-        controller: 'modal-confirm',
-        model: options
-      });
-    }
-  }
+    closeConfirmModal() {
+      this.set('showConfirmModal', false);
+    },
 
+    showUnsavedChangesDialog(mustCloseWindowOnDismiss) {
+      this.set('mustCloseWindowOnDismiss', mustCloseWindowOnDismiss);
+      this.set('showConfirmModal', true);
+    },
+
+    saveFromConfirmModal() {
+      this.send('save');
+      this.transitionToRoute('index');
+    },
+
+    cancelAndDontCloseFromConfirmModal() {
+      this.send("closeConfirmModal");
+    },
+
+    cancelFromConfirmModal() {
+      this.transitionToRoute('index');
+    },
+
+    saveAndCloseFromConfirmModal() {
+      this.send('save');
+      this.forceCloseWindow();
+    },
+
+    cancelAndCloseFromConfirmModal() {
+      this.forceCloseWindow();
+    },
+
+  }
 });

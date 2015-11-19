@@ -7,3 +7,10 @@
 {{huayra-pattern pattern=pattern player=player onChange="onChange" onEditTrack='editTrack'}}
 
 {{huayra-new-track pattern=pattern onNewTrack='newTrack' onChange="onChange"}}
+
+{{outlet}}
+
+
+{{#if showConfirmModal}}
+  {{partial "modal-confirm"}}
+{{/if}}

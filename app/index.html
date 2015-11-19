@@ -12,6 +12,17 @@
     <!-- AGREGADOS PARA NODEWEBKIT -->
     <script src='atajo-inspector.js'></script>
 
+    <script>
+    var fs = requireNode('fs');
+
+    fs.watchFile('./index.html', function() {
+      console.log("Reiniciando...");
+      setTimeout(function() {
+        window.location.reload();
+      }, 3000);
+    });
+    </script>
+
     {{content-for 'head'}}
 
     <!-- AGREGADOS POR EMBERCLI -->
@@ -34,17 +45,17 @@
 
     <script src='fix-menu-osx.js'></script>
     <script>
-         window.onkeypress = function(e) {
-           if (e.which === 105 && (e.ctrlKey || e.shiftKey || e.metaKey)) {
-             window.requireNode('nw.gui').Window.get().showDevTools();
-           }
-         }
+      window.onkeypress = function(e) {
+        if (e.which === 105 && (e.ctrlKey || e.shiftKey || e.metaKey)) {
+          window.requireNode('nw.gui').Window.get().showDevTools();
+        }
+      }
     </script>
 
     <!-- AGREGADOS PARA PROCESING -->
     <script integrity="" src='libs/p5.js'></script>
     <script integrity="" src='libs/addons/p5.dom.js'></script>
     <script integrity="" src='libs/addons/p5.sound.js'></script>
-    
+
   </body>
 </html>

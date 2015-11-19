@@ -6,6 +6,8 @@ var app = new EmberApp({
   emberCliFontAwesome: { includeFontAwesomeAssets: false }
 });
 
+app.import('app/styles/app.css');
+
 app.import('bower_components/roboto-fontface/css/roboto-fontface.css');
 
 app.import('bower_components/roboto-fontface/fonts/Roboto-Black.eot', {destDir: 'fonts'});

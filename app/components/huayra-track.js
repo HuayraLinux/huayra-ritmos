@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   }),
 
   trackName: Ember.computed('track.sound', function() {
-    return this.get('track.sound').split('.')[0];
+    return this.get('track.sound').split('.')[0].split('/')[1];
   }),
 
   trackColor: Ember.computed('track.color', function() {
