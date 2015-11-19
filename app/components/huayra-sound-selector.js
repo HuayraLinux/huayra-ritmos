@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   audio: Ember.inject.service(),
   settings: Ember.inject.service(),
   soundGallery: Ember.inject.service(),
-  currentCategory: 'basic',
+  currentCategory: 'basicos',
 
   soundsInThisCategory: Ember.computed('currentCategory', 'soundGallery', function() {
     return this.get('soundGallery').getSoundsByCategoryAsList(this.get('currentCategory'));
