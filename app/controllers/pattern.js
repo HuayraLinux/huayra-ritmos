@@ -45,6 +45,7 @@ export default Ember.Controller.extend({
 
   actions: {
     save() {
+
       var record = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
       var model = this.get('model').set('content', record);
 
@@ -54,7 +55,6 @@ export default Ember.Controller.extend({
     },
 
     createNewTrackWithSound(sound) {
-
       var newTrack = {
         enabled: true,
         color: "verde",
