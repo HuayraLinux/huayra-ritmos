@@ -24,11 +24,18 @@ export default Ember.Service.extend({
     return this.get('categories');
   },
 
-  getAudioClip(fullname) {
-    var category = fullname.split('/')[0];
-    var filename = fullname.split('/')[1];
+  getAudioClip(audioThing){
+   var audioClip;
 
-    return this.get('sounds')[category][filename].audioClip;
+   if(typeof(audioThing) === "string"){
+    var category = audioThing.split('/')[0];
+    var filename = audioThing.split('/')[1];
+    audioClip = this.get('sounds')[category][filename].audioClip;
+   }
+   else{
+     audioClip = audioThing.audioClip;
+   }
+   return audioClip;
   },
 
   readSoundFilesFromFolder(foldername) {

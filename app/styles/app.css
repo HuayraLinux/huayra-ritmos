@@ -700,3 +700,11 @@ td.actions {
   right: 0;
   left: 20px;
 }
+
+
+.modal-close-btn{
+  float:right;
+  background:transparent;
+  border:0;
+  color:#000;
+}
