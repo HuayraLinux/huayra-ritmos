@@ -6,10 +6,21 @@
   {{/if}}
 </div>
 
-
+<!-- 
 <div class='slider'>
   {{input value=player.bpm type='range' min=40 max=200}}
 </div>
+-->
 
 <span class="huayra-player-bpm">BPM: {{adjustable-number value=player.bpm min=40 max=200}}</span>
-<span class="huayra-player-step">Step: {{player.currentStep}}</span>
+
+<span class="huayra-player-step">
+Steps:
+<input {{action "updateStepsLimit" 2}} class="btn btn-step-sm btn-sm" type="button" value=2>
+<input {{action "updateStepsLimit" 4}} class="btn btn-step-sm btn-sm" type="button" value=4>
+<input {{action "updateStepsLimit" 8}} class="btn btn-sm btn-step-sm" type="button" value=8>
+<input {{action "updateStepsLimit" 12}} class="btn btn-sm btn-step-sm" type="button" value=12>
+<input {{action "updateStepsLimit" 16}} class="btn btn-sm btn-step-sm" type="button" value=16>
+
+Actual: {{player.currentStep}}</span>
+

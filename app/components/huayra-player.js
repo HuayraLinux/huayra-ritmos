@@ -65,7 +65,7 @@ export default Ember.Component.extend({
     var timer = Ember.run.later(() => {
       this.incrementProperty('player.currentStep');
 
-      if (this.get('player.currentStep') > 15) {
+      if (this.get('player.currentStep') > ((this.get('player.stepsLimit')-1) || 15)) {
         this.set('player.currentStep', 0);
       }
 
@@ -112,6 +112,24 @@ export default Ember.Component.extend({
         this.stop();
       }
 
+    },
+    /*
+     * Actualiza la cantidad de bloques a reproducir.
+     * 16, 12, 8, 4, 2?
+     */
+      updateStepsLimit(steps) {
+        this.set('player.stepsLimit', steps);
+        var tracks = this.get('pattern.tracks');
+        tracks.forEach((t) => {
+            // aca habilitamos a los pasos "disponibles"
+            t.steps.slice(0, steps).forEach((s) => {
+                Ember.set(s, "disabled", false);
+            });
+            // aca deshabilitamso al resto
+            t.steps.slice(steps).forEach((s) => {
+                Ember.set(s, "disabled", true);
+            });
+      });
     }
   }
 });

@@ -8,6 +8,7 @@ export default Ember.Service.extend({
           currentStep: 0,
           bpm: 120,
           playing: false,
+          stepsLimit: 16,
         },
 
         pattern: {
@@ -18,10 +19,10 @@ export default Ember.Service.extend({
               sound: 'basicos/000_drum1.wav',
               volume: 1,
               steps: [
-                        {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
-                        {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
-                        {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
-                        {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+                        {active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false},
+                        {active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false},
+                        {active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false},
+                        {active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false},
                      ]},
             { enabled: true,
               paint: false,
@@ -29,10 +30,10 @@ export default Ember.Service.extend({
               sound: 'basicos/002_drum3.wav',
               volume: 1,
               steps: [
-                        {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
-                        {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
-                        {active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true}, { active: false, variant: true},
-                        {active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false}, { active: false, variant: false},
+                        {active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false},
+                        {active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false},
+                        {active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false},
+                        {active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false}, { active: false, variant: false, disabled:false},
                     ]},
           ]
         },

@@ -6,10 +6,12 @@ export default Ember.Component.extend({
 
   classNameBindings: ['active:step-active', 'active:step-success', //estados para el step seleccionado
                       'variant:step-variant', // estado para indicar que es una variante de la cuarta.
-                      'playing:step-playing'
+                      'playing:step-playing',
+                      'disabled'
                       ],
   activeBinding: "step.active",
   variantBinding: "step.variant",
+  disabledBinding: "step.disabled",
 
   playing: Ember.computed('player.currentStep', 'player.playing', function() {
     return (this.get('player.playing') && (this.get('player.currentStep') === this.get('index')));

@@ -6,12 +6,6 @@ html, body {
   margin: 20px;
 }
 
-html {
-  background: url("../img/fondo.png") no-repeat top right !important;
-  background-size: cover !important;
-
-}
-
 body {
   background-color: transparent !important;
 }
@@ -707,4 +701,20 @@ td.actions {
   background:transparent;
   border:0;
   color:#000;
+}
+
+.btn-step-sm {
+    color:#fff;
+    border:0;
+    background:#6a6a6a;
+    padding:3px !important;
+    display:inline-block;
+    min-width:20px;
+}
+
+.step.disabled,
+.step-disabled{
+    opacity: 0.5;
+    background-color: #f1f1f1 !important;
+    border-color: #ccc !important;
 }
