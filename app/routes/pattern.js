@@ -29,12 +29,17 @@ export default Ember.Route.extend({
   setupController(controller, model) {
     var record = JSON.parse(model.get('content'));
 
+   // hack temporal para hacer la transicion de player.bpm a pattern.bpm
+   record.pattern.bpm = record.pattern.bpm || (record.player.bpm || 120);
+
     controller.set('player', record.player);
     controller.set('pattern', record.pattern);
     controller.set('model', model);
     controller.set('showConfirmModal', false);
+    controller.set('showEditTrack', false);
+    controller.set('currentModalTrack', undefined);
     controller.set('unsavedChanges', false);
-    
+
     controller.notifyEnterTransition();
   },
 

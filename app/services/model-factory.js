@@ -12,6 +12,7 @@ export default Ember.Service.extend({
         },
 
         pattern: {
+          bpm: 120,
           tracks: [
             { enabled: true,
               paint: false,
