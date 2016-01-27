@@ -3,8 +3,12 @@
     close="close"
     translucentOverlay=true}}
 
-    <h1 data-test="modal-title" class="huayra-modal-title">Crear una pista
-    <button class="modal-close-btn" {{action "discardAndClose"}}>&nbsp;x&nbsp;</button></h1>
+    <button class="close" {{action "discardAndClose"}} title="Close the modal" data-test="modal-close" data-ember-action="742">
+      <span class="icon-close modal-close-btn">X</span>
+      <span class="hidden">Close modal</span>
+    </button>
+
+    <h1 data-test="modal-title" class="huayra-modal-title">Crear una pista</h1>
 
     <p>Seleccioná alguno de los siguientes sonidos:</p>
 

@@ -7,6 +7,8 @@ export default Ember.Controller.extend({
   unsavedChanges: false,
 
   showConfirmModal: false,
+  showEditTrack: false,
+  currentModalTrack: undefined,
 
   savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
@@ -54,6 +56,24 @@ export default Ember.Controller.extend({
       });
     },
 
+    removeTrack() {
+      let tracks = this.get('pattern.tracks');
+      let track = this.get('currentModalTrack');
+
+      // Busca la posición del track para eliminar
+      tracks.removeObject(track);
+
+      this.send('onChange');
+      this.send('closeEditTrackModal');
+    },
+    setTrackColor(color) {
+      var track = this.get('currentModalTrack');
+      Ember.set(track, "color", color);
+    },
+    closeEditTrackModal(){
+      this.set('showEditTrack', false);
+    },
+
     createNewTrackWithSound(sound) {
       var newTrack = {
         enabled: true,
@@ -76,16 +96,8 @@ export default Ember.Controller.extend({
     },
 
     editTrack(track) {
-      let model = {
-        pattern: this.get('pattern'),
-        track: track,
-      };
-
-      this.showModal({
-        template: 'modals/modal-track',
-        controller: 'modal-track',
-        model: model
-      });
+      this.set('currentModalTrack', track);
+      this.set('showEditTrack', true);
     },
 
     onChange() {
@@ -102,6 +114,7 @@ export default Ember.Controller.extend({
 
     closeConfirmModal() {
       this.set('showConfirmModal', false);
+      this.set('currentModalTrack', undefined);
     },
 
     showUnsavedChangesDialog(mustCloseWindowOnDismiss) {
