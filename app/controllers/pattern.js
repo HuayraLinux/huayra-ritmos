@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  modelFactory: Ember.inject.service(),
+
   pattern: {},     // se cargan desde el setupcontroller de route:pattern
   player: {},      // se cargan desde el setupcontroller de route:pattern
   unsavedChanges: false,
@@ -54,6 +56,16 @@ export default Ember.Controller.extend({
       model.save().then(() => {
         this.set('unsavedChanges', false);
       });
+    },
+    saveAs() {
+      var initial_record = this.get('modelFactory').get_initial_record();
+      var record = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
+      var model = this.get('store').createRecord('pattern', {
+          title: prompt("Ingresa el nuevo título", 'sin título'),
+          content: record,
+      });
+
+      model.save();
     },
 
     removeTrack() {

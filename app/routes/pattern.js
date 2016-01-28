@@ -30,7 +30,17 @@ export default Ember.Route.extend({
     var record = JSON.parse(model.get('content'));
 
    // hack temporal para hacer la transicion de player.bpm a pattern.bpm
-   record.pattern.bpm = record.pattern.bpm || (record.player.bpm || 120);
+   //record.pattern.bpm = record.pattern.bpm || (record.player.bpm || 120);
+   if( record.pattern.bpm == undefined){
+     if( record.player.bpm == undefined ){
+       record.pattern.bpm = 120;
+     }
+     else{
+       record.pattern.bpm = record.player.bpm;
+     }
+   }
+   // else{ mantene los bpm }
+
 
     controller.set('player', record.player);
     controller.set('pattern', record.pattern);

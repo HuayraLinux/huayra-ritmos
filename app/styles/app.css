@@ -501,13 +501,14 @@ div.slider {
 
 .huayra-title-editable-container,
 .huayra-modal-track-title {
-  display: inline-block;
+  display: block;
   padding: 5px 0 5px 10px;
+  margin:10px 0;
   background: -webkit-linear-gradient(left, rgba(0,136,170,1) 0%, rgba(0,136,170,0) 101%);
   font-size: 1.2em;
   font-weight: 400 !important;
   color: #d7f4ee;
-  width: 60%;
+  width: 100%;
   vertical-align: middle;
 }
 
