@@ -22,7 +22,12 @@ export default Ember.Route.extend({
       this.get('menu').index();
   },
   deactivate(){
-      this.get('menu').pattern();
+    var patternController = this.controllerFor("pattern");
+
+    this.get('menu').pattern();
+    this.get('menu').itemGuardar.click = function () { patternController.send('save') };
+    this.get('menu').itemGuardar.click = function () { patternController.send('save') };
+    this.get('menu').itemCerrar.click = function () { patternController.send('goIndex') };
   },
   actions: {
     invalidateModel() {

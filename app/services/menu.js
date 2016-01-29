@@ -17,7 +17,6 @@ export default Ember.Service.extend({
     itemSalir: null,
     itemAcercaDe: null,
     init(){
-
         var guardar = new gui.MenuItem({
             label: 'Guardar...',
             click: function() {
