@@ -26,13 +26,22 @@ export default Ember.Route.extend({
     });
   },
 
+/*
+  activate() {
+      this.get('menu').index();
+  },
+  deactivate(){
+      this.get('menu').pattern();
+  },
+*/
+
   setupController(controller, model) {
     var record = JSON.parse(model.get('content'));
 
    // hack temporal para hacer la transicion de player.bpm a pattern.bpm
    //record.pattern.bpm = record.pattern.bpm || (record.player.bpm || 120);
-   if( record.pattern.bpm == undefined){
-     if( record.player.bpm == undefined ){
+   if( record.pattern.bpm === undefined){
+     if( record.player.bpm === undefined ){
        record.pattern.bpm = 120;
      }
      else{

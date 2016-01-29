@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  menu: Ember.inject.service(),
   model() {
     return new Ember.RSVP.Promise((resolve) => {
       var patterns = this.store.find('pattern');
@@ -17,7 +18,12 @@ export default Ember.Route.extend({
       });
     });
   },
-
+  activate() {
+      this.get('menu').index();
+  },
+  deactivate(){
+      this.get('menu').pattern();
+  },
   actions: {
     invalidateModel() {
       Ember.Logger.log('Route is now refreshing...');

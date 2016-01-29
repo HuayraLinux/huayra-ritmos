@@ -1,12 +1,11 @@
 <div class="main-title">
   <div class="version">versión {{version.version}}</div>
-</div>
-
-<div class='main-content'>
   <p>
-   <button {{action "new"}} class='btn btn-success'>{{fa-icon "plus"}} Crear un nuevo proyecto de ritmos </button>
+   <button {{action "new"}} class='btn btn-success pull-right btn-new'>{{fa-icon "plus"}} Crear un nuevo proyecto de ritmos </button>
   </p>
 </div>
+
+<div class='main-content'></div>
 
 <div>
   {{huayra-project-list model=model onDelete='deleteRecord'}}

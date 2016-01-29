@@ -433,12 +433,16 @@ div.slider {
 .main-title {
   display: block;
   height: 100px;
-  padding-bottom: 30px;
+  /*padding-bottom: 30px;*/
   /*border-bottom: 2px solid rgb(219, 219, 219);*/
   background: url("../img/huayra-ritmos-logo.png") no-repeat top left;
   border-width: 0 0 2px 0;
   border-style: solid;
   -webkit-border-image: -webkit-linear-gradient(left, #3b8a19, rgba(150, 250, 110, 0)) 100 0%;
+}
+
+.main-title .btn-new{
+    margin-top:15px;
 }
 
 .version {
@@ -450,7 +454,7 @@ div.slider {
 }
 
 .main-content {
-  padding-top: 30px;
+  /* padding-top: 30px; */
 }
 
 .huayra-project-list-container {
@@ -472,7 +476,6 @@ div.slider {
   font-weight: 400 !important;
   color: #d7f4ee;
 }
-
 
 .huayra-project-list-container table tbody tr {
   background: -webkit-linear-gradient(left, rgba(0,136,170,1) 0%, rgba(0,136,170,0) 105%);
