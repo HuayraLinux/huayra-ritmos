@@ -41,7 +41,6 @@ export default Ember.Route.extend({
    }
    // else{ mantene los bpm }
 
-
     controller.set('player', record.player);
     controller.set('pattern', record.pattern);
     controller.set('model', model);
@@ -51,6 +50,7 @@ export default Ember.Route.extend({
     controller.set('unsavedChanges', false);
 
     controller.notifyEnterTransition();
+    document.title = model._data.title || "Sin título";
   },
 
   deactivate() {

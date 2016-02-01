@@ -20,6 +20,7 @@ export default Ember.Route.extend({
   },
   activate() {
       this.get('menu').index();
+      document.title = 'Huayra Ritmos';
   },
   actions: {
     invalidateModel() {
