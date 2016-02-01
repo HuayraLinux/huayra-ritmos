@@ -21,14 +21,6 @@ export default Ember.Route.extend({
   activate() {
       this.get('menu').index();
   },
-  deactivate(){
-    var patternController = this.controllerFor("pattern");
-
-    this.get('menu').pattern();
-    this.get('menu').itemGuardar.click = function () { patternController.send('save') };
-    this.get('menu').itemGuardar.click = function () { patternController.send('save') };
-    this.get('menu').itemCerrar.click = function () { patternController.send('goIndex') };
-  },
   actions: {
     invalidateModel() {
       Ember.Logger.log('Route is now refreshing...');

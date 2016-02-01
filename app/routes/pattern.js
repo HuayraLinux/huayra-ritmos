@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  menu: Ember.inject.service(),
   audio: Ember.inject.service(),
   modelFactory: Ember.inject.service(),
   soundGallery: Ember.inject.service(),
@@ -25,16 +26,6 @@ export default Ember.Route.extend({
         });
     });
   },
-
-/*
-  activate() {
-      this.get('menu').index();
-  },
-  deactivate(){
-      this.get('menu').pattern();
-  },
-*/
-
   setupController(controller, model) {
     var record = JSON.parse(model.get('content'));
 
@@ -68,8 +59,13 @@ export default Ember.Route.extend({
 
   activate() {
     this.get('audio');
-  },
+    var patternController = this.controllerFor("pattern");
 
+    this.get('menu').pattern();
+    this.get('menu').itemGuardar.click = function () { patternController.send('save') };
+    this.get('menu').itemGuardarComo.click = function () { patternController.send('saveAs') };
+    this.get('menu').itemCerrar.click = function () { patternController.send('goIndex') };
+  },
   afterModel() {
     return this.get('soundGallery').loadSounds();
   }
