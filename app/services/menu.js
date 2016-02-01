@@ -56,7 +56,7 @@ export default Ember.Service.extend({
         var acerca_de = new gui.MenuItem({
             label: 'Acerca de ...',
             click: function() {
-                alert('Huayra-Ritmos!');
+                //alert('Huayra-Ritmos!');
             },
             enabled: true
         });

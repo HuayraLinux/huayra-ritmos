@@ -1,0 +1,28 @@
+{{#modal-dialog
+    close="closeAboutModal"
+    targetAttachment="center"
+    translucentOverlay=true}}
+
+
+    <button class="close" {{action "closeAboutModal"}} title="Close the modal" data-test="modal-close" data-ember-action="742">
+      <span class="icon-close modal-close-btn">X</span>
+      <span class="hidden">Close modal</span>
+    </button>
+
+<h1 data-test="modal-title">Huayra Ritmos</h1>
+<p><strong>versión {{version.version}}</strong></p>
+<p>Huayra Ritmos es una aplicación para definir patrones rítmicos</p>
+<p>Actualmente contiene 3 "packs" de sonidos:</p>
+<ul>
+        <li>Básicos</li>
+        <li>bits - 8bit</li>
+        <li>Alchemist - Breakbeat / Jungle</li>
+</ul>
+
+
+    <div class="bottom-bar">
+      <button class='btn btn-default' {{action "closeAboutModal"}}>Aceptar</button>
+    </div>
+
+
+{{/modal-dialog}}

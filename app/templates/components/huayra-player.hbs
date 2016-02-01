@@ -1,3 +1,4 @@
+<div class='huayra-player-ui'>
 <div class='huayra-player-handler'>
   {{#if playing}}
     <button {{action "togglePlay"}} class="btn btn-success">{{fa-icon "stop"}} Stop</button>
@@ -12,15 +13,17 @@
 </div>
 -->
 
-<span class="huayra-player-bpm">BPM: {{adjustable-number value=pattern.bpm min=40 max=200 onChange="onChange"}}</span>
+<div class="huayra-player-bpm-step">
+     <span class="huayra-player-bpm">BPM: {{adjustable-number value=pattern.bpm min=40 max=200 onChange="onChange"}}</span>
 
-<span class="huayra-player-step">
-Steps:
-<input {{action "updateStepsLimit" 2}} class="btn btn-step-sm btn-sm" type="button" value=2>
-<input {{action "updateStepsLimit" 4}} class="btn btn-step-sm btn-sm" type="button" value=4>
-<input {{action "updateStepsLimit" 8}} class="btn btn-sm btn-step-sm" type="button" value=8>
-<input {{action "updateStepsLimit" 12}} class="btn btn-sm btn-step-sm" type="button" value=12>
-<input {{action "updateStepsLimit" 16}} class="btn btn-sm btn-step-sm" type="button" value=16>
+      <span class="huayra-player-step">
+      Steps:
+        <input {{action "updateStepsLimit" 2}} class="btn btn-step-sm btn-sm" type="button" value=2>
+       <input {{action "updateStepsLimit" 4}} class="btn btn-step-sm btn-sm" type="button" value=4>
+       <input {{action "updateStepsLimit" 8}} class="btn btn-sm btn-step-sm" type="button" value=8>
+       <input {{action "updateStepsLimit" 12}} class="btn btn-sm btn-step-sm" type="button" value=12>
+       <input {{action "updateStepsLimit" 16}} class="btn btn-sm btn-step-sm" type="button" value=16>
 
-Actual: {{player.currentStep}}</span>
-
+       Actual: {{player.currentStep}}</span>
+</div>
+</div>

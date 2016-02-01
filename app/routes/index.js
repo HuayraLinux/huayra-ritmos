@@ -19,8 +19,11 @@ export default Ember.Route.extend({
     });
   },
   activate() {
-      this.get('menu').index();
+      var appController = this.controllerFor("application");
+
       document.title = 'Huayra Ritmos';
+      this.get('menu').index();
+      this.get('menu').itemAcercaDe.click = function () { appController.send('showAboutModal') };
   },
   actions: {
     invalidateModel() {

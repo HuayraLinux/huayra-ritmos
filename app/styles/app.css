@@ -367,16 +367,38 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   padding-left: 0;
 }
 
-.huayra-player-handler {
-  display: inline-block;
-  width: 100px;
-  font-size: x-small;
+
+.huayra-player-ui{
+    display:block;
+    clear:both;
+    height:50px;
 }
 
+.huayra-player-handler {
+  display: inline-block;
+  /*
+  width: 100px;
+  font-size: x-small;
+  */
+}
+
+/*
 span.huayra-player-bpm,
 span.huayra-player-step {
   color: #d7f4ee;
   background-color: #004455;
+}
+*/
+
+.huayra-player-bpm-step{
+  color: #d7f4ee;
+  background-color: #004455;
+  height:43px;
+  padding: 8px;
+  border-radius: 5px;
+  width: 80%; /* fallback if needed */
+  width: calc(100% - 87px);
+  display:inline-block;
 }
 
 span.huayra-player-bpm {
