@@ -9,8 +9,10 @@
       <span class="hidden">Close modal</span>
     </button>
 
-<h1 data-test="modal-title">Huayra Ritmos</h1>
-<p><strong>versión {{version.version}}</strong></p>
+<div class="main-title">
+  <div class="version">versión {{version.version}}</div>
+</div>
+<div>
 <p>Huayra Ritmos es una aplicación para definir patrones rítmicos</p>
 <p>Actualmente contiene 3 "packs" de sonidos:</p>
 <ul>
@@ -18,7 +20,7 @@
         <li>bits - 8bit</li>
         <li>Alchemist - Breakbeat / Jungle</li>
 </ul>
-
+</div>
 
     <div class="bottom-bar">
       <button class='btn btn-default' {{action "closeAboutModal"}}>Aceptar</button>
