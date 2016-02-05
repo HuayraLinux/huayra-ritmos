@@ -46,6 +46,7 @@
   "dependencies": {
     "archiver": "^0.14.4",
     "bower": "^1.4.1",
+    "home-config": "^0.1.0",
     "ember-adjustable-number": "^0.1.2",
     "tmp": "0.0.26"
   },

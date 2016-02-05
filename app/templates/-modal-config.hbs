@@ -1,0 +1,21 @@
+{{#modal-dialog
+    close="closeConfigModal"
+    targetAttachment="center"
+    translucentOverlay=true}}
+
+    <button class="close" {{action "closeConfigModal"}} title="Close the modal" data-test="modal-close" data-ember-action="742">
+      <span class="icon-close modal-close-btn">X</span>
+      <span class="hidden">Close modal</span>
+    </button>
+
+<h1 data-test="modal-title" class="huayra-modal-title">Configuraciones</h1>
+
+    <label for="inputUserPrefix">Directorio de <em>kits de sonidos</em></label>:<br>
+    <input type="file" webkitdirectory id="inputUserPrefix" style="display:none;" />
+    <button class='btn btn-default' {{action "selectUserPrefix"}}>Seleccionar</button>
+
+<div class="bottom-bar">
+  <button class='btn btn-default' {{action "closeConfigModal"}}>Aceptar</button>
+</div>
+
+{{/modal-dialog}}

@@ -10,7 +10,8 @@ export default Ember.Controller.extend({
 
   actions: {
     onSelectSound(sound) {
-      this.set('selectedSound', sound.audioClip.file.replace(/^sounds\//,""));
+      //this.set('selectedSound', sound.audioClip.file.replace(/^sounds\//,""));
+      this.set('selectedSound', sound.audioClip.file);
     },
     accept() {
       var controller = this.get('pattern');

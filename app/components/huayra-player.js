@@ -43,7 +43,6 @@ export default Ember.Component.extend({
     var tracks = this.get('pattern.tracks');
 
     tracks.forEach((t) => {
-
       if (t.enabled) {
         if (t.steps[currentStep].active) {
           let volume = t.volume || 1;            // aplica el volumen global.

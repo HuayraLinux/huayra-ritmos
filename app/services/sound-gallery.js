@@ -32,7 +32,7 @@ export default Ember.Service.extend({
     var filename = audioThing.split('/')[1];
     audioClip = this.get('sounds')[category][filename].audioClip;
    }
-   else{
+    else{
      audioClip = audioThing.audioClip;
    }
    return audioClip;
@@ -41,17 +41,24 @@ export default Ember.Service.extend({
   readSoundFilesFromFolder(foldername) {
     var fs = window.requireNode('fs');
     var sounds = {};
-    var path = this.getSoundPath();
+    var path = "";
+    var basePath = this.getSoundPath();
+    var userPath = this.getSoundUserPath();
 
     if (foldername) {
-      path += `/${foldername}`;
-    }
+      if( fs.existsSync(`${basePath}/${foldername}`) ){
+        path = `${basePath}/${foldername}`;
+      }
+      else if( fs.existsSync(`${userPath}/${foldername}`) ){
+        path = `${userPath}/${foldername}`;
+      }
+   }
 
-    var files = fs.readdirSync(path).filter((e) => {
-      return e.indexOf('.wav') > 0;
-    });
+   var files = fs.readdirSync(path).filter((e) => {
+     return e.indexOf('.wav') > 0;
+   });
 
-    function naturalSort (a, b) {
+   function naturalSort (a, b) {
       var re = /(^-?[0-9]+(\.?[0-9]*)[df]?e?[0-9]?$|^0x[0-9a-f]+$|[0-9]+)/gi,
       sre = /(^[ ]*|[ ]*$)/g,
       dre = /(^([\w ]+,?[\w ]+)?[\w ]+,?[\w ]+\d+:\d+(:\d+)?[\w ]?|^\d{1,4}[\/\-]\d{1,4}[\/\-]\d{1,4}|^\w+, \w+ \d+, \d{4})/,
@@ -105,7 +112,9 @@ export default Ember.Service.extend({
     files.sort(naturalSort);
 
     files.forEach((name) => {
-      let path_to_filename = `sounds/${foldername}/${name}`;
+        //let path_to_filename = `sounds/${foldername}/${name}`;
+        let path_to_filename = `${path}/${name}`;
+
       let title = name.replace('.wav', '');
       let audioClip = loadSound(path_to_filename);
 
@@ -123,20 +132,30 @@ export default Ember.Service.extend({
     var prefix = this.get('settings').getPrefix();
     return `${prefix}sounds`;
   },
+  getSoundUserPath() {
+    var prefix = this.get('settings').getUserPrefix;
+    return `${prefix}sounds`;
+  },
 
   reloadCategories() {
     var fs = window.requireNode('fs');
     var path = window.requireNode('path');
     var basePath = this.getSoundPath();
+    var userPath = this.getSoundUserPath();
 
     function isFolder(file) {
       return fs.statSync(path.join(basePath, file)).isDirectory();
+    }
+    function isUserFolder(file) {
+      return fs.statSync(path.join(userPath, file)).isDirectory();
     }
 
     fs.readdirSync(basePath).filter(isFolder).forEach((e) => {
       this.get('categories').pushObject(e);
     });
-
+    fs.readdirSync(userPath).filter(isUserFolder).forEach((e) => {
+      this.get('categories').pushObject(e);
+    });
   },
 
   loadSounds() {
