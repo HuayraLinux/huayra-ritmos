@@ -10,9 +10,13 @@
 
 <h1 data-test="modal-title" class="huayra-modal-title">Configuraciones</h1>
 
-    <label for="inputUserPrefix">Directorio de <em>kits de sonidos</em></label>:<br>
+
+    <label for="inputUserPrefix">Directorio personal de <em>kits de sonidos</em></label>:
+    <code class="userprefix-dir"> {{ userPrefix }} </code>
+    <br>
     <input type="file" webkitdirectory id="inputUserPrefix" style="display:none;" />
-    <button class='btn btn-default' {{action "selectUserPrefix"}}>Seleccionar</button>
+    <button class='btn btn-default' {{action "selectUserPrefix"}}>Seleccionar nuevo directorio</button>
+
 
 <div class="bottom-bar">
   <button class='btn btn-default' {{action "closeConfigModal"}}>Aceptar</button>

@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
   settings: Ember.inject.service(),
   showAbout: false,
   showConfig: false,
+  userPrefix: null,
   disableBackSpace: Ember.on('init', function() {
     Ember.$(document).on("keydown", function (e) {
       if (e.which === 8 && !Ember.$(e.target).is("input, textarea")) {
@@ -20,17 +21,18 @@ export default Ember.Controller.extend({
       this.set('showAbout', false);
     },
     showConfigModal(){
+      var settings = this.get('settings');
+      this.set('userPrefix', settings.getUserPrefix);
       this.set('showConfig', true);
     },
     closeConfigModal(){
       this.set('showConfig', false);
     },
-    updateUserPrefix(newPath){
-      console.log(newPath);
-    },
     selectUserPrefix(){
       var settings = this.get('settings');
+      var self = this;
       $('#inputUserPrefix').trigger('click').on('change', function(e){
+        self.set('userPrefix', $(this).val());
         settings.setUserPrefix($(this).val());
       });
     }

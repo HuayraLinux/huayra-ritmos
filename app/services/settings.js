@@ -7,6 +7,7 @@ export default Ember.Service.extend({
   userHome: (process.env.HOME || process.env.USERPROFILE).replace(/\/$/,''),
   configPath: null,
   config: null,
+  getUserPrefix: null,
   init(){
     var defaultUserPath = this.get('userHome') + "/.local/share/huayra-ritmos";
     var configPath = this.get('userHome') + "/.config/huayra-ritmos/";
@@ -21,9 +22,7 @@ export default Ember.Service.extend({
     });
     config.save();
     this.set('config', config);
-  },
-  getUserPrefix(){
-    return this.get('config').userPrefix;
+    this.set('getUserPrefix', config.userPrefix);
   },
   setUserPrefix(newPath){
     var config = this.get('config');

@@ -119,9 +119,9 @@ export default Ember.Service.extend({
       let audioClip = loadSound(path_to_filename);
 
       sounds[name] = {id: name,
-                         title: title,
-                         category: foldername,
-                         audioClip: audioClip,
+                      title: title,
+                      category: foldername,
+                      audioClip: audioClip,
                       };
     });
 
@@ -133,8 +133,7 @@ export default Ember.Service.extend({
     return `${prefix}sounds`;
   },
   getSoundUserPath() {
-    var prefix = this.get('settings').getUserPrefix;
-    return `${prefix}sounds`;
+    return this.get('settings').getUserPrefix;
   },
 
   reloadCategories() {
