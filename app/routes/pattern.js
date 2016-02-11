@@ -59,6 +59,7 @@ export default Ember.Route.extend({
 
   activate() {
     this.get('audio');
+    this.get('settings');
     var patternController = this.controllerFor("pattern");
     var appController = this.controllerFor("application");
 

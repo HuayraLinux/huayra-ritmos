@@ -746,3 +746,9 @@ td.actions {
     background-color: #f1f1f1 !important;
     border-color: #ccc !important;
 }
+
+.userprefix-dir{
+    min-height:35px !important;
+    height:35px !important;
+    max-height:35px !important;
+}
