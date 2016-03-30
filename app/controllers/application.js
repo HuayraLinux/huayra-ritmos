@@ -6,6 +6,10 @@ export default Ember.Controller.extend({
   showAbout: false,
   showConfig: false,
   userPrefix: null,
+  writePID: Ember.on("init", function() {
+    //var fs = require("fs");
+    fs.writeFileSync("/tmp/huayra-ritmos.pid", process.pid);
+  }),
   disableBackSpace: Ember.on('init', function() {
     Ember.$(document).on("keydown", function (e) {
       if (e.which === 8 && !Ember.$(e.target).is("input, textarea")) {
