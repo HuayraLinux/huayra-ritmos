@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
   showConfig: false,
   userPrefix: null,
   writePID: Ember.on("init", function() {
-    //var fs = require("fs");
+    let fs = requireNode("fs");
     fs.writeFileSync("/tmp/huayra-ritmos.pid", process.pid);
   }),
   disableBackSpace: Ember.on('init', function() {
@@ -35,7 +35,7 @@ export default Ember.Controller.extend({
     selectUserPrefix(){
       var settings = this.get('settings');
       var self = this;
-      $('#inputUserPrefix').trigger('click').on('change', function(e){
+      $('#inputUserPrefix').trigger('click').on('change', function(/*e*/){
         self.set('userPrefix', $(this).val());
         settings.setUserPrefix($(this).val());
       });

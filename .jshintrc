@@ -9,7 +9,8 @@
     "p5",
     "process",
     "loadSound",
-    "$"
+    "$",
+    "requireNode"
   ],
   "browser": true,
   "boss": true,

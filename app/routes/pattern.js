@@ -64,10 +64,10 @@ export default Ember.Route.extend({
     var appController = this.controllerFor("application");
 
     this.get('menu').pattern();
-    this.get('menu').itemGuardar.click = function () { patternController.send('save') };
-    this.get('menu').itemGuardarComo.click = function () { patternController.send('saveAs') };
-    this.get('menu').itemCerrar.click = function () { patternController.send('goIndex') };
-    this.get('menu').itemAcercaDe.click = function () { appController.send('showAboutModal') };
+    this.get('menu').itemGuardar.click = function () { patternController.send('save'); };
+    this.get('menu').itemGuardarComo.click = function () { patternController.send('saveAs'); };
+    this.get('menu').itemCerrar.click = function () { patternController.send('goIndex'); };
+    this.get('menu').itemAcercaDe.click = function () { appController.send('showAboutModal'); };
 
   },
   afterModel() {
