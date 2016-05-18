@@ -22,7 +22,8 @@
     "currentURL",
     "currentPath",
     "currentRouteName",
-    "requireNode"
+    "requireNode",
+    "isNodeWebkit"
   ],
   "node": false,
   "browser": false,

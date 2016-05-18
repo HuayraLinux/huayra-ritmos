@@ -6,21 +6,30 @@
     <title>huayra-ritmos</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-      window.requireNode = require;
-    </script>
+
     <!-- AGREGADOS PARA NODEWEBKIT -->
+
+    <script>
+      window.isNodeWebkit = (typeof process == "object");
+
+      if (isNodeWebkit) {
+        window.requireNode = require;
+      }
+    </script>
+
     <script src='atajo-inspector.js'></script>
 
     <script>
-    var fs = requireNode('fs');
+    if (isNodeWebkit) {
+      var fs = requireNode('fs');
 
-    fs.watchFile('./index.html', function() {
-      console.log("Reiniciando...");
-      setTimeout(function() {
-        window.location.reload();
-      }, 3000);
-    });
+      fs.watchFile('./index.html', function() {
+        console.log("Reiniciando...");
+        setTimeout(function() {
+          window.location.reload();
+        }, 3000);
+      });
+    }
     </script>
 
     {{content-for 'head'}}
@@ -45,11 +54,13 @@
 
     <script src='fix-menu-osx.js'></script>
     <script>
+    if (isNodeWebkit) {
       window.onkeypress = function(e) {
         if (e.which === 105 && (e.ctrlKey || e.shiftKey || e.metaKey)) {
           window.requireNode('nw.gui').Window.get().showDevTools();
         }
       }
+    }
     </script>
 
     <!-- AGREGADOS PARA PROCESING -->
