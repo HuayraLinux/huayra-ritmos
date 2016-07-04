@@ -17,19 +17,23 @@ export default Ember.Controller.extend({
   }),
 
   notifyEnterTransition() {
-    var gui = window.requireNode('nw.gui');
-    var win = gui.Window.get();
+    if (isNodeWebkit) {
+      var gui = window.requireNode('nw.gui');
+      var win = gui.Window.get();
 
-    win.on("close", () => {
-      this.onClose.call(this);
-    });
+      win.on("close", () => {
+        this.onClose.call(this);
+      });
+    }
   },
 
   notifyLeaveTransition() {
-    var gui = window.requireNode('nw.gui');
-    var win = gui.Window.get();
+    if (isNodeWebkit) {
+      var gui = window.requireNode('nw.gui');
+      var win = gui.Window.get();
 
-    win.removeAllListeners('close');
+      win.removeAllListeners('close');
+    }
   },
 
   forceCloseWindow() {

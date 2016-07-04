@@ -9,7 +9,10 @@ export default Ember.Service.extend({
     if (isNodeWebkit) {
       var config = window.requireNode('../dist/package.json');
       this.set('version', config.version);
+    } else {
+      this.set('version', 'web');
     }
+
   }),
 
 });

@@ -9,19 +9,25 @@ export default Ember.Service.extend({
   init() {
 
     if (isNodeWebkit) {
+      this.set('userHome', (process.env.HOME || process.env.USERPROFILE).replace(/\/$/,''));
 
       let fs = window.requireNode('fs');
       var defaultUserPath = this.get('userHome') + "/.local/share/huayra-ritmos";
       var configPath = this.get('userHome') + "/.config/huayra-ritmos/";
       this.set('configPath', configPath);
 
-      this.set('userHome', (process.env.HOME || process.env.USERPROFILE).replace(/\/$/,''));
 
       // si no existen los directorios, los creamos
-      if (!fs.existsSync(configPath)){ fs.mkdirSync(configPath); }
-      if (!fs.existsSync(defaultUserPath)){ fs.mkdirSync(defaultUserPath); }
+      if (!fs.existsSync(configPath)) {
+        fs.mkdirSync(configPath);
+      }
+
+      if (!fs.existsSync(defaultUserPath)) {
+        fs.mkdirSync(defaultUserPath);
+      }
 
       var homeConfig = window.requireNode('home-config');
+
       var config = homeConfig.load(configPath + '/huayra-ritmos.ini', {
         userPrefix: defaultUserPath
       });

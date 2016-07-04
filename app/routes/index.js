@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   menu: Ember.inject.service(),
   settings: Ember.inject.service(),
+
   model() {
     return new Ember.RSVP.Promise((resolve) => {
       var patterns = this.store.find('pattern');
@@ -19,6 +20,7 @@ export default Ember.Route.extend({
       });
     });
   },
+
   activate() {
     var appController = this.controllerFor("application");
     this.get('settings');
@@ -32,10 +34,12 @@ export default Ember.Route.extend({
     }
 
   },
+
   actions: {
     invalidateModel() {
       Ember.Logger.log('Route is now refreshing...');
       this.refresh();
     }
   }
+  
 });
