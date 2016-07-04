@@ -12,23 +12,23 @@ comandos:
 	@echo ""
 	@echo "  ${Y}Para desarrolladores${N}"
 	@echo ""
-	@echo "    ${G}iniciar${N}           Instala dependencias."
-	@echo "    ${G}compilar${N}          Genera los archivos compilados."
-	@echo "    ${G}compilar_live${N}     Compila de forma contínua."
+	@echo "    ${G}iniciar${N}             Instala dependencias."
+	@echo "    ${G}compilar${N}            Genera los archivos compilados."
+	@echo "    ${G}compilar_live${N}       Compila de forma contínua."
 	@echo ""
-	@echo "    ${G}actualizar_theme${N}  Actualizar el tema css."
+	@echo "    ${G}actualizar_theme${N}    Actualizar el tema css."
 	@echo ""
-	@echo "    ${G}ejecutar_linux${N}    Prueba la aplicacion sobre Huayra."
-	@echo "    ${G}ejecutar_mac${N}      Prueba la aplicacion sobre OSX."
+	@echo "    ${G}ejecutar_linux${N}      Prueba la aplicacion sobre Huayra."
+	@echo "    ${G}ejecutar_mac${N}        Prueba la aplicacion sobre OSX."
 	@echo ""
 	@echo "  ${Y}Para distribuir${N}"
 	@echo ""
-	@echo "    ${G}version${N}           Genera una nueva versión."
-	@echo "    ${G}subir_version${N}     Sube version generada al servidor."
-	@echo "    ${G}log${N}               Muestra los cambios desde el ultimo tag."
-	@echo "    ${G}publicar${N}          Publica el cambio para el paquete deb."
+	@echo "    ${G}version${N}             Genera una nueva versión."
+	@echo "    ${G}subir_version${N}       Sube version generada al servidor."
+	@echo "    ${G}log${N}                 Muestra los cambios desde el ultimo tag."
+	@echo "    ${G}publicar${N}            Publica el cambio para el paquete deb."
 	@echo ""
-	@echo "    ${G}actualizar_web${N}    Genera el paquete deb para huayra."
+	@echo "    ${G}actualizar_web${N}      Genera el paquete deb para huayra."
 	@echo ""
 
 
@@ -38,7 +38,7 @@ iniciar:
 
 dist: compilar
 
-ejecutar_linux: 
+ejecutar_linux:
 	nw dist
 
 ejecutar_mac:

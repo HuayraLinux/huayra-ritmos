@@ -10,7 +10,9 @@
     "process",
     "loadSound",
     "$",
-    "fs"
+    "fs",
+    "requireNode",
+    "isNodeWebkit"
   ],
   "browser": true,
   "boss": true,
