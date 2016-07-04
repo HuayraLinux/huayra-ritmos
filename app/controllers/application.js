@@ -6,10 +6,14 @@ export default Ember.Controller.extend({
   showAbout: false,
   showConfig: false,
   userPrefix: null,
+
   writePID: Ember.on("init", function() {
-    let fs = requireNode("fs");
-    fs.writeFileSync("/tmp/huayra-ritmos.pid", process.pid);
+    if (isNodeWebkit) {
+      let fs = requireNode("fs");
+      fs.writeFileSync("/tmp/huayra-ritmos.pid", process.pid);
+    }
   }),
+
   disableBackSpace: Ember.on('init', function() {
     Ember.$(document).on("keydown", function (e) {
       if (e.which === 8 && !Ember.$(e.target).is("input, textarea")) {
@@ -17,22 +21,28 @@ export default Ember.Controller.extend({
       }
     });
   }),
+
   actions:{
-    showAboutModal(){
+
+    showAboutModal() {
       this.set('showAbout', true);
     },
-    closeAboutModal(){
+
+    closeAboutModal() {
       this.set('showAbout', false);
     },
-    showConfigModal(){
+
+    showConfigModal() {
       var settings = this.get('settings');
       this.set('userPrefix', settings.getUserPrefix);
       this.set('showConfig', true);
     },
-    closeConfigModal(){
+
+    closeConfigModal() {
       this.set('showConfig', false);
     },
-    selectUserPrefix(){
+
+    selectUserPrefix() {
       var settings = this.get('settings');
       var self = this;
       $('#inputUserPrefix').trigger('click').on('change', function(/*e*/){

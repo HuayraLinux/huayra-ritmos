@@ -1,16 +1,41 @@
 import Ember from 'ember';
 
-//var gui = require('nw.gui');
-var gui = window.requireNode('nw.gui');
+/**
+ * Genera un menu para toolbar tomando precaucion de no fallar
+ * si se ejecuta dentro de un navegador sin soporte para node.
+ */
+function createMenu(options) {
+
+  if (isNodeWebkit) {
+    var gui = window.requireNode('nw.gui');
+    return new gui.Menu(options);
+  }
+
+  return {};
+}
+
+/**
+ * Genera un item de menu para toolbar tomando precaucion de no fallar
+ * si se ejecuta dentro de un navegador sin soporte para node.
+ */
+function createMenuItem(options) {
+
+  if (isNodeWebkit) {
+    var gui = window.requireNode('nw.gui');
+    return new gui.MenuItem(options);
+  }
+
+  return {};
+}
 
 
 export default Ember.Service.extend({
   // menu principal
-  menubar: new gui.Menu({ type: 'menubar' }),
+  menubar: createMenu({type: 'menubar'}),
   // items de menu
-  menuArchivo: new gui.Menu(),
-  menuOpciones: new gui.Menu(),
-  menuAyuda: new gui.Menu(),
+  menuArchivo: createMenu(),
+  menuOpciones: createMenu(),
+  menuAyuda: createMenu(),
   // items de menu
   itemGuardar: null,
   itemGuardarComo: null,
@@ -18,57 +43,68 @@ export default Ember.Service.extend({
   itemAcercaDe: null,
   itemSeparador: null,
   itemConfigurar: null,
-  init(){
-    var guardar = new gui.MenuItem({
+
+  init() {
+
+    if (!isNodeWebkit) {
+      console.warn("Evitando crear el menu por estar fuera de nwjs.");
+      return null;
+    }
+
+    var guardar = createMenuItem({
       label: 'Guardar...',
       click: function() {
         //window.fn_guardar_y_regresar();
       },
       enabled: false
     });
+
     this.set('itemGuardar', guardar);
 
-    var guardar_como = new gui.MenuItem({
+    var guardar_como = createMenuItem({
       label: 'Guardar Como...',
       click: function() { },
       enabled: false
     });
     this.set('itemGuardarComo', guardar_como);
 
-    var cerrar = new gui.MenuItem({
+    var cerrar = createMenuItem({
       label: 'Cerrar',
       click: function() { },
       enabled: true
     });
     this.set('itemCerrar', cerrar);
 
-    var salir = new gui.MenuItem({
+    var salir = createMenuItem({
       label: 'Salir',
       click: function() {
+        let gui = window.requireNode('nw.gui');
         gui.App.closeAllWindows();
       },
       enabled: true
     });
+
     this.set('itemSalir', salir);
 
-    var configurar = new gui.MenuItem({
+    var configurar = createMenuItem({
       label: 'Configuraciones',
       click: function() { },
       enabled: true
     });
     this.set('itemConfigurar', configurar);
 
-    var acerca_de = new gui.MenuItem({
+    var acerca_de = createMenuItem({
       label: 'Acerca de ...',
       click: function() { },
       enabled: true
     });
     this.set('itemAcercaDe', acerca_de);
 
-    var separador = new gui.MenuItem({type: 'separator'});
+    var separador = createMenuItem({type: 'separator'});
     this.set('itemSeparador', separador);
 
     var menu_archivo = this.get('menuArchivo');
+
     menu_archivo.append(guardar);
     menu_archivo.append(guardar_como);
     menu_archivo.append(cerrar);
@@ -83,13 +119,21 @@ export default Ember.Service.extend({
     menu_ayuda.append(acerca_de);
 
     var menubar = this.get('menubar');
-    menubar.append(new gui.MenuItem({ label: 'Archivo', submenu: menu_archivo}));
-    menubar.append(new gui.MenuItem({ label: 'Opciones', submenu: menu_opciones}));
-    menubar.append(new gui.MenuItem({ label: 'Ayuda', submenu: menu_ayuda}));
+    menubar.append(createMenuItem({label: 'Archivo', submenu: menu_archivo}));
+    menubar.append(createMenuItem({label: 'Opciones', submenu: menu_opciones}));
+    menubar.append(createMenuItem({label: 'Ayuda', submenu: menu_ayuda}));
 
+    let gui = window.requireNode('nw.gui');
     gui.Window.get().menu = menubar;
   },
-  index(){
+
+  index() {
+
+    if (!isNodeWebkit) {
+      console.warn("Evitando inicializar menu por estar fuera de nwjs.");
+      return null;
+    }
+
     var guardar = this.get('itemGuardar');
     guardar.enabled = false;
     this.set('itemGuardar', guardar);
@@ -102,7 +146,14 @@ export default Ember.Service.extend({
     cerrar.enabled = false;
     this.set('itemCerrar', cerrar);
   },
-  pattern(){
+
+  pattern() {
+
+    if (!isNodeWebkit) {
+      console.warn("Evitando inicializar menu por estar fuera de nwjs.");
+      return null;
+    }
+
     var guardar = this.get('itemGuardar');
     guardar.enabled = true;
     this.set('itemGuardar', guardar);

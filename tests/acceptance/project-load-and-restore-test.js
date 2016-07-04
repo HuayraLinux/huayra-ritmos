@@ -17,9 +17,8 @@ module('Acceptance | project load and restore', {
 test('Puedo ir a la vista edición haciendo click en nuevo', function(assert) {
   visit('/');
 
-
   andThen(function() {
-    assert.equal(find('h2').text().indexOf('huayra-ritmos'), 0, 'El título de la aplicación está presente');
+    assert.equal(find('h3').text().indexOf('Mis Proyectos'), 0, 'El título de la sección de proyectos está presente');
 
     assert.ok(find('button').length > 0, 'existe al menos un botón');
   });

@@ -24,9 +24,13 @@ export default Ember.Route.extend({
     this.get('settings');
 
     document.title = 'Huayra Ritmos';
-    this.get('menu').index();
-    this.get('menu').itemAcercaDe.click = function () { appController.send('showAboutModal'); };
-    this.get('menu').itemConfigurar.click = function () { appController.send('showConfigModal'); };
+
+    if (isNodeWebkit) {
+      this.get('menu').index();
+      this.get('menu').itemAcercaDe.click = function () { appController.send('showAboutModal'); };
+      this.get('menu').itemConfigurar.click = function () { appController.send('showConfigModal'); };
+    }
+
   },
   actions: {
     invalidateModel() {

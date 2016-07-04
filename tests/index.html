@@ -6,11 +6,10 @@
     <title>huayra-ritmos Tests</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-      window.requireNode = require;
-      var fs = requireNode('fs');
-    </script>
 
+    <script type="text/javascript">
+      window.isNodeWebkit = (typeof process == "object");
+    </script>
 
     {{content-for 'head'}}
     {{content-for 'test-head'}}
