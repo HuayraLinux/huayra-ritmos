@@ -35,7 +35,8 @@ export default Ember.Controller.extend({
     selectUserPrefix(){
       var settings = this.get('settings');
       var self = this;
-      $('#inputUserPrefix').trigger('click').on('change', function(e){
+
+      $('#inputUserPrefix').trigger('click').on('change', function() {
         self.set('userPrefix', $(this).val());
         settings.setUserPrefix($(this).val());
       });

@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 var homeConfig = window.requireNode('home-config');
-var fs = window.requireNode('fs');
 
 export default Ember.Service.extend({
   userHome: (process.env.HOME || process.env.USERPROFILE).replace(/\/$/,''),
@@ -9,6 +8,7 @@ export default Ember.Service.extend({
   config: null,
   getUserPrefix: null,
   init(){
+    let fs = window.requireNode('fs');
     var defaultUserPath = this.get('userHome') + "/.local/share/huayra-ritmos";
     var configPath = this.get('userHome') + "/.config/huayra-ritmos/";
     this.set('configPath', configPath);
@@ -34,7 +34,7 @@ export default Ember.Service.extend({
     var isNodeWebkit = (typeof process === "object");
 
     if (isNodeWebkit) {
-      var fs = window.requireNode('fs');
+      let fs = window.requireNode('fs');
 
       if (fs.existsSync('../dist')) {
         return "../dist/";

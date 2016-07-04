@@ -58,7 +58,8 @@ export default Ember.Controller.extend({
       });
     },
     saveAs() {
-      var initial_record = this.get('modelFactory').get_initial_record();
+      this.get('modelFactory').get_initial_record();
+
       var record = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
       var model = this.get('store').createRecord('pattern', {
           title: (prompt("Ingresa el nuevo título", 'sin título') || 'sin título'),

@@ -9,7 +9,8 @@
     "p5",
     "process",
     "loadSound",
-    "$"
+    "$",
+    "fs"
   ],
   "browser": true,
   "boss": true,
