@@ -1,14 +1,14 @@
 {
   "main": "index.html",
   "name": "huayra-ritmos",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "window": {
     "title": "huayra-ritmos",
     "width": 800,
     "height": 500,
     "min_width": 800,
     "min_height": 400,
-    "toolbar": true,
+    "toolbar": false,
     "position": "center"
   }
 }
