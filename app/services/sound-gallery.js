@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
   settings: Ember.inject.service(),
+  recorder: Ember.inject.service(),
   sounds: {},
   categories: [],
   p5: null,
@@ -117,6 +118,7 @@ export default Ember.Service.extend({
 
       let title = name.replace('.wav', '');
       let audioClip = loadSound(path_to_filename);
+      audioClip.connect(this.get('recorder').get('dummyGain'));
 
       sounds[name] = {id: name,
                       title: title,

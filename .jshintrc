@@ -9,6 +9,8 @@
     "p5",
     "process",
     "loadSound",
+    "saveSound",
+    "getAudioContext",
     "$",
     "fs",
     "requireNode",

@@ -7,8 +7,8 @@ export default Ember.Component.extend({
   recordTitle: null,
 
   audio: Ember.inject.service(),
+  recorder: Ember.inject.service(),
   playing: false,
-  recording: false,
   timer: null,
 
   connectKeyHandlers: Ember.on('didInsertElement', function() {
@@ -68,6 +68,7 @@ export default Ember.Component.extend({
 
       if (this.get('player.currentStep') > ((this.get('player.stepsLimit')-1) || 15)) {
         this.set('player.currentStep', 0);
+        this.get('recorder').trigger('pattern-end');
       }
 
       this.playStep();
@@ -114,6 +115,7 @@ export default Ember.Component.extend({
       }
 
     },
+
     /*
      * Actualiza la cantidad de bloques a reproducir.
      * 16, 12, 8, 4, 2?
@@ -134,28 +136,13 @@ export default Ember.Component.extend({
     },
 
     /*
-     * Inicia la grabación o la pausa y da el wav a guardar
-     *   Experimental: Puede prender fuego cosas (y matar gatitos)
+     *
      */
     toggleRecord() {
-      if(!this.get('recording')) {
-        this.set('recording', true);
-        let recorder = new p5.SoundRecorder();
-        let file = new p5.SoundFile();
-
-        // Setear el input así hace que grabe la salida estándar de WebAudio
-        recorder.setInput();
-        // Duración 0 es lo mismo que infinito (¿Debería ser algún limite por ram de las net?)
-        recorder.record(file, 0, () => {
-          saveSound(file, this.get('recordTitle')+".wav");
-        });
-
-        this.set('recorder', recorder);
-      } else {
-        this.set('recording', false);
-        let recorder = this.get('recorder');
-        recorder.stop();
+      if(!this.get('playing')) {
+        this.send('togglePlay');
       }
-    },
+      this.get('recorder').record(this.get('recordTitle'));
+    }
   }
 });
