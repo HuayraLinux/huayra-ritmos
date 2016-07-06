@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  modelFactory: Ember.inject.service(),
+  //modelFactory: Ember.inject.service(),
 
   pattern: {},     // se cargan desde el setupcontroller de route:pattern
   player: {},      // se cargan desde el setupcontroller de route:pattern
@@ -159,6 +159,5 @@ export default Ember.Controller.extend({
     cancelAndCloseFromConfirmModal() {
       this.forceCloseWindow();
     },
-
   }
 });

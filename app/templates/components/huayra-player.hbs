@@ -5,6 +5,11 @@
   {{else}}
     <button {{action "togglePlay"}} class="btn btn-success">{{fa-icon "play"}} Play</button>
   {{/if}}
+  {{#if recording}}
+    <button class="btn btn-warning" {{action "toggleRecord"}}>{{fa-icon "stop"}} Detener Grabación</button>
+  {{else}}
+    <button class="btn btn-warning" {{action "toggleRecord"}}>{{fa-icon "microphone"}} Grabar</button>
+  {{/if}}
 </div>
 
 <!-- 

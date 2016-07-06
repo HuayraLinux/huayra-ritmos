@@ -4,9 +4,11 @@ export default Ember.Component.extend({
   classNames: ['huayra-player'],
   pattern: null,
   player: null,
+  recordTitle: null,
 
   audio: Ember.inject.service(),
   playing: false,
+  recording: false,
   timer: null,
 
   connectKeyHandlers: Ember.on('didInsertElement', function() {
@@ -116,19 +118,44 @@ export default Ember.Component.extend({
      * Actualiza la cantidad de bloques a reproducir.
      * 16, 12, 8, 4, 2?
      */
-      updateStepsLimit(steps) {
-        this.set('player.stepsLimit', steps);
-        var tracks = this.get('pattern.tracks');
-        tracks.forEach((t) => {
-            // aca habilitamos a los pasos "disponibles"
-            t.steps.slice(0, steps).forEach((s) => {
-                Ember.set(s, "disabled", false);
-            });
-            // aca deshabilitamso al resto
-            t.steps.slice(steps).forEach((s) => {
-                Ember.set(s, "disabled", true);
-            });
+    updateStepsLimit(steps) {
+      this.set('player.stepsLimit', steps);
+      var tracks = this.get('pattern.tracks');
+      tracks.forEach((t) => {
+        // aca habilitamos a los pasos "disponibles"
+        t.steps.slice(0, steps).forEach((s) => {
+          Ember.set(s, "disabled", false);
+        });
+        // aca deshabilitamos al resto
+        t.steps.slice(steps).forEach((s) => {
+          Ember.set(s, "disabled", true);
+        });
       });
-    }
+    },
+
+    /*
+     * Inicia la grabación o la pausa y da el wav a guardar
+     *   Experimental: Puede prender fuego cosas (y matar gatitos)
+     */
+    toggleRecord() {
+      if(!this.get('recording')) {
+        this.set('recording', true);
+        let recorder = new p5.SoundRecorder();
+        let file = new p5.SoundFile();
+
+        // Setear el input así hace que grabe la salida estándar de WebAudio
+        recorder.setInput();
+        // Duración 0 es lo mismo que infinito (¿Debería ser algún limite por ram de las net?)
+        recorder.record(file, 0, () => {
+          saveSound(file, this.get('recordTitle')+".wav");
+        });
+
+        this.set('recorder', recorder);
+      } else {
+        this.set('recording', false);
+        let recorder = this.get('recorder');
+        recorder.stop();
+      }
+    },
   }
 });
