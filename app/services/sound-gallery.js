@@ -118,7 +118,7 @@ export default Ember.Service.extend({
 
       let title = name.replace('.wav', '');
       let audioClip = loadSound(path_to_filename);
-      audioClip.connect(this.get('recorder').get('dummyGain'));
+      audioClip.connect(this.get('recorder').get('input'));
 
       sounds[name] = {id: name,
                       title: title,
