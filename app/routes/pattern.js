@@ -1,10 +1,11 @@
 import Ember from 'ember';
+import service from '../service';
 
 export default Ember.Route.extend({
   menu: Ember.inject.service(),
   audio: Ember.inject.service(),
   modelFactory: Ember.inject.service(),
-  soundGallery: Ember.inject.service(),
+  soundGallery: service('sound-gallery'),
 
   model(params) {
     // Intenta cargar el modelo desde el ID de la URL o

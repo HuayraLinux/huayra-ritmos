@@ -23,6 +23,7 @@
     "currentPath",
     "currentRouteName",
     "fs",
+    "p5",
     "requireNode",
     "isNodeWebkit"
   ],

@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import service from '../service';
 
 export default Ember.Service.extend({
   settings: Ember.inject.service(),
-  soundGallery: Ember.inject.service(),
+  soundGallery: service('soundGallery'),
 
   play(sound, volume, rate) {
     volume = volume || 1;
