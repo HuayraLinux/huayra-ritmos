@@ -48,11 +48,12 @@
     "bower": "^1.4.1",
     "home-config": "^0.1.0",
     "ember-adjustable-number": "^0.1.2",
-    "tmp": "0.0.26"
+    "tmp": "0.0.26",
+    "tar-stream": "1.5.2"
   },
   "main": "app://dist/index.html",
   "window": {
-    "toolbar": false,
+    "toolbar": true,
     "width": 960,
     "height": 600
   }

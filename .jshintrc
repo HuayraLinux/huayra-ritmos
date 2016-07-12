@@ -8,9 +8,9 @@
     "Wad",
     "p5",
     "process",
-    "loadSound",
-    "saveSound",
-    "getAudioContext",
+    "loadSound", // p5sound
+    "saveSound", // p5sound
+    "getAudioContext", // WebAudio
     "$",
     "fs",
     "requireNode",

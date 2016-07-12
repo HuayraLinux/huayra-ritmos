@@ -39,6 +39,7 @@ export default Ember.Service.extend({
   // items de menu
   itemGuardar: null,
   itemGuardarComo: null,
+  itemExportar: null,
   itemSalir: null,
   itemAcercaDe: null,
   itemSeparador: null,
@@ -58,7 +59,6 @@ export default Ember.Service.extend({
       },
       enabled: false
     });
-
     this.set('itemGuardar', guardar);
 
     var guardar_como = createMenuItem({
@@ -67,6 +67,13 @@ export default Ember.Service.extend({
       enabled: false
     });
     this.set('itemGuardarComo', guardar_como);
+
+    var exportar = createMenuItem({
+      label: 'Exportar...',
+      click: function() { },
+      enabled: false
+    });
+    this.set('itemExportar', exportar);
 
     var cerrar = createMenuItem({
       label: 'Cerrar',
@@ -107,6 +114,7 @@ export default Ember.Service.extend({
 
     menu_archivo.append(guardar);
     menu_archivo.append(guardar_como);
+    menu_archivo.append(exportar);
     menu_archivo.append(cerrar);
     menu_archivo.append(separador);
     menu_archivo.append(salir);
@@ -142,6 +150,10 @@ export default Ember.Service.extend({
     guardar_como.enabled = false;
     this.set('itemGuardarComo', guardar_como);
 
+    var exportar = this.get('itemExportar');
+    exportar.enabled = false;
+    this.set('itemExportar', exportar);
+
     var cerrar = this.get('itemCerrar');
     cerrar.enabled = false;
     this.set('itemCerrar', cerrar);
@@ -161,6 +173,10 @@ export default Ember.Service.extend({
     var guardar_como = this.get('itemGuardarComo');
     guardar_como.enabled = true;
     this.set('itemGuardarComo', guardar_como);
+
+    var exportar = this.get('itemExportar');
+    exportar.enabled = true;
+    this.set('itemExportar', exportar);
 
     var cerrar = this.get('itemCerrar');
     cerrar.enabled = true;

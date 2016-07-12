@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-
   //modelFactory: Ember.inject.service(),
 
   pattern: {},     // se cargan desde el setupcontroller de route:pattern
@@ -11,6 +10,8 @@ export default Ember.Controller.extend({
   showConfirmModal: false,
   showEditTrack: false,
   currentModalTrack: undefined,
+  model: undefined,
+  exportar: Ember.inject.service(),
 
   savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
@@ -61,6 +62,7 @@ export default Ember.Controller.extend({
         this.set('unsavedChanges', false);
       });
     },
+
     saveAs() {
       //this.get('modelFactory').get_initial_record();
       var record = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
@@ -70,6 +72,14 @@ export default Ember.Controller.extend({
       });
 
       model.save();
+    },
+
+    exportar() {
+      let title   = this.get('model').get('title');
+      let pattern = this.get('pattern');
+      this.get('exportar').guardar(title, pattern).then((file) => {
+        p5.prototype.writeFile(file, title, "ritmo");
+      });
     },
 
     removeTrack() {
@@ -82,13 +92,16 @@ export default Ember.Controller.extend({
       this.send('onChange');
       this.send('closeEditTrackModal');
     },
+
     setTrackColor(color) {
       var track = this.get('currentModalTrack');
       Ember.set(track, "color", color);
     },
-    closeEditTrackModal(){
+
+    closeEditTrackModal() {
       this.set('showEditTrack', false);
     },
+
 
     createNewTrackWithSound(sound) {
       var newTrack = {
