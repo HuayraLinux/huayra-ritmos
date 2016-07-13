@@ -1,9 +1,9 @@
 <div class='huayra-player-ui'>
 <div class='huayra-player-handler'>
   {{#if playing}}
-    <button {{action "togglePlay"}} class="btn btn-success">{{fa-icon "stop"}} Stop</button>
+    <button {{action "togglePlay"}} id='stop-button' class="btn btn-success">{{fa-icon "stop"}} Stop</button>
   {{else}}
-    <button {{action "togglePlay"}} class="btn btn-success">{{fa-icon "play"}} Play</button>
+    <button {{action "togglePlay"}} id='play-button' class="btn btn-success">{{fa-icon "play"}} Play</button>
   {{/if}}
   {{#if recorder.recording}}
     <button class="btn btn-warning" {{action "toggleRecord"}}>{{fa-icon "stop"}} Detener Grabación</button>
@@ -12,7 +12,7 @@
   {{/if}}
 </div>
 
-<!-- 
+<!--
 <div class='slider'>
   {{input value=player.bpm type='range' min=40 max=200}}
 </div>
