@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import service from '../service';
 
 export default Ember.Controller.extend({
   //modelFactory: Ember.inject.service(),
@@ -11,7 +12,7 @@ export default Ember.Controller.extend({
   showEditTrack: false,
   currentModalTrack: undefined,
   model: undefined,
-  exportar: Ember.inject.service(),
+  exportar: service('exportar'),
 
   savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
