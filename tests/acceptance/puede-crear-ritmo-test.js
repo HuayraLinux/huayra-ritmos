@@ -19,7 +19,7 @@ test('visiting /puede-crear-ritmo', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '');
-    click("#crear-proyecto")
+    click("#crear-proyecto");
   });
 
   andThen(function() {
