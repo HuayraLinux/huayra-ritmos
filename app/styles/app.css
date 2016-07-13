@@ -397,8 +397,6 @@ span.huayra-player-step {
   height:43px;
   padding: 8px;
   border-radius: 5px;
-  width: 80%; /* fallback if needed */
-  width: calc(100% - 87px);
   display:inline-block;
 }
 
