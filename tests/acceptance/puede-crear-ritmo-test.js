@@ -18,11 +18,12 @@ test('visiting /puede-crear-ritmo', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '');
+    assert.equal(currentURL(), '', "Efectivamente pudo visitar la página.");
     click("#crear-proyecto");
   });
 
   andThen(function() {
+    assert.ok((currentURL().indexOf('pattern') > -1), "Ingresó en la sección pattern.");
     click("#play-button");
 
     setTimeout(() => {
