@@ -53,11 +53,16 @@ export default Ember.Controller.extend({
     }
   },
 
+  /* TODO: Hacer model una propiedad */
+  updateModel() {
+    let content = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
+    return this.get('model').set('content', content);
+  },
+
   actions: {
     save() {
-
-      var record = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
-      var model = this.get('model').set('content', record);
+      this.updateModel();
+      var model = this.get('model');
 
       model.save().then(() => {
         this.set('unsavedChanges', false);
@@ -66,20 +71,19 @@ export default Ember.Controller.extend({
 
     saveAs() {
       //this.get('modelFactory').get_initial_record();
-      var record = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
       var model = this.get('store').createRecord('pattern', {
           title: (prompt("Ingresa el nuevo título", 'sin título') || 'sin título'),
-          content: record,
+          content: this.updateModel().content,
       });
 
       model.save();
     },
 
     exportar() {
-      let title   = this.get('model').get('title');
-      let pattern = this.get('pattern');
-      this.get('exportar').guardar(title, pattern).then((file) => {
-        p5.prototype.writeFile(file, title, "ritmo");
+
+      let model = this.updateModel();
+      this.get('exportar').guardar(model).then((file) => {
+        p5.prototype.writeFile(file, model.get('title'), 'ritmo');
       });
     },
 

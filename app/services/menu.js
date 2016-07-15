@@ -11,7 +11,7 @@ function createMenu(options) {
     return new gui.Menu(options);
   }
 
-  return {};
+  return options || {};
 }
 
 /**
@@ -25,11 +25,11 @@ function createMenuItem(options) {
     return new gui.MenuItem(options);
   }
 
-  return {};
+  return options || {};
 }
 
 
-export default Ember.Service.extend({
+export default Ember.Service.extend(Ember.Evented, {
   // menu principal
   menubar: createMenu({type: 'menubar'}),
   // items de menu
@@ -39,6 +39,7 @@ export default Ember.Service.extend({
   // items de menu
   itemGuardar: null,
   itemGuardarComo: null,
+  itemImportar: null,
   itemExportar: null,
   itemSalir: null,
   itemAcercaDe: null,
@@ -74,6 +75,13 @@ export default Ember.Service.extend({
       enabled: false
     });
     this.set('itemExportar', exportar);
+
+    var importar = createMenuItem({
+      label: 'Importar...',
+      click: this.trigger.bind(this, 'importar'),
+      enabled: true
+    });
+    this.set('itemImportar', importar);
 
     var cerrar = createMenuItem({
       label: 'Cerrar',
@@ -115,6 +123,7 @@ export default Ember.Service.extend({
     menu_archivo.append(guardar);
     menu_archivo.append(guardar_como);
     menu_archivo.append(exportar);
+    menu_archivo.append(importar);
     menu_archivo.append(cerrar);
     menu_archivo.append(separador);
     menu_archivo.append(salir);

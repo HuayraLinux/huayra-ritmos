@@ -25,7 +25,7 @@ export default Ember.Service.extend({
     /* TODO: Borrar al terminar de implementar el servicio */
     debug_init: Ember.on('init', function() { window.exportar = this; }),
 
-    FILE_VERSION: '0.1',
+    FILE_VERSION: '0.2',
     /*
      * Descripción de format:
      *
@@ -53,7 +53,7 @@ export default Ember.Service.extend({
     format: {
         "ritmo.json": function(metadata, fstream, next, ritmo) {
             streamToString(fstream, (json) => {
-                ritmo.data = JSON.parse(json);
+                Ember.merge(ritmo, JSON.parse(json));
                 next();
             });
         },
@@ -65,7 +65,7 @@ export default Ember.Service.extend({
         ]
     },
 
-    guardar(titulo, pattern) {
+    guardar(model) {
         /* Devuelvo la promesa: el que depositó rimos recibirá ritmos */
         return new Ember.RSVP.Promise((resolve) => {
             /*
@@ -81,8 +81,7 @@ export default Ember.Service.extend({
                 { name: 'ritmo.json' },
                 JSON.stringify({
                     version: this.get('FILE_VERSION'),
-                    titulo: titulo,
-                    pattern: pattern
+                    model: model
                 }
             ));
 
@@ -103,7 +102,7 @@ export default Ember.Service.extend({
         });
     },
 
-    load(path) {
+    importar(path) {
         return new Ember.RSVP.Promise((resolve/*, reject*/) => {
             let ritmo = {};
             let file = fs.createReadStream(path);

@@ -18,6 +18,6 @@ export default Ember.Controller.extend({
     deleteRecord(model) {
       model.destroyRecord();
       this.send('invalidateModel');
-    }
+    },
   }
 });

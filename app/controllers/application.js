@@ -1,28 +1,35 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  menu: Ember.inject.service(),
   version: Ember.inject.service(),
   settings: Ember.inject.service(),
   showAbout: false,
   showConfig: false,
   userPrefix: null,
 
-  writePID: Ember.on("init", function() {
+  import: Ember.on('init', function() {
+    this.get('menu').on('importar', () => {
+      this.transitionToRoute('importar');
+    });
+  }),
+
+  writePID: Ember.on('init', function() {
     if (isNodeWebkit) {
-      let fs = requireNode("fs");
-      fs.writeFileSync("/tmp/huayra-ritmos.pid", process.pid);
+      let fs = requireNode('fs');
+      fs.writeFileSync('/tmp/huayra-ritmos.pid', process.pid);
     }
   }),
 
   disableBackSpace: Ember.on('init', function() {
-    Ember.$(document).on("keydown", function (e) {
-      if (e.which === 8 && !Ember.$(e.target).is("input, textarea")) {
+    Ember.$(document).on('keydown', function (e) {
+      if (e.which === 8 && !Ember.$(e.target).is('input, textarea')) {
           e.preventDefault();
       }
     });
   }),
 
-  actions:{
+  actions: {
 
     showAboutModal() {
       this.set('showAbout', true);
