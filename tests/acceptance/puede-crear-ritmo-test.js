@@ -19,10 +19,6 @@ test('visiting /puede-crear-ritmo', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '');
-    click("#openDialog");
-  });
-
-  andThen(function() {
     click("button#crear-proyecto");
   });
 
