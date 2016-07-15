@@ -72,7 +72,6 @@ app.import('bower_components/roboto-fontface/fonts/Roboto-ThinItalic.woff', {des
 app.import('bower_components/roboto-fontface/fonts/Roboto-ThinItalic.woff2', {destDir: 'fonts'});
 
 
-app.import('bower_components/wad/build/wad.js');
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //
