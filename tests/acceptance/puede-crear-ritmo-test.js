@@ -18,17 +18,21 @@ test('visiting /puede-crear-ritmo', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '', "Efectivamente pudo visitar la página.");
-    click("#crear-proyecto");
+    assert.equal(currentURL(), '');
+    click("#openDialog");
   });
 
   andThen(function() {
-    assert.ok((currentURL().indexOf('pattern') > -1), "Ingresó en la sección pattern.");
-    click("#play-button");
+    click("button#crear-proyecto");
+  });
+
+  andThen(function() {
+    click("button#play-button");
+    assert.equal(currentURL().indexOf("pattern"), '1', "Ingresó a la ruta pattern");
 
     setTimeout(() => {
-      click("#stop-button");
-    }, 1000);
+      click("button#stop-button");
+    });
   });
 
 });
