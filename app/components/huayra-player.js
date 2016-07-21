@@ -102,11 +102,23 @@ export default Ember.Component.extend({
 
     /*
      * Alterna la reproducción del track.
+     *   how: Boolean?
+     *     true -> Play
+     *     false -> Stop
+     *     undefined -> !playing
      */
-    togglePlay() {
-      this.toggleProperty('playing');
+    togglePlay(how) {
+      /* how es su valor o toggleo playing */
+      how = how === undefined ? !this.get('playing') : how;
 
-      if (this.get('playing')) {
+      /* Si no hay nada para hacer entonces no hay nada para hacer */
+      if(how === this.get('playing')) {
+        return;
+      }
+
+      this.set('playing', how);
+
+      if(this.get('playing')) {
         this.set('player.playing', true);
         this.play();
       } else {
@@ -139,24 +151,22 @@ export default Ember.Component.extend({
      *
      */
     toggleRecord() {
-      if(!this.get('playing')) {
-        this.send('togglePlay');
-      }
+      this.send('togglePlay', true);
 
       if(this.get('recorder.recording')) {
-        this.get('recorder').cancelRecord();
+        this.get('recorder').cancelRecording();
+      } else {
+        this.get('recorder').record(
+          this.get('recordTitle'),
+          this.get('pattern.bpm'),
+          this.get('player.stepsLimit')
+        ).then((file) => {
+          this.send('togglePlay', false);
+          saveSound(file, this.get('recordTitle'));
+        }, () => {
+          this.send('togglePlay', false);
+        });
       }
-
-      this.get('recorder').record(
-        this.get('recordTitle'),
-        this.get('pattern.bpm'),
-        this.get('player.stepsLimit')
-      ).then((file) => {
-        this.send('togglePlay');
-        saveSound(file, this.get('recordTitle'));
-      }, () => {
-        this.send('togglePlay');
-      });
     }
   }
 });
