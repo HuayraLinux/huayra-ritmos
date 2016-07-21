@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Service.extend(Ember.Evented, {
   recording: false,
   recorder: null,
+  canceled: false,
   input: null,
   file: null,
 
@@ -10,12 +11,6 @@ export default Ember.Service.extend(Ember.Evented, {
     this.set('recorder', new p5.SoundRecorder());
     this.set('file', new p5.SoundFile());
     this.set('input', this.get('recorder').input);
-    
-    /* DEBUG */
-    window.recording = {
-      recorder: this.get('recorder'),
-      file: this.get('file')
-    };
   }),
 
   /*
@@ -28,19 +23,33 @@ export default Ember.Service.extend(Ember.Evented, {
    *   grabo y espero al segundo para frenar.
    */
   record(recordTitle, bpm, steps) {
-    this.set('recording', true);
-    this.one('pattern-end', () => {
-      let file = this.get('file');
-      let recorder = this.get('recorder');
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      /* Digo que ya estoy grabando y espero al final de la primera frase */
+      this.set('recording', true);
+      this.one('pattern-end', () => {
+        let file = this.get('file');
+        let recorder = this.get('recorder');
 
-      // 60segundos, 4subtiempos por tiempo
-      recorder.record(file, (60 / bpm / 4) * steps, () => {
-        this.set('recording', false);
+        if(this.get('canceled')) {
+          reject();
+        }
+
+        /* 60 segundos, 4 subtiempos por tiempo */
+        recorder.record(file, (60 / bpm / 4) * steps, () => {
+          this.set('recording', false);
+
+          if(this.get('canceled')) {
+            reject();
+          } else {
+            resolve(file);
+          }
+        });
       });
     });
   },
 
   cancelRecording() {
+    this.set('canceled', true);
     this.get('recorder').stop();
   }
 });

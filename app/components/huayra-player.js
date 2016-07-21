@@ -142,11 +142,21 @@ export default Ember.Component.extend({
       if(!this.get('playing')) {
         this.send('togglePlay');
       }
+
+      if(this.get('recorder.recording')) {
+        this.get('recorder').cancelRecord();
+      }
+
       this.get('recorder').record(
         this.get('recordTitle'),
         this.get('pattern.bpm'),
         this.get('player.stepsLimit')
-      );
+      ).then((file) => {
+        this.send('togglePlay');
+        saveSound(file, this.get('recordTitle'));
+      }, () => {
+        this.send('togglePlay');
+      });
     }
   }
 });

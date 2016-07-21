@@ -22,8 +22,6 @@ function streamToString(stream, cb) {
 }
 
 export default Ember.Service.extend({
-    /* TODO: Borrar al terminar de implementar el servicio */
-    debug_init: Ember.on('init', function() { window.exportar = this; }),
 
     FILE_VERSION: '0.2',
     /*
