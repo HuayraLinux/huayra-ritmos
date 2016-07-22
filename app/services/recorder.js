@@ -33,25 +33,27 @@ export default Ember.Service.extend(Ember.Evented, {
     this.set('recording', true);
     this.set('canceled', false);
     return new Ember.RSVP.Promise((resolve, reject) => {
-      /* Digo que ya estoy grabando y espero al final de la primera frase */
-      this.one('pattern-end', () => {
-        let file = this.get('file');
-        let recorder = this.get('recorder');
-
-        if(this.get('canceled')) {
-          this.set('recording', false);
-          return reject();
-        }
-
-        /* 60 segundos, 4 subtiempos por tiempo */
-        recorder.record(file, (60 / bpm / 4) * steps, () => {
-          this.set('recording', false);
+      /* Grabo la segunda vuelta nomás  */
+      this.one('pattern-start', () => {
+        this.one('pattern-start', () => {
+          let file = this.get('file');
+          let recorder = this.get('recorder');
 
           if(this.get('canceled')) {
-            reject();
-          } else {
-            resolve(file);
+            this.set('recording', false);
+            return reject();
           }
+
+          /* 60 segundos, 4 subtiempos por tiempo */
+          recorder.record(file, (60 / bpm / 4) * steps, () => {
+            this.set('recording', false);
+
+            if(this.get('canceled')) {
+              reject();
+            } else {
+              resolve(file);
+            }
+          });
         });
       });
     });

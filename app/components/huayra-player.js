@@ -37,44 +37,83 @@ export default Ember.Component.extend({
   },
 
   play() {
-    this.playStep();
+    this.audioTimer();
   },
 
-  playCurrentStepSound() {
-    var currentStep = this.get('player.currentStep');
-    var tracks = this.get('pattern.tracks');
+  audioTimer(step, ultimoMomento/*CRONICA TV*/, esperando) {
+    /* Default values */
+    step = step || 0;
+    ultimoMomento = ultimoMomento || getAudioContext().currentTime;
+    esperando = esperando || [];
+    /* Tiempo que encolo en WebAudio (s) */
+    let buffer = 0.150;
+    /* Tiempo actual */
+    let ahora = getAudioContext().currentTime;
+    /* Tiempo que falta (o pasó) desde la última nota scheduleada (s)*/
+    let falta = ultimoMomento - ahora;
+    /* Momento en el cual termina el buffer (s) */
+    let bufferEndTime = buffer - falta;
+    /* Delay con el que llamo la función (ms) */
+    let delay = 25;
+    /* Tiempo entre steps (s) */
+    let intervalo = 60 / ((this.get('pattern.bpm') || 120) * 4);
+    /* Steps del proyecto */
+    let steps = this.get('player.stepsLimit') || 16;
 
-    tracks.forEach((t) => {
-      if (t.enabled) {
-        if (t.steps[currentStep].active) {
-          let volume = t.volume || 1;            // aplica el volumen global.
-          volume = parseFloat(volume, 10);
-          volume *= (t.steps[currentStep].volume || 1); // aplica el volumen del step.
+    /* Proceso los eventos y los descarto, procesarEventos
+     * devuelve la cantidad procesada (y `esperando` está ordenado
+     * cronológicamente)
+     */
+    let procesados = this.procesarEventos(esperando, ahora);
 
-          this.get('audio').play(t.sound, volume);
-        }
-      }
+    /* Basado en http://www.html5rocks.com/en/tutorials/audio/scheduling/#toc-rocksolid */
+    let momento = falta;
+    while(momento < bufferEndTime) {
+      /* Encolo lo necesario */
+      this.encolar(step, momento);
 
-    });
-  },
+      /* Lo dejo en la lista de cosas que espero */
+      esperando.push([ahora + momento, step]);
 
-  playStep() {
-     var delay = ((1000 * 60)/4) / (this.get('pattern.bpm') || 120);
+      /* Avanzo un step */
+      momento += intervalo;
+      step = (step + 1) % steps;
+    }
 
-    this.playCurrentStepSound();
-
-    var timer = Ember.run.later(() => {
-      this.incrementProperty('player.currentStep');
-
-      if (this.get('player.currentStep') > ((this.get('player.stepsLimit')-1) || 15)) {
-        this.set('player.currentStep', 0);
-        this.get('recorder').trigger('pattern-end');
-      }
-
-      this.playStep();
-    }, delay);
+    let timer = Ember.run.later(
+      this, /* Contexto, el this con el que se ejecuta */
+      this.audioTimer, /* Esta misma funcion */
+      step,                        /* Argumento: Último step procesado */
+      ahora + momento,             /* Argumento: Último momento procesado */
+      esperando.slice(procesados), /* Argumento: Eventos sin procesar */
+      delay /* El delay con el que se ejecute el timer */
+    );
 
     this.set('timer', timer);
+  },
+
+  procesarEventos(esperando, ahora) {
+    /* Me fijo todos los eventos que hay que procesar y los proceso */
+    let eventos = esperando.filter((evento) => evento[0] < ahora);
+    /* El último es el último step reproducido*/
+    eventos.forEach((evento) => this.set('player.currentStep', evento[1]));
+    /* Si hay uno o varios (varios???) steps del fin del pattern triggereo */
+    eventos.filter((evento) => evento[1] === 0)
+           .forEach(() => this.get('recorder').trigger('pattern-start'));
+    return eventos.length;
+  },
+
+  encolar(step, momento) {
+    var tracks = this.get('pattern.tracks');
+
+    tracks.filter((t) => t.enabled)
+          .filter((t) => t.steps[step].active)
+          .forEach((t) => {
+            let volume = t.volume || 1;            // aplica el volumen global.
+            volume = parseFloat(volume, 10);
+            volume *= (t.steps[step].volume || 1); // aplica el volumen del step.
+            this.get('audio').play(t.sound, volume, undefined, momento);
+          });
   },
 
   stop() {

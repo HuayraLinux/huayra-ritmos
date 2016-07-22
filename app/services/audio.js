@@ -5,15 +5,16 @@ export default Ember.Service.extend({
   settings: Ember.inject.service(),
   soundGallery: service('soundGallery'),
 
-  play(sound, volume, rate) {
+  play(sound, volume, rate, when) {
     volume = volume || 1;
     rate = rate || 1;
+    when = when || 0;
     var sound_cat_file = sound.split("/").reverse().slice(0,2).reverse().join("/");
     var audioClip = this.get('soundGallery').getAudioClip(sound_cat_file);
 
     audioClip.setVolume(volume);
     audioClip.rate(rate);
-    audioClip.play(0, rate);
+    audioClip.play(when, rate);
   },
 
   previewSound(sound) {
