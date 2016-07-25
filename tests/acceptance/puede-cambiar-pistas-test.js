@@ -4,9 +4,10 @@ import startApp from 'huayra-ritmos/tests/helpers/start-app';
 import indexPage from '../pages/index-page';
 import patternPage from '../pages/pattern-page';
 
+
 var application;
 
-module('Acceptance | puede crear ritmo', {
+module('Acceptance | puede cambiar pistas', {
   beforeEach: function() {
     application = startApp();
   },
@@ -16,24 +17,30 @@ module('Acceptance | puede crear ritmo', {
   }
 });
 
-test('visiting /', function(assert) {
-
+test('Puede cambiar pistas', function(assert) {
   indexPage.
     visit().
     crearUnNuevoProyecto();
 
   andThen(function() {
     assert.equal(currentURL().indexOf("pattern"), '1', "Ingresó a la ruta pattern");
-    assert.ok(patternPage.elPlayerEstaDetenido, "El player se encuentra inicialmente detenido.");
+    assert.equal(2, patternPage.cantidadDePistas(), "Hay dos pistas inicialmente.");
+  });
 
-    patternPage.play();
-    assert.ok(patternPage.elPlayerEstaReproduciendo, "Puede comenzar a reproducir.");
+  andThen(function() {
+    patternPage.crearPista();
+  });
 
-    setTimeout(function() {
-      patternPage.stop();
-      assert.ok(patternPage.elPlayerEstaDetenido, "El player se pudo detener.");
-    }, 500);
+  andThen(function() {
+    patternPage.seleccionarSonido();
+  });
 
+  andThen(function() {
+    patternPage.aceptarDialogo();
+  });
+
+  andThen(function() {
+    assert.equal(3, patternPage.cantidadDePistas(), "Luego de agregar una pista, hay 3 en total.");
   });
 
 });

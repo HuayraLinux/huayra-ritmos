@@ -3,7 +3,12 @@ function p5() {
 
 var loadSound = function() {
   console.log("mock loadSound");
-  return {};
+  return {
+    file: "sounds/basicos/000_drum1.wav",
+    setVolume: function(e) {},
+    rate: function(e) {},
+    play: function(e) {},
+  };
 };
 
 p5.SoundRecorder = function() {
