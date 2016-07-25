@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>huayra-ritmos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- AGREGADOS PARA NODEWEBKIT -->
+    <script>
+      window.isNodeWebkit = (typeof process == "object");
+
+      if (isNodeWebkit) {
+        window.requireNode = require;
+      }
+    </script>
+
+    <script src='atajo-inspector-e764c623295138564ffdcf812b0ddf2c.js'></script>
+
+    <script>
+    if (isNodeWebkit) {
+      var fs = requireNode('fs');
+
+      fs.watchFile('./index.html', function() {
+        console.log("Reiniciando...");
+        setTimeout(function() {
+          window.location.reload();
+        }, 3000);
+      });
+    }
+    </script>
+
+    
+<meta name="huayra-ritmos/config/environment" content="%7B%22modulePrefix%22%3A%22huayra-ritmos%22%2C%22environment%22%3A%22production%22%2C%22baseURL%22%3A%22/huayra-ritmos/%22%2C%22locationType%22%3A%22hash%22%2C%22testMode%22%3Afalse%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22name%22%3A%22huayra-ritmos%22%2C%22version%22%3A%220.0.0.63dc8ddb%22%7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+
+    <!-- AGREGADOS POR EMBERCLI -->
+    <link rel="stylesheet" href="assets/vendor-fb085b42dae9b9fdfff4cdae3c2592b9.css">
+    <link rel="stylesheet" href="assets/huayra-ritmos-bbcec8332c86fc799a69c8cee95ba1e1.css">
+
+
+    <link rel="stylesheet" href="huayra-bootstrap-2fba384d341c544923afe9d916f57f69.css">
+
+    
+
+  </head>
+  <body>
+    
+
+    <script src="assets/vendor-77cf74e10e33284e4d700befeb5cc803.js"></script>
+    <script src="assets/huayra-ritmos-2bd5944cdc8fbdb96cbf4689afbd0eb3.js"></script>
+
+    
+
+    <script src='fix-menu-osx-e3a0a65df971dc699006755db83e014d.js'></script>
+    <script>
+    if (isNodeWebkit) {
+      window.onkeypress = function(e) {
+        if (e.which === 105 && (e.ctrlKey || e.shiftKey || e.metaKey)) {
+          window.requireNode('nw.gui').Window.get().showDevTools();
+        }
+      }
+    }
+    </script>
+
+    <!-- AGREGADOS PARA PROCESING -->
+    <script integrity="" src='libs/p5-831215450a7c8054d51687e08968beb4.js'></script>
+    <script integrity="" src='libs/addons/p5.dom-8b63b28745a14f924283a12090ff21c4.js'></script>
+    <script integrity="" src='libs/addons/p5.sound-454a99369c359bb190f8dd1e0edcc7b1.js'></script>
+
+  </body>
+</html>

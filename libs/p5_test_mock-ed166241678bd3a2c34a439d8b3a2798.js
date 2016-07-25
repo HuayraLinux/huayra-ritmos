@@ -1,0 +1,1 @@
+function p5(){}var loadSound=function(){return console.log("mock loadSound"),{file:"sounds/basicos/000_drum1.wav",setVolume:function(o){},rate:function(o){},play:function(o){}}};p5.SoundRecorder=function(){return console.log("mock SoundRecorder"),{}},p5.SoundFile=function(){return console.log("mock SoundFile"),{}};
