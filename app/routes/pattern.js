@@ -6,6 +6,7 @@ export default Ember.Route.extend({
   audio: Ember.inject.service(),
   modelFactory: Ember.inject.service(),
   soundGallery: service('sound-gallery'),
+  history: Ember.inject.service(),
 
   model(params) {
     // Intenta cargar el modelo desde el ID de la URL o
@@ -26,7 +27,9 @@ export default Ember.Route.extend({
           success(record);
         });
     });
+
   },
+
   setupController(controller, model) {
     var record = JSON.parse(model.get('content'));
 
@@ -52,6 +55,8 @@ export default Ember.Route.extend({
 
     controller.notifyEnterTransition();
     document.title = model._data.title || "Sin título";
+
+    this.get("history").visit(this.get('routeName'), model);
   },
 
   deactivate() {
