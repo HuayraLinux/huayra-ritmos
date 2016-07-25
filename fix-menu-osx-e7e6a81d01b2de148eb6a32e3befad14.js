@@ -1,1 +1,0 @@
-var is_nodewebkit="object"==typeof process;if(is_nodewebkit){var gui=window.requireNode("nw.gui");win=gui.Window.get();var nativeMenuBar=new gui.Menu({type:"menubar"});try{nativeMenuBar.createMacBuiltin("huayra-ritmos"),win.menu=nativeMenuBar}catch(ex){}}

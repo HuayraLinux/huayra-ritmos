@@ -1,1 +1,0 @@
-var is_nodewebkit="object"==typeof process;is_nodewebkit&&(window.node_require=window.require);

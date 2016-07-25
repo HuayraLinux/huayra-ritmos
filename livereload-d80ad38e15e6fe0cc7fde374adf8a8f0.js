@@ -1,1 +1,0 @@
-var is_nodewebkit="object"==typeof process,DELAY=2e3,refresh=!1;if(is_nodewebkit){var fs=require("fs");fs.watchFile("index.html",function(){refresh===!1&&(refresh=!0,console.log("Detectando cambio en el archivo index.html, actualizando ..."),setTimeout(function(){require("nw.gui").Window.get().reloadIgnoringCache()},DELAY))})}
