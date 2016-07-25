@@ -1,0 +1,1 @@
+window.onkeypress=function(e){105===e.which&&(e.ctrlKey||e.shiftKey||e.metaKey)&&require("nw.gui").Window.get().showDevTools()};

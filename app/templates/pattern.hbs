@@ -1,0 +1,9 @@
+<button class='btn btn-warning' {{action "goIndex"}}>{{fa-icon "fa-chevron-left"}} Volver</button>
+<button disabled={{savedChanges}} class="btn btn-info" {{action "save"}}>{{fa-icon "fa-save"}} Guardar</button>
+
+{{huayra-title-editable value=model.title onChange="onChange"}}
+
+{{huayra-player pattern=pattern player=player onChange="onChange"}}
+{{huayra-pattern pattern=pattern player=player onChange="onChange" onEditTrack='editTrack'}}
+
+{{huayra-new-track pattern=pattern onNewTrack='newTrack' onChange="onChange"}}
