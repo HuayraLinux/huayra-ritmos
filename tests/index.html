@@ -9,6 +9,10 @@
 
     <script type="text/javascript">
       window.isNodeWebkit = (typeof process == "object");
+
+      window.getAudioContext = function() {
+        return {currentTime: 1};
+      };
     </script>
 
     {{content-for 'head'}}
