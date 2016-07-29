@@ -6,6 +6,7 @@ var app = new EmberApp({
   emberCliFontAwesome: { includeFontAwesomeAssets: false }
 });
 
+
 app.import('app/styles/app.css');
 
 app.import('bower_components/roboto-fontface/css/roboto-fontface.css');
@@ -71,6 +72,10 @@ app.import('bower_components/roboto-fontface/fonts/Roboto-ThinItalic.ttf', {dest
 app.import('bower_components/roboto-fontface/fonts/Roboto-ThinItalic.woff', {destDir: 'fonts'});
 app.import('bower_components/roboto-fontface/fonts/Roboto-ThinItalic.woff2', {destDir: 'fonts'});
 
+
+app.import("vendor/uikit.css");
+app.import("vendor/uikit.gradient.css");
+app.import("vendor/uikit.js");
 
 // Use `app.import` to add additional libraries to the generated
 // output files.

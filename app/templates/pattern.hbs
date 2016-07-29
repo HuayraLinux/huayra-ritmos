@@ -1,9 +1,7 @@
 {{huayra-title-editable value=model.title onChange="onChange"}}
-<!--
-<button class='btn btn-warning' {{action "goIndex"}}>{{fa-icon "fa-chevron-left"}} Volver</button>
-<button disabled={{savedChanges}} class="btn btn-info" {{action "save"}}>{{fa-icon "fa-save"}} Guardar</button>
-<button class="btn btn-info" {{action "saveAs"}}>{{fa-icon "fa-save"}} Guardar Como</button>
--->
+
+<button class="uk-button" {{action "goIndex"}}>{{fa-icon icon="fa-chevron-left"}} Volver</button>
+<button disabled={{savedChanges}} class="uk-button" {{action "save"}}>{{fa-icon icon="fa-save"}} Guardar</button>
 
 {{huayra-player recordTitle=model.title pattern=pattern player=player onChange="onChange"}}
 {{huayra-pattern pattern=pattern player=player onChange="onChange" onEditTrack='editTrack'}}

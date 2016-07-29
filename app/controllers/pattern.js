@@ -80,7 +80,6 @@ export default Ember.Controller.extend({
     },
 
     exportar() {
-
       let model = this.updateModel();
       this.get('exportar').guardar(model).then((file) => {
         p5.prototype.writeFile(file, model.get('title'), 'ritmo');
