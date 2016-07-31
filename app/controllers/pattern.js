@@ -14,6 +14,10 @@ export default Ember.Controller.extend({
   model: undefined,
   exportar: service('exportar'),
 
+  inBrowser: Ember.computed(function() {
+    return (! isNodeWebkit);
+  }),
+
   savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
   }),
