@@ -14,6 +14,10 @@ export default Ember.Controller.extend({
   model: undefined,
   exportar: service('exportar'),
 
+  inBrowser: Ember.computed(function() {
+    return (! isNodeWebkit);
+  }),
+
   savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
   }),
@@ -80,7 +84,6 @@ export default Ember.Controller.extend({
     },
 
     exportar() {
-
       let model = this.updateModel();
       this.get('exportar').guardar(model).then((file) => {
         p5.prototype.writeFile(file, model.get('title'), 'ritmo');

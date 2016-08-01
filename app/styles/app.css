@@ -7,6 +7,10 @@ html, body {
   margin: 20px;
 }
 
+.uk-button {
+  font-size: 13px !important;
+}
+
 body {
   overflow-x: scroll;
   overflow-y: scroll;
@@ -363,8 +367,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 .huayra-player {
-  padding: 10px;
-  margin: 5px;
+  padding: 20px;
   padding-left: 0;
 }
 
@@ -451,19 +454,12 @@ div.slider {
 }
 
 
-.main-title {
-  display: block;
-  height: 100px;
-  /*padding-bottom: 30px;*/
-  /*border-bottom: 2px solid rgb(219, 219, 219);*/
-  background: url("../img/huayra-ritmos-logo.png") no-repeat top left;
-  border-width: 0 0 2px 0;
-  border-style: solid;
-  -webkit-border-image: -webkit-linear-gradient(left, #3b8a19, rgba(150, 250, 110, 0)) 100 0%;
-}
-
-.main-title .btn-new{
-    margin-top:15px;
+.titulo {
+  margin: 0;
+  padding: 0;
+  line-height: 3;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .version {
@@ -471,36 +467,34 @@ div.slider {
   float: right;
   padding-top: 75px;
   font-size: 1em;
-  color: #005544;
+  color: gray;
+  font-family: "Roboto" !important;
+  font-weight: 300;
 }
 
 .main-content {
-  /* padding-top: 30px; */
+  padding-top: 30px;
 }
 
 .huayra-project-list-container {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
-.huayra-project-list-container table {
-  border-collapse: separate;
-  border: 0;
-  border-spacing: 0 5px;
-}
 
-.huayra-project-list-container h3,
-.huayra-modal-title {
+.huayra-project-list-container h3 {
   height: 30px;
-  padding: 5px 0 5px 10px;
-  background: -webkit-linear-gradient(left, rgba(22,80,68,1) 0%, rgba(22,80,68,0) 105%);
   font-size: 1.2em;
   font-weight: 400 !important;
-  color: #d7f4ee;
+}
+
+.huayra-modal-title {
+  height: 30px;
+  font-size: 1.2em;
+  font-weight: 300 !important;
+  margin-top: 5px;
 }
 
 .huayra-project-list-container table tbody tr {
-  background: -webkit-linear-gradient(left, rgba(0,136,170,1) 0%, rgba(0,136,170,0) 105%);
-  background-attachment: fixed;
 }
 
 .huayra-project-list-container table tbody tr td {
@@ -510,33 +504,26 @@ div.slider {
 }
 
 .huayra-project-list-container table tbody tr td a {
-  color: #d7f4ee;
+  color: black;
   margin-left: 12px;
   text-decoration: none !important;
 }
 
-.project-item-bullet {
-  width: 18px;
-  height: 18px;
-  background-color: #82ecdb;
-  border-radius: 5px;
-  float: left;
-  margin: 2px 0 0 4px;
-}
-
-
 .huayra-title-editable-container,
 .huayra-modal-track-title {
   display: block;
-  padding: 5px 0 5px 10px;
-  margin:10px 0;
-  background: -webkit-linear-gradient(left, rgba(0,136,170,1) 0%, rgba(0,136,170,0) 101%);
+  margin: 10px 0;
+  padding: 0;
   font-size: 1.2em;
-  font-weight: 400 !important;
-  color: #d7f4ee;
+  font-weight: 200 !important;
   width: 100%;
   vertical-align: middle;
 }
+
+.huayra-title-editable-container:hover {
+    content: 'ADD';
+}
+
 
 .huayra-modal-track-title {
   width: 100%;
@@ -601,7 +588,6 @@ a.list-group-item:focus {
 }
 
 th.actions {
-  text-align: center;
   width: 200px;
 }
 
@@ -750,4 +736,22 @@ td.actions {
     min-height:35px !important;
     height:35px !important;
     max-height:35px !important;
+}
+
+
+.actions-column {
+  width: 200px;
+}
+
+.clickeable {
+  cursor: pointer;
+}
+
+.button-fixed-width-sm {
+  width: 90px;
+}
+
+
+.huayra-new-track-container {
+  margin-top: 4em;
 }

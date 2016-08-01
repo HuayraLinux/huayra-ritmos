@@ -4,15 +4,11 @@
     translucentOverlay=true}}
 
     <button class="close" {{action "closeEditTrackModal"}} title="Close the modal" data-test="modal-close" data-ember-action="742">
-      <span class="icon-close modal-close-btn">X</span>
+      <span class="icon-close modal-close-btn">{{fa-icon icon="times"}}</span>
       <span class="hidden">Close modal</span>
     </button>
 
-<h1 data-test="modal-title" class="huayra-modal-title">Propiedades de la pista</h1>
-
-<p class="huayra-modal-track-title">
-  Título: {{currentModalTrack.sound}}
-</p>
+<h1 data-test="modal-title" class="huayra-modal-title">Propiedades de la pista: {{currentModalTrack.sound}}</h1>
 
 <div class='slider'>
   Volúmen global: {{x-slider min=0 max=1 step=0.05 value=currentModalTrack.volume}}

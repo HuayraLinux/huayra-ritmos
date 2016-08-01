@@ -1,12 +1,26 @@
-<div class="main-title">
-  <div class="version">versión {{version.version}}</div>
-  <p>
-   <button {{action "new"}} id='crear-proyecto' class='btn btn-success pull-right btn-new'>{{fa-icon "plus"}} Crear un nuevo proyecto de ritmos </button>
-  </p>
+<div class="uk-flex">
+
+  <div>
+    <img src="img/huayra-ritmos-logo.png" alt="" />
+  </div>
+
+  <div>
+    <h2 class="titulo">Huayra Ritmos</h2>
+  </div>
+
+  <div class="uk-flex-item-1">
+    <div class="version">versión {{version.version}}</div>
+  </div>
+
 </div>
 
-<div class='main-content'></div>
 
-<div>
-  {{huayra-project-list model=model onDelete='deleteRecord'}}
+<div class='main-content'>
+
+  <button {{action "new"}} id="crear-proyecto" class="uk-button" type="button">{{fa-icon icon="plus"}} Crear un proyecto nuevo</button>
+
+  <div>
+    {{huayra-project-list model=model onDelete='deleteRecord'}}
+  </div>
+
 </div>
