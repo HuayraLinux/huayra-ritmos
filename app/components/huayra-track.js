@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+var path = requireNode('path');
+
 export default Ember.Component.extend({
   classNames: ['huayra-track'],
 
@@ -14,7 +16,7 @@ export default Ember.Component.extend({
       track_sound = this.get('track.sound').audioClip.file.replace(/^sounds\//,"");
     }
 
-    return track_sound.split('.')[0].split('/')[1];
+    return path.parse(track_sound).name;
   }),
 
   trackColor: Ember.computed('track.color', function() {
