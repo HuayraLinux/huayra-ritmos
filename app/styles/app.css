@@ -72,9 +72,14 @@ a.active {
   cursor:pointer;
 }
 
+.huayra-track-seleccionado {
+  box-shadow: 0px 0px 10px 2px;
+}
+
 /* Verde */
 .huayra-track-picker-verde,
 .huayra-track-id.huayra-track-verde {
+  color: #2ca089;
   background-color: #2ca089 !important;
 }
 .huayra-track-id.huayra-track-verde .huayra-sound-switch button,
@@ -92,6 +97,7 @@ a.active {
 /* Amarillo */
 .huayra-track-picker-amarillo,
 .huayra-track-id.huayra-track-amarillo {
+  color: #F2D600;
   background-color: #F2D600 !important;
 }
 .huayra-track-id.huayra-track-amarillo .huayra-sound-switch button,
@@ -109,6 +115,7 @@ a.active {
 /* Naranja */
 .huayra-track-picker-naranja,
 .huayra-track-id.huayra-track-naranja {
+  color: #FFAB4A;
   background-color: #FFAB4A !important;
 }
 .huayra-track-id.huayra-track-naranja .huayra-sound-switch button,
@@ -127,6 +134,7 @@ a.active {
 /* Rojo */
 .huayra-track-picker-rojo,
 .huayra-track-id.huayra-track-rojo {
+  color: #EB5A46;
   background-color: #EB5A46 !important;
 }
 .huayra-track-id.huayra-track-rojo .huayra-sound-switch button,
@@ -144,6 +152,7 @@ a.active {
 /* Violeta */
 .huayra-track-picker-violeta,
 .huayra-track-id.huayra-track-violeta {
+  color: #C377E0;
   background-color: #C377E0 !important;
 }
 .huayra-track-id.huayra-track-violeta .huayra-sound-switch button,
@@ -161,6 +170,7 @@ a.active {
 /* Azul */
 .huayra-track-picker-azul,
 .huayra-track-id.huayra-track-azul {
+  color: #0079BF;
   background-color: #0079BF !important;
 }
 
