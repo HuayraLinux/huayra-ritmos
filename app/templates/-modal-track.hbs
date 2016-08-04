@@ -14,35 +14,12 @@
   Volúmen global: {{x-slider min=0 max=1 step=0.05 value=currentModalTrack.volume}}
 </div>
 
-
-<div class="color-picker">
-  <p>Color de la pista</p>
-  {{log currentModalTrack}}
-  <span {{action "setTrackColor" 'verde'}}
-        class="huayra-track-color-picker huayra-track-picker-verde
-        {{if (is-equal currentModalTrack.color 'verde') 'huayra-track-seleccionado'}}">&nbsp;</span>
-  <span {{action "setTrackColor" 'amarillo'}}
-        class="huayra-track-color-picker huayra-track-picker-amarillo
-        {{if (is-equal currentModalTrack.color 'amarillo') 'huayra-track-seleccionado'}}">&nbsp;</span>
-  <span {{action "setTrackColor" 'naranja'}}
-        class="huayra-track-color-picker huayra-track-picker-naranja
-        {{if (is-equal currentModalTrack.color 'naranja') 'huayra-track-seleccionado'}}">&nbsp;</span>
-  <span {{action "setTrackColor" 'rojo'}}
-        class="huayra-track-color-picker huayra-track-picker-rojo
-        {{if (is-equal currentModalTrack.color 'rojo') 'huayra-track-seleccionado'}}">&nbsp;</span>
-  <span {{action "setTrackColor" 'violeta'}}
-        class="huayra-track-color-picker huayra-track-picker-violeta
-        {{if (is-equal currentModalTrack.color 'violeta') 'huayra-track-seleccionado'}}">&nbsp;</span>
-  <span {{action "setTrackColor" 'azul'}}
-        class="huayra-track-color-picker huayra-track-picker-azul
-        {{if (is-equal currentModalTrack.color 'azul') 'huayra-track-seleccionado'}}">&nbsp;</span>
-</div>
-
+{{huayra-color-picker color=currentModalTrack.color onColorSelected="setTrackColor"}}
 
 <div class="bottom-bar">
 
-  <button class='btn btn-default' {{action "closeEditTrackModal"}}>Aceptar</button>
-  <button class='btn btn-danger' {{action "removeTrack"}}> Eliminar pista</button>
+  <button class='uk-button uk-button-large' {{action "closeEditTrackModal"}}>Aceptar</button>
+  <button class='uk-button uk-button-large uk-button-danger' {{action "removeTrack"}}> Eliminar pista</button>
 </div>
 
 {{/modal-dialog}}
