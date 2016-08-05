@@ -35,6 +35,7 @@
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
     "ember-cli-inject-live-reload": "^1.4.0",
     "ember-cli-jshint": "^1.0.0",
+    "ember-cli-page-object": "1.5.0",
     "ember-cli-qunit": "^1.4.0",
     "ember-cli-release": "^0.2.9",
     "ember-cli-sass": "5.4.0",
@@ -93,5 +94,10 @@
       "ProductName": null,
       "InternalName": null
     }
+  },
+  "dependencies": {
+    "home-config": "^0.1.0",
+    "tar-stream": "^1.5.2",
+    "tmp": "0.0.28"
   }
 }
