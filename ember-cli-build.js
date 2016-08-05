@@ -9,7 +9,7 @@ module.exports = function(defaults) {
     });
 
 
-	app.import('bower_components/roboto-fontface/css/roboto-fontface.css');
+	app.import('bower_components/roboto-fontface/css/roboto/roboto-fontface.css');
 
 	app.import('bower_components/roboto-fontface/fonts/Roboto-Black.eot', {destDir: 'fonts'});
 	app.import('bower_components/roboto-fontface/fonts/Roboto-Black.svg', {destDir: 'fonts'});
