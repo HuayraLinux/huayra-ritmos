@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import service from '../service';
 
+let isNodeWebkit = false;
+
 export default Ember.Controller.extend({
   //modelFactory: Ember.inject.service(),
 

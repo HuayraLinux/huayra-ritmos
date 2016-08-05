@@ -1,15 +1,19 @@
 import Ember from 'ember';
 
+let isNodeWebkit = false;
+
 /**
  * Genera un menu para toolbar tomando precaucion de no fallar
  * si se ejecuta dentro de un navegador sin soporte para node.
  */
 function createMenu(options) {
 
+/*
   if (isNodeWebkit) {
     var gui = window.requireNode('nw.gui');
     return new gui.Menu(options);
   }
+*/
 
   return options || {};
 }
@@ -20,10 +24,12 @@ function createMenu(options) {
  */
 function createMenuItem(options) {
 
+/*
   if (isNodeWebkit) {
     var gui = window.requireNode('nw.gui');
     return new gui.MenuItem(options);
   }
+  */
 
   return options || {};
 }

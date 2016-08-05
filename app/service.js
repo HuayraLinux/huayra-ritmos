@@ -10,6 +10,8 @@ import Ember from 'ember';
 export default function service(nombre) {
   let modulo;
 
+  let isNodeWebkit = false;
+
   if (isNodeWebkit) {
     modulo = `${nombre}-nwjs`;
   } else {

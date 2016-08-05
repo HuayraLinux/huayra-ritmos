@@ -15,10 +15,12 @@ export default Ember.Controller.extend({
   }),
 
   writePID: Ember.on('init', function() {
+    /*
     if (isNodeWebkit) {
       let fs = requireNode('fs');
       fs.writeFileSync('/tmp/huayra-ritmos.pid', process.pid);
     }
+    */
   }),
 
   disableBackSpace: Ember.on('init', function() {

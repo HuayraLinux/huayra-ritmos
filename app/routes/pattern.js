@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import service from '../service';
 
+let isNodeWebkit = false;
+
 export default Ember.Route.extend({
   menu: Ember.inject.service(),
   audio: Ember.inject.service(),
@@ -13,7 +15,7 @@ export default Ember.Route.extend({
     // directamente contruye un track nuevo.
     return new Ember.RSVP.Promise((success) => {
 
-      this.store.find('pattern', params.pattern_id).
+      this.store.findRecord('pattern', params.pattern_id).
         then((model) => {
           success(model);
         }).
@@ -54,7 +56,7 @@ export default Ember.Route.extend({
     controller.set('unsavedChanges', false);
 
     controller.notifyEnterTransition();
-    document.title = model._data.title || "Sin título";
+    //document.title = model._data.title || "Sin título";
 
     this.get("history").visit(this.get('routeName'), model);
   },

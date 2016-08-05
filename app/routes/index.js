@@ -1,12 +1,14 @@
 import Ember from 'ember';
 
+let isNodeWebkit = false;
+
 export default Ember.Route.extend({
   menu: Ember.inject.service(),
   settings: Ember.inject.service(),
 
   model() {
     return new Ember.RSVP.Promise((resolve) => {
-      var patterns = this.store.find('pattern');
+      var patterns = this.store.findAll('pattern');
       var newArray = Ember.A();
 
       patterns.then((data) => {
@@ -41,5 +43,5 @@ export default Ember.Route.extend({
       this.refresh();
     }
   }
-  
+
 });
