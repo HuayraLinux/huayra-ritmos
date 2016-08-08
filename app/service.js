@@ -8,17 +8,16 @@ import Ember from 'ember';
  * normal (cuyo nombre termina con browser).
  */
 export default function service(nombre) {
+  let inElectron = (window && window.process && window.process.type);
   let modulo;
 
-  let isNodeWebkit = false;
-
-  debugger;
-
-  if (isNodeWebkit) {
+  if (inElectron === "renderer") {
     modulo = `${nombre}-electron`;
   } else {
     modulo = `${nombre}-browser`;
   }
+
+  console.log(`Inyectando servicio ${modulo}`);
 
   return Ember.inject.service(modulo);
 }

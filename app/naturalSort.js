@@ -1,4 +1,3 @@
-import Ember from 'ember';
 
 export default function naturalSort(a, b) {
   var re = /(^-?[0-9]+(\.?[0-9]*)[df]?e?[0-9]?$|^0x[0-9a-f]+$|[0-9]+)/gi,
