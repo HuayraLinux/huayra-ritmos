@@ -1,0 +1,4 @@
+Steps:
+{{#each steps as |stepslimit|}}
+    <input {{action "stepslimitChange" stepslimit.steps}} class="uk-button uk-button-mini" type="button" value="{{stepslimit.steps}}" disabled={{stepslimit.seleccionado}} />
+{{/each}}

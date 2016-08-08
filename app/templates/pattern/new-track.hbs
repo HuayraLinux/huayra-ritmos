@@ -15,9 +15,9 @@
     {{huayra-sound-selector onSelect="onSelectSound"}}
 
     <div class="bottom-bar">
-      <button class='btn btn-default' {{action "discardAndClose"}}>Cancelar</button>
-      <button disabled={{emptySelection}} class='btn btn-success' {{action "accept"}}> Agregar </button>
-      <button disabled={{emptySelection}} class='btn btn-success' {{action "acceptAndClose"}}> Agregar y cerrar</button>
+      <button class='uk-button uk-button-large uk-button-danger' {{action "discardAndClose"}}>Cancelar</button>
+      <button disabled={{emptySelection}} class='uk-button uk-button-large' {{action "accept"}}> Agregar </button>
+      <button disabled={{emptySelection}} class='uk-button uk-button-large uk-button-primary' {{action "acceptAndClose"}}> Agregar y cerrar</button>
     </div>
 
 {{/modal-dialog}}

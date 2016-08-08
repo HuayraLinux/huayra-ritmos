@@ -1,5 +1,13 @@
 import Ember from 'ember';
 
+/*
+ * TODO: Si el archivo tiene un nombre del estilo
+ * "soy.un.gran.archivo" la función devuelve "soy"
+ */
+function filenameFromPath(path) {
+  return /(?:[^\/]*\/)*([^\/\.]*)/.exec(path)[1];
+}
+
 export default Ember.Component.extend({
   classNames: ['huayra-track'],
 
@@ -14,7 +22,7 @@ export default Ember.Component.extend({
       track_sound = this.get('track.sound').audioClip.file.replace(/^sounds\//,"");
     }
 
-    return track_sound.split('.')[0].split('/')[1];
+    return filenameFromPath(track_sound);
   }),
 
   trackColor: Ember.computed('track.color', function() {

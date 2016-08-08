@@ -14,13 +14,13 @@
 <div class='center padding'>
 
   {{#if mustCloseWindowOnDismiss}}
-    <button class='btn btn-info' {{action "cancelAndDontCloseFromConfirmModal"}}> No cerrar </button>
-    <button class='btn btn-success' {{action "saveAndCloseFromConfirmModal"}}> Guardar y salir </button>
-    <button class='btn btn-danger' {{action "cancelAndCloseFromConfirmModal"}}> Descartar los cambios, y cerrar </button>
+    <button class='uk-button uk-button-large' {{action "cancelAndDontCloseFromConfirmModal"}}> No cerrar </button>
+    <button class='uk-button uk-button-large uk-button-primary' {{action "saveAndCloseFromConfirmModal"}}> Guardar y salir </button>
+    <button class='uk-button uk-button-large uk-button-danger' {{action "cancelAndCloseFromConfirmModal"}}> Descartar los cambios, y cerrar </button>
   {{else}}
-    <button class='btn btn-info' {{action "cancelAndDontCloseFromConfirmModal"}}> No cerrar </button>
-    <button class='btn btn-success' {{action "saveFromConfirmModal"}}> Guardar ahora </button>
-    <button class='btn btn-danger' {{action "cancelFromConfirmModal"}}> Descartar los cambios </button>
+    <button class='uk-button uk-button-large' {{action "cancelAndDontCloseFromConfirmModal"}}> No cerrar </button>
+    <button class='uk-button uk-button-large uk-button-primary' {{action "saveFromConfirmModal"}}> Guardar ahora </button>
+    <button class='uk-button uk-button-large uk-button-danger' {{action "cancelFromConfirmModal"}}> Descartar los cambios </button>
   {{/if}}
 
 </div>

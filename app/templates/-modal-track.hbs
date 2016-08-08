@@ -1,5 +1,5 @@
 {{#modal-dialog
-    close="closeConfirmModal"
+    close="closeEditTrackModal"
     targetAttachment="center"
     translucentOverlay=true}}
 
@@ -14,29 +14,12 @@
   Volúmen global: {{x-slider min=0 max=1 step=0.05 value=currentModalTrack.volume}}
 </div>
 
-
-<div class="color-picker">
-  <p>Color de la pista</p>
-
-  <span {{action "setTrackColor" 'verde'}}
-        class="huayra-track-color-picker huayra-track-picker-verde">&nbsp;</span>
-  <span {{action "setTrackColor" 'amarillo'}}
-        class="huayra-track-color-picker huayra-track-picker-amarillo">&nbsp;</span>
-  <span {{action "setTrackColor" 'naranja'}}
-        class="huayra-track-color-picker huayra-track-picker-naranja">&nbsp;</span>
-  <span {{action "setTrackColor" 'rojo'}}
-        class="huayra-track-color-picker huayra-track-picker-rojo">&nbsp;</span>
-  <span {{action "setTrackColor" 'violeta'}}
-        class="huayra-track-color-picker huayra-track-picker-violeta">&nbsp;</span>
-  <span {{action "setTrackColor" 'azul'}}
-        class="huayra-track-color-picker huayra-track-picker-azul">&nbsp;</span>
-</div>
-
+{{huayra-color-picker color=currentModalTrack.color onColorSelected="setTrackColor"}}
 
 <div class="bottom-bar">
 
-  <button class='btn btn-default' {{action "closeEditTrackModal"}}>Aceptar</button>
-  <button class='btn btn-danger' {{action "removeTrack"}}> Eliminar pista</button>
+  <button class='uk-button uk-button-large' {{action "closeEditTrackModal"}}>Aceptar</button>
+  <button class='uk-button uk-button-large uk-button-danger' {{action "removeTrack"}}> Eliminar pista</button>
 </div>
 
 {{/modal-dialog}}
