@@ -4,7 +4,7 @@ import service from '../service';
 let isNodeWebkit = false;
 
 export default Ember.Route.extend({
-  menu: Ember.inject.service(),
+  menu: service('menu'),
   audio: Ember.inject.service(),
   modelFactory: Ember.inject.service(),
   soundGallery: service('sound-gallery'),

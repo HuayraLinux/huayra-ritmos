@@ -1,9 +1,10 @@
 import Ember from 'ember';
+import service from '../service';
 
 let isNodeWebkit = false;
 
 export default Ember.Route.extend({
-  menu: Ember.inject.service(),
+  menu: service('menu'),
   settings: Ember.inject.service(),
 
   model() {

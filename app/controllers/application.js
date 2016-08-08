@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import service from '../service';
 
 export default Ember.Controller.extend({
-  menu: Ember.inject.service(),
+  menu: service('menu'),
   version: Ember.inject.service(),
   settings: Ember.inject.service(),
   showAbout: false,
