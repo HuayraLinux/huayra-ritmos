@@ -1,0 +1,13 @@
+{{#modal-dialog
+  close="closeEditTrackModal"
+  targetAttachment="center"
+  translucentOverlay=true}}
+
+<button class="close" {{action "closeEditTrackModal"}} title="Cerrar ventana" data-test="modal-close" data-ember-action="742">
+    <span class="icon-close modal-close-btn">{{fa-icon icon="times"}}</span>
+    <span class="hidden">Cerrar ventana</span>
+</button>
+
+{{huayra-edit-track track=currentModalTrack onSave="saveTrack" onRemove="removeTrack"}}
+
+{{/modal-dialog}}

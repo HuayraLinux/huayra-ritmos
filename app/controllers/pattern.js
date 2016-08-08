@@ -90,9 +90,8 @@ export default Ember.Controller.extend({
       });
     },
 
-    removeTrack() {
+    removeTrack(track) {
       let tracks = this.get('pattern.tracks');
-      let track = this.get('currentModalTrack');
 
       // Busca la posición del track para eliminar
       tracks.removeObject(track);
@@ -101,15 +100,18 @@ export default Ember.Controller.extend({
       this.send('closeEditTrackModal');
     },
 
-    setTrackColor(color) {
-      var track = this.get('currentModalTrack');
-      Ember.set(track, "color", color);
+    saveTrack(track, diff) {
+      Ember.set(track, 'volume', diff.volume);
+      Ember.set(track, 'sound', diff.sound);
+      Ember.set(track, 'color', diff.color);
+      /* Podríamos de verdad chequear si algo cambió */
+      this.send('onChange');
+      this.send('closeEditTrackModal');
     },
 
     closeEditTrackModal() {
       this.set('showEditTrack', false);
     },
-
 
     createNewTrackWithSound(sound) {
       var newTrack = {

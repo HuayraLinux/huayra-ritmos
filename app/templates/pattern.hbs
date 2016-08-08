@@ -6,9 +6,9 @@
 {{/if}}
 
 {{huayra-player recordTitle=model.title pattern=pattern player=player onChange="onChange"}}
-{{huayra-pattern pattern=pattern player=player onChange="onChange" onEditTrack='editTrack'}}
+{{huayra-pattern pattern=pattern player=player onChange="onChange" onEditTrack="editTrack"}}
 
-{{huayra-new-track pattern=pattern onNewTrack='newTrack' onChange="onChange"}}
+{{huayra-new-track pattern=pattern onNewTrack="newTrack" onChange="onChange"}}
 
 {{outlet}}
 
@@ -18,5 +18,5 @@
 {{/if}}
 
 {{#if showEditTrack}}
-  {{partial "modal-track"}}
+  {{partial "modal-edit-track"}}
 {{/if}}
