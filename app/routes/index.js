@@ -5,7 +5,7 @@ let isNodeWebkit = false;
 
 export default Ember.Route.extend({
   menu: service('menu'),
-  settings: Ember.inject.service(),
+  settings: service('settings'),
 
   model() {
     return new Ember.RSVP.Promise((resolve) => {
@@ -30,11 +30,9 @@ export default Ember.Route.extend({
 
     document.title = 'Huayra Ritmos';
 
-    if (isNodeWebkit) {
-      this.get('menu').index();
-      this.get('menu').itemAcercaDe.click = function () { appController.send('showAboutModal'); };
-      this.get('menu').itemConfigurar.click = function () { appController.send('showConfigModal'); };
-    }
+    this.get('menu').index();
+    this.get('menu').on('acerca_de', () => appController.send('showAboutModal'));
+    this.get('menu').on('configurar', () => appController.send('showConfigModal'));
 
   },
 

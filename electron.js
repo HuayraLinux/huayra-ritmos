@@ -8,7 +8,6 @@ const {app, BrowserWindow} = electron;
 const dirname              = __dirname || path.resolve(path.dirname());
 const emberAppLocation     = `file://${dirname}/dist/index.html`;
 
-
 let mainWindow = null;
 
 // Uncomment the lines below to enable Electron's crash reporter
@@ -45,6 +44,8 @@ app.on('ready', function onReady() {
     // config/environment.js file to 'hash'. For more information,
     // please consult the ember-electron readme.
     mainWindow.loadURL(emberAppLocation);
+    /* TODO: BORRAR */
+    mainWindow.openDevTools();
 
 
     // Create the Application's main menu

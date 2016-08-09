@@ -1,8 +1,9 @@
 import Ember from 'ember';
-import saturalSort from '../naturalSort';
+import naturalSort from '../naturalSort';
+import service from '../service';
 
 export default Ember.Service.extend({
-  settings: Ember.inject.service(),
+  settings: service('settings'),
   recorder: Ember.inject.service(),
   sounds: {},
   categories: [],
@@ -67,7 +68,6 @@ export default Ember.Service.extend({
 
       let title = name.replace('.wav', '');
       let audioClip = loadSound(path_to_filename);
-      audioClip.connect(this.get('recorder').get('input'));
 
       sounds[name] = {id: name,
                       title: title,
@@ -92,7 +92,6 @@ export default Ember.Service.extend({
     var path = window.requireNode('path');
     var basePath = this.getSoundPath();
     var userPath = this.getSoundUserPath();
-
     function isFolder(file) {
       return fs.statSync(path.join(basePath, file)).isDirectory();
     }

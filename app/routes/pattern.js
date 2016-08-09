@@ -71,14 +71,12 @@ export default Ember.Route.extend({
     var patternController = this.controllerFor("pattern");
     var appController = this.controllerFor("application");
 
-    if (isNodeWebkit) {
-      this.get('menu').pattern();
-      this.get('menu').itemGuardar.click     = function () { patternController.send('save'); };
-      this.get('menu').itemGuardarComo.click = function () { patternController.send('saveAs'); };
-      this.get('menu').itemExportar.click    = function () { patternController.send('exportar'); };
-      this.get('menu').itemCerrar.click      = function () { patternController.send('goIndex'); };
-      this.get('menu').itemAcercaDe.click    = function () { appController.send('showAboutModal'); };
-    }
+    this.get('menu').pattern();
+    /* TODO: URGENT: Hacer los off al dejar la ruta */
+    this.get('menu').on('guardar', () => patternController.send('save'));
+    this.get('menu').on('guardar_como', () =>  patternController.send('saveAs'));
+    this.get('menu').on('exportar', () => patternController.send('exportar'));
+    this.get('menu').on('cerrar', () => patternController.send('goIndex'));
 
   },
   afterModel() {

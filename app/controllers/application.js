@@ -4,7 +4,7 @@ import service from '../service';
 export default Ember.Controller.extend({
   menu: service('menu'),
   version: Ember.inject.service(),
-  settings: Ember.inject.service(),
+  settings: service('settings'),
   showAbout: false,
   showConfig: false,
   userPrefix: null,
