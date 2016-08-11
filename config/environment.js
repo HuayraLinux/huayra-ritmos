@@ -8,6 +8,10 @@ module.exports = function(environment) {
     locationType: 'hash',
     testMode: false,
     EmberENV: {
+    EXTEND_PROTOTYPES: {
+      Date: false,
+        Array: true
+    },
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
@@ -42,6 +46,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.locationType = 'hash';
+    ENV.baseUrl = '/huayra-ritmos/';
     ENV.locationType = 'hash';
     ENV.baseURL = '/huayra-ritmos/';
     ENV.baseURL = '/huayra-ritmos/';

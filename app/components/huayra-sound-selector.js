@@ -1,11 +1,11 @@
 import Ember from 'ember';
-import service from '../service';
+import {service} from '../service';
 
 export default Ember.Component.extend({
   active_id: null,
   classNames: ['ember-sound-selector'],
   audio: Ember.inject.service(),
-  settings: Ember.inject.service(),
+  settings: service('settings'),
   soundGallery: service('sound-gallery'),
   currentCategory: 'basicos',
 

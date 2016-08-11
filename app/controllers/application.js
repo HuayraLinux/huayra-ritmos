@@ -1,9 +1,10 @@
 import Ember from 'ember';
+import {service} from '../service';
 
 export default Ember.Controller.extend({
-  menu: Ember.inject.service(),
+  menu: service('menu'),
   version: Ember.inject.service(),
-  settings: Ember.inject.service(),
+  settings: service('settings'),
   showAbout: false,
   showConfig: false,
   userPrefix: null,
@@ -15,10 +16,12 @@ export default Ember.Controller.extend({
   }),
 
   writePID: Ember.on('init', function() {
+    /*
     if (isNodeWebkit) {
       let fs = requireNode('fs');
       fs.writeFileSync('/tmp/huayra-ritmos.pid', process.pid);
     }
+    */
   }),
 
   disableBackSpace: Ember.on('init', function() {

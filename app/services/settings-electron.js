@@ -7,8 +7,6 @@ export default Ember.Service.extend({
   getUserPrefix: null,
 
   init() {
-
-    if (isNodeWebkit) {
       this.set('userHome', (process.env.HOME || process.env.USERPROFILE).replace(/\/$/,''));
 
       let fs = window.requireNode('fs');
@@ -36,8 +34,6 @@ export default Ember.Service.extend({
 
       this.set('config', config);
       this.set('getUserPrefix', config.userPrefix);
-    }
-
   },
 
   setUserPrefix(newPath){
@@ -48,17 +44,7 @@ export default Ember.Service.extend({
   },
 
   getPrefix() {
-
-    if (isNodeWebkit) {
-      let fs = window.requireNode('fs');
-
-      if (fs.existsSync('../dist')) {
-        return "../dist/";
-      } else {
-        return "";
-      }
-    }
-
-    return "";
+    /* Tendría que hacer algo? */
+    return '';
   }
 });

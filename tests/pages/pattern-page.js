@@ -1,7 +1,7 @@
 import PageObject from 'huayra-ritmos/tests/page-object';
 
 let {
-  visitable,
+  /*visitable,*/
   clickable,
   count
 } = PageObject;

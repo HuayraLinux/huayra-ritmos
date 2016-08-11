@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import service from '../service';
+import {service, inElectron} from '../service';
 
 export default Ember.Controller.extend({
   //modelFactory: Ember.inject.service(),
@@ -14,44 +14,38 @@ export default Ember.Controller.extend({
   model: undefined,
   exportar: service('exportar'),
 
-  inBrowser: Ember.computed(function() {
-    return (! isNodeWebkit);
-  }),
-
   savedChanges: Ember.computed('unsavedChanges', function() {
     return (!this.get('unsavedChanges'));
   }),
 
   notifyEnterTransition() {
-    if (isNodeWebkit) {
-      var gui = window.requireNode('nw.gui');
-      var win = gui.Window.get();
+    if (inElectron) {
+      var win = require('electron').remote.getCurrentWindow();
 
-      win.on("close", () => {
-        this.onClose.call(this);
+      win.on("close", (event) => {
+        this.onClose(event);
       });
     }
   },
 
   notifyLeaveTransition() {
-    if (isNodeWebkit) {
-      var gui = window.requireNode('nw.gui');
-      var win = gui.Window.get();
+    if (inElectron) {
+      var win = require('electron').remote.getCurrentWindow();
 
       win.removeAllListeners('close');
     }
   },
 
   forceCloseWindow() {
-    var gui = window.requireNode('nw.gui');
-    var win = gui.Window.get();
-    win.close(true);
+    var win = require('electron').remote.getCurrentWindow();
+    win.destroy();
   },
 
-  onClose() {
+  onClose(event) {
 
     if (this.get('unsavedChanges')) {
       this.send('showUnsavedChangesDialog', true);
+      event.preventDefault();
     } else {
       this.forceCloseWindow();
     }
@@ -60,13 +54,13 @@ export default Ember.Controller.extend({
   /* TODO: Hacer model una propiedad */
   updateModel() {
     let content = JSON.stringify({player: this.get('player'), pattern: this.get('pattern')});
-    return this.get('model').set('content', content);
+    this.get('model').set('content', content);
+    return this.get('model');
   },
 
   actions: {
     save() {
-      this.updateModel();
-      var model = this.get('model');
+      var model = this.updateModel();
 
       model.save().then(() => {
         this.set('unsavedChanges', false);
@@ -74,13 +68,23 @@ export default Ember.Controller.extend({
     },
 
     saveAs() {
-      //this.get('modelFactory').get_initial_record();
-      var model = this.get('store').createRecord('pattern', {
-          title: (prompt("Ingresa el nuevo título", 'sin título') || 'sin título'),
-          content: this.updateModel().content,
-      });
+      let removeModal = () => this.send('removeModal');
 
-      model.save();
+      return new Ember.RSVP.Promise((resolve, reject) => {
+        this.send('showModal', 'modals/huayra-prompt', {
+          title: 'Ingresa el nuevo título',
+          cancel: reject,
+          close: reject,
+          accept: (title) => {
+            var model = this.get('store').createRecord('pattern', {
+                title: title,
+                content: this.updateModel().get('content')
+            });
+
+            model.save().then(resolve, reject);
+          }
+        });
+      }).then(removeModal, removeModal);
     },
 
     exportar() {

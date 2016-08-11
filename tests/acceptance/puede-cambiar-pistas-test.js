@@ -24,7 +24,7 @@ test('Puede cambiar pistas', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL().indexOf("pattern"), '1', "Ingresó a la ruta pattern");
-    assert.equal(2, patternPage.cantidadDePistas(), "Hay dos pistas inicialmente.");
+    assert.equal(patternPage.cantidadDePistas, 2, "Hay dos pistas inicialmente.");
   });
 
   andThen(function() {
@@ -40,7 +40,7 @@ test('Puede cambiar pistas', function(assert) {
   });
 
   andThen(function() {
-    assert.equal(3, patternPage.cantidadDePistas(), "Luego de agregar una pista, hay 3 en total.");
+    assert.equal(patternPage.cantidadDePistas, 3, "Luego de agregar una pista, hay 3 en total.");
   });
 
 });

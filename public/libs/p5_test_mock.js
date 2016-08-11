@@ -13,11 +13,23 @@ var loadSound = function() {
 
 p5.SoundRecorder = function() {
   console.log("mock SoundRecorder");
-  return {};
+  return {
+    setInput: function() {
+      console.log("mock SoundRecorder.setInput");
+    }
+  };
 };
 
 p5.SoundFile = function() {
   console.log("mock SoundFile");
   return {};
+};
+
+p5.soundOut = {
+  limiter: {
+    connect: function() {
+      console.log("mock p5.soundOut.limiter.connect");
+    }
+  }
 };
 

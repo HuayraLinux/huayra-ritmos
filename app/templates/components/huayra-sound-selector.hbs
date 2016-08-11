@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-xs-4">
     <div class="sound-category">
-      {{#each category in categories}}
+      {{#each categories as |category|}}
         <a href {{action "selectCategory" category}} class="list-group-item">{{category}}</a>
       {{/each}}
     </div>
   </div>
 
   <div class="col-xs-8">
-    {{#each sound in soundsInThisCategory}}
+    {{#each soundsInThisCategory as |sound|}}
       <a href {{action "select" sound}} class="list-group-item">{{sound.title}}</a>
     {{/each}}
   </div>

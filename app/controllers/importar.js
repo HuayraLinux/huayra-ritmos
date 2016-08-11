@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import service from '../service';
+import {service} from '../service';
 
 export default Ember.Controller.extend({
     exportar: service('exportar'),
@@ -28,6 +28,10 @@ export default Ember.Controller.extend({
             let record = this.get('store').createRecord('pattern', pattern.model);
 
             this.transitionToRoute('pattern', record);
+        },
+
+        cancelar() {
+            this.transitionToRoute('index');
         }
     }
 });

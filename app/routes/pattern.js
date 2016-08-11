@@ -1,19 +1,27 @@
 import Ember from 'ember';
-import service from '../service';
+import {service} from '../service';
 
 export default Ember.Route.extend({
-  menu: Ember.inject.service(),
+  menu: service('menu'),
   audio: Ember.inject.service(),
   modelFactory: Ember.inject.service(),
   soundGallery: service('sound-gallery'),
   history: Ember.inject.service(),
+
+  onInit: Ember.on('init', function() {
+    let sendToController = (action) => this.controllerFor('pattern').send(action);
+    this.get('menu').on('guardar',      () => sendToController('save'));
+    this.get('menu').on('guardar_como', () => sendToController('saveAs'));
+    this.get('menu').on('exportar',     () => sendToController('exportar'));
+    this.get('menu').on('cerrar',       () => sendToController('goIndex'));
+  }),
 
   model(params) {
     // Intenta cargar el modelo desde el ID de la URL o
     // directamente contruye un track nuevo.
     return new Ember.RSVP.Promise((success) => {
 
-      this.store.find('pattern', params.pattern_id).
+      this.store.findRecord('pattern', params.pattern_id).
         then((model) => {
           success(model);
         }).
@@ -54,7 +62,7 @@ export default Ember.Route.extend({
     controller.set('unsavedChanges', false);
 
     controller.notifyEnterTransition();
-    document.title = model._data.title || "Sin título";
+    //document.title = model._data.title || "Sin título";
 
     this.get("history").visit(this.get('routeName'), model);
   },
@@ -66,18 +74,8 @@ export default Ember.Route.extend({
   activate() {
     this.get('audio');
     this.get('settings');
-    var patternController = this.controllerFor("pattern");
-    var appController = this.controllerFor("application");
 
-    if (isNodeWebkit) {
-      this.get('menu').pattern();
-      this.get('menu').itemGuardar.click     = function () { patternController.send('save'); };
-      this.get('menu').itemGuardarComo.click = function () { patternController.send('saveAs'); };
-      this.get('menu').itemExportar.click    = function () { patternController.send('exportar'); };
-      this.get('menu').itemCerrar.click      = function () { patternController.send('goIndex'); };
-      this.get('menu').itemAcercaDe.click    = function () { appController.send('showAboutModal'); };
-    }
-
+    this.get('menu').pattern();
   },
   afterModel() {
     return this.get('soundGallery').loadSounds();

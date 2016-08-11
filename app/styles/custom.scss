@@ -1,7 +1,5 @@
 /* TODO: Revisar huayra-player-handler y huayra-bpm-step para el botón de grabar */
-@import url("./layout.css");
-@import url("./style.css");
-@import url("./animations/scale.css");
+
 
 html, body {
   margin: 20px;
@@ -764,4 +762,8 @@ td.actions {
 
 .huayra-new-track-container {
   margin-top: 4em;
+}
+
+#defaultCanvas {
+  display: none;
 }

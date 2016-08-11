@@ -10,6 +10,7 @@ export default Ember.Service.extend(Ember.Evented, {
   onInit: Ember.on('init', function() {
     this.set('recorder', new p5.SoundRecorder());
     this.set('file', new p5.SoundFile());
+    this.get('recorder').setInput(p5.soundOut.limiter);
     this.set('input', this.get('recorder').input);
   }),
 
