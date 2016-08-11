@@ -1,0 +1,9 @@
+{{#modal-dialog
+    close=model.close
+    targetAttachment="center"
+    translucentOverlay=true}}
+<h1>{{model.title}}</h1>
+{{input value=model.value}}
+<button {{action model.cancel}}>Cancelar</button>
+<button {{action model.accept model.value}}>Aceptar</button>
+{{/modal-dialog}}

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import service from '../service';
+import {service} from '../service';
 
 export default Ember.Controller.extend({
   menu: service('menu'),

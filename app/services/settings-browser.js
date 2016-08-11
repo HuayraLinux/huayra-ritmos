@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-let isNodeWebkit = false;
-
 export default Ember.Service.extend({
   userHome: '',
   configPath: '',

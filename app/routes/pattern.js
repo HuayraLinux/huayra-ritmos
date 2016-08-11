@@ -1,7 +1,5 @@
 import Ember from 'ember';
-import service from '../service';
-
-let isNodeWebkit = false;
+import {service} from '../service';
 
 export default Ember.Route.extend({
   menu: service('menu'),
@@ -9,6 +7,14 @@ export default Ember.Route.extend({
   modelFactory: Ember.inject.service(),
   soundGallery: service('sound-gallery'),
   history: Ember.inject.service(),
+
+  onInit: Ember.on('init', function() {
+    let sendToController = (action) => this.controllerFor('pattern').send(action);
+    this.get('menu').on('guardar',      () => sendToController('save'));
+    this.get('menu').on('guardar_como', () => sendToController('saveAs'));
+    this.get('menu').on('exportar',     () => sendToController('exportar'));
+    this.get('menu').on('cerrar',       () => sendToController('goIndex'));
+  }),
 
   model(params) {
     // Intenta cargar el modelo desde el ID de la URL o
@@ -68,16 +74,8 @@ export default Ember.Route.extend({
   activate() {
     this.get('audio');
     this.get('settings');
-    var patternController = this.controllerFor("pattern");
-    var appController = this.controllerFor("application");
 
     this.get('menu').pattern();
-    /* TODO: URGENT: Hacer los off al dejar la ruta */
-    this.get('menu').on('guardar', () => patternController.send('save'));
-    this.get('menu').on('guardar_como', () =>  patternController.send('saveAs'));
-    this.get('menu').on('exportar', () => patternController.send('exportar'));
-    this.get('menu').on('cerrar', () => patternController.send('goIndex'));
-
   },
   afterModel() {
     return this.get('soundGallery').loadSounds();

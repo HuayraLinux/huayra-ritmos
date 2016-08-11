@@ -2,20 +2,29 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['huayra-title-editable-container'],
+  modal: Ember.inject.service(),
+  value: '',
+  onChange: null,
+  onCancel: null,
+  showModal: null,
+  removeModal: null,
 
   mouseDown() {
-    var new_value = prompt("Ingresa el nuevo título", this.get('value'));
-
-    if (new_value) {
-
-      if (new_value === "") {
-        this.set('value', 'sin título');
-      } else {
-        this.set('value', new_value);
+    this.sendAction('showModal', 'modals/huayra-prompt', {
+      title: 'Ingrese el nuevo título',
+      value: this.get('value'),
+      accept: (value) => {
+        this.set('value', value === '' ? 'Sin título' : value);
+        this.sendAction('onChange');
+        this.sendAction('removeModal');
+      },
+      cancel: () => {
+        this.sendAction('onCancel');
+        this.sendAction('removeModal');
+      },
+      close: () => {
+        this.sendAction('removeModal');
       }
-
-      this.sendAction('onChange');
-    }
-
+    });
   }
 });

@@ -103,7 +103,7 @@ export default Ember.Service.extend({
     importar(path) {
         return new Ember.RSVP.Promise((resolve/*, reject*/) => {
             let ritmo = {};
-            let file = fs.createReadStream(path);
+            let file = require('fs').createReadStream(path);
             let gz = zlib.createGunzip();
             let proyecto = tar.extract();
 

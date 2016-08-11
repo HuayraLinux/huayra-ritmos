@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+let inElectron = (window && window.process && window.process.type) === "renderer";
+
 /* Este módulo implementa una inyección de dependencia
  * muy similar a ember.inject.service(), pero con un selector
  * de servicio dependiente del entorno: Si se ejecuta dentro
@@ -7,11 +9,10 @@ import Ember from 'ember';
  * en un navegador (o ejecutando tests) retornará el servicio
  * normal (cuyo nombre termina con browser).
  */
-export default function service(nombre) {
-  let inElectron = (window && window.process && window.process.type);
+function service(nombre) {
   let modulo;
 
-  if (inElectron === "renderer") {
+  if (inElectron) {
     modulo = `${nombre}-electron`;
   } else {
     modulo = `${nombre}-browser`;
@@ -21,3 +22,8 @@ export default function service(nombre) {
 
   return Ember.inject.service(modulo);
 }
+
+export {
+	service,
+	inElectron
+};

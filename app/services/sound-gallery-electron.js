@@ -1,13 +1,12 @@
 import Ember from 'ember';
 import naturalSort from '../naturalSort';
-import service from '../service';
+import {service} from '../service';
 
 export default Ember.Service.extend({
   settings: service('settings'),
   recorder: Ember.inject.service(),
   sounds: {},
   categories: [],
-  p5: null,
 
   getSoundsByCategory(category) {
     return this.get('sounds')[category];
@@ -113,7 +112,6 @@ export default Ember.Service.extend({
     this.set('categories', []);
 
     return new Ember.RSVP.Promise((success) => {
-      this.set('p5', new p5());
 
       this.reloadCategories();
 
