@@ -7,6 +7,7 @@ export default Ember.Component.extend({
   recordTitle: null,
 
   audio: Ember.inject.service(),
+  recorder: Ember.inject.service(),
   playing: false,
   timer: null,
 
@@ -96,6 +97,9 @@ export default Ember.Component.extend({
     let eventos = esperando.filter((evento) => evento[0] < ahora);
     /* El último es el último step reproducido*/
     eventos.forEach((evento) => this.set('player.currentStep', evento[1]));
+    /* Si hay uno o varios (varios???) steps del fin del pattern triggereo */
+    eventos.filter((evento) => evento[1] === 0)
+           .forEach(() => this.get('recorder').trigger('pattern-start'));
     return eventos.length;
   },
 
@@ -180,6 +184,28 @@ export default Ember.Component.extend({
           Ember.set(s, "disabled", true);
         });
       });
+    },
+
+    /*
+     *
+     */
+    toggleRecord() {
+      this.send('togglePlay', true);
+
+      if(this.get('recorder.recording')) {
+        this.get('recorder').cancelRecording();
+      } else {
+        this.get('recorder').record(
+          this.get('recordTitle'),
+          this.get('pattern.bpm'),
+          this.get('player.stepsLimit')
+        ).then((file) => {
+          this.send('togglePlay', false);
+          saveSound(file, this.get('recordTitle'));
+        }, () => {
+          this.send('togglePlay', false);
+        });
+      }
     }
   }
 });

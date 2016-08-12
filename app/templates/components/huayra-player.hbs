@@ -7,6 +7,12 @@
     <button {{action "togglePlay"}} id='play-button' class="uk-button button-fixed-width-sm">{{fa-icon icon="play"}} Play</button>
   {{/if}}
 
+  {{#if recorder.recording}}
+    <button class="uk-button uk-active" disabled>{{fa-icon icon="spinner" spin=true}} Grabando ...</button>
+  {{else}}
+    <button class="uk-button  button-fixed-width-sm" {{action "toggleRecord"}}>{{fa-icon icon="microphone"}} Grabar</button>
+  {{/if}}
+
 </div>
 
 
