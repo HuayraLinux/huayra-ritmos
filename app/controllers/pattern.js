@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
   player: {},      // se cargan desde el setupcontroller de route:pattern
   unsavedChanges: false,
 
+  inBrowser: !inElectron,
+
   showConfirmModal: false,
   showEditTrack: false,
   currentModalTrack: undefined,
@@ -19,21 +21,25 @@ export default Ember.Controller.extend({
   }),
 
   notifyEnterTransition() {
-    if (inElectron) {
-      var win = require('electron').remote.getCurrentWindow();
+    // if (inElectron) {
+    //   var win = require('electron').remote.getCurrentWindow();
 
-      win.on("close", (event) => {
-        this.onClose(event);
-      });
-    }
+    //   win.on("close", (event) => {
+    //     this.onClose(event);
+    //   });
+    // }
+    window.onbeforeunload = (e) => {
+      this.onClose(e);
+    };
   },
 
   notifyLeaveTransition() {
-    if (inElectron) {
-      var win = require('electron').remote.getCurrentWindow();
+    // if (inElectron) {
+    //   var win = require('electron').remote.getCurrentWindow();
 
-      win.removeAllListeners('close');
-    }
+    //   win.removeAllListeners('close');
+    // }
+    window.onbeforeunload = null;
   },
 
   forceCloseWindow() {
@@ -41,11 +47,10 @@ export default Ember.Controller.extend({
     win.destroy();
   },
 
-  onClose(event) {
-
+  onClose(e) {
     if (this.get('unsavedChanges')) {
       this.send('showUnsavedChangesDialog', true);
-      event.preventDefault();
+      e.returnValue = false; /* Cancelo la salida */
     } else {
       this.forceCloseWindow();
     }
@@ -62,7 +67,7 @@ export default Ember.Controller.extend({
     save() {
       var model = this.updateModel();
 
-      model.save().then(() => {
+      return model.save().then(() => {
         this.set('unsavedChanges', false);
       });
     },
