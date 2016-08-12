@@ -8,6 +8,25 @@ module.exports = function(defaults) {
     }
   });
 
+  app.import("bower_components/lato/css/lato.css");
+  app.import("bower_components/lato/font/lato-bold/lato-bold.ttf", {destDir: "font/lato-bold"});
+
+  app.import("bower_components/lato/font/lato-bold/lato-bold.ttf", {destDir: "font/lato-bold"});
+  app.import("bower_components/lato/font/lato-bold/lato-bold.woff", {destDir: "font/lato-bold"});
+  app.import("bower_components/lato/font/lato-bold/lato-bold.woff2", {destDir: "font/lato-bold"});
+
+  app.import("bower_components/lato/font/lato-hairline/lato-hairline.ttf", {destDir: "font/lato-hairline"});
+  app.import("bower_components/lato/font/lato-hairline/lato-hairline.woff", {destDir: "font/lato-hairline"});
+  app.import("bower_components/lato/font/lato-hairline/lato-hairline.woff2", {destDir: "font/lato-hairline"});
+
+  app.import("bower_components/lato/font/lato-light/lato-light.ttf", {destDir: "font/lato-light"});
+  app.import("bower_components/lato/font/lato-light/lato-light.woff", {destDir: "font/lato-light"});
+  app.import("bower_components/lato/font/lato-light/lato-light.woff2", {destDir: "font/lato-light"});
+
+  app.import("bower_components/lato/font/lato-regular/lato-regular.ttf", {destDir: "font/lato-regular"});
+  app.import("bower_components/lato/font/lato-regular/lato-regular.woff", {destDir: "font/lato-regular"});
+  app.import("bower_components/lato/font/lato-regular/lato-regular.woff2", {destDir: "font/lato-regular"});
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //
