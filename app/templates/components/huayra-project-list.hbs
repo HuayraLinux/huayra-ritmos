@@ -18,7 +18,10 @@
 
         <td>
           {{#link-to "pattern" pattern tagName="button" class="uk-button uk-button-mini"}} Abrir para editar {{/link-to}}
-          <button class="uk-button uk-button-danger uk-button-mini" {{action "delete" pattern}}> Eliminar </button>
+          <button class="uk-button uk-button-danger uk-button-mini"
+            {{action
+              (showModal "modals/huayra-srsly" accion="borrar este proyecto" ok=(action "delete" pattern))
+            }}> Eliminar </button>
         </td>
       </tr>
     {{/each}}
