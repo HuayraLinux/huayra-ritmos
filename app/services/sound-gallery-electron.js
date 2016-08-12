@@ -4,7 +4,6 @@ import {service} from '../service';
 
 export default Ember.Service.extend({
   settings: service('settings'),
-  recorder: Ember.inject.service(),
   sounds: {},
   categories: [],
 
