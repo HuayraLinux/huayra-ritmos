@@ -1,3 +1,3 @@
 {{#each pattern.tracks as |track index|}}
-  {{huayra-track index=index player=player track=track onChange='onChange' onEditTrack='onEditTrack' onRemoveTrack=onRemoveTrack}}
+  {{huayra-track index=index player=player track=track onChange='onChange' onEditTrack='onEditTrack' onRemoveTrack=onRemoveTrack isLastTrack=lonelyTrack}}
 {{/each}}

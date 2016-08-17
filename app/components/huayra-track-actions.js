@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   itsEmpty: false,
   onChange: null,
   onRemove: null,
+  isLastTrack: false,
 
   actions: {
     clean() {
