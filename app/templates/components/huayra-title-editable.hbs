@@ -1,1 +1,8 @@
-Título: {{value}}
+<p {{action (showModal "modals/huayra-prompt"
+		title="Ingrese el nuevo título"
+		value=value
+		accept=(action "accept")
+		cancel=(action "cancel")
+	)}}>
+	Título: {{value}}
+</p>

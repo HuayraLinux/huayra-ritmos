@@ -9,22 +9,15 @@ export default Ember.Component.extend({
   showModal: null,
   removeModal: null,
 
-  mouseDown() {
-    this.sendAction('showModal', 'modals/huayra-prompt', {
-      title: 'Ingrese el nuevo título',
-      value: this.get('value'),
-      accept: (value) => {
-        this.set('value', value === '' ? 'Sin título' : value);
-        this.sendAction('onChange');
-        this.sendAction('removeModal');
-      },
-      cancel: () => {
-        this.sendAction('onCancel');
-        this.sendAction('removeModal');
-      },
-      close: () => {
-        this.sendAction('removeModal');
-      }
-    });
+  actions: {
+    accept(value, closeModal) {
+      this.set('value', value === '' ? 'Sin título' : value);
+      this.sendAction('onChange');
+      closeModal();
+    },
+    cancel(closeModal) {
+      this.sendAction('onCancel');
+      closeModal();
+    }
   }
 });
