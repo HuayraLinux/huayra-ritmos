@@ -10,7 +10,7 @@ WM_CLASS="Huayra-Ritmos.nw";
 GRANDPARENT_PID=`which grandparent-pid`;
 SET_WMCLASS=`which set-wmclass`;
 
-nw ${APP_PATH} &
+electron ${APP_PATH} &
 sleep 5; # le damos un segundo a que escriba el pid
 
 # ahora si, obtenemos el pid

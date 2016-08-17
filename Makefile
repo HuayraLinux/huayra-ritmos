@@ -24,7 +24,6 @@ comandos:
 	@echo "  ${Y}Para distribuir${N}"
 	@echo ""
 	@echo "    ${G}version${N}             Genera una nueva versión."
-	@echo "    ${G}subir_version${N}       Sube version generada al servidor."
 	@echo "    ${G}log${N}                 Muestra los cambios desde el ultimo tag."
 	@echo "    ${G}publicar${N}            Publica el cambio para el paquete deb."
 	@echo ""
@@ -59,21 +58,7 @@ compilar_live:
 
 version:
 	# patch || minor
-	@bumpversion patch --current-version ${VERSION} public/package.dev.json public/package.prod.json public/package.json Makefile --list
-	make to_production
-	make build
-	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
-	@echo ""
-	@echo "make subir_version"
-
-ver_sync: subir_version
-
-subir_version:
-	git commit -am 'release ${VERSION}'
-	git tag '${VERSION}'
-	git push
-	git push --all
-	git push --tags
+	ember release
 
 log:
 	git log ${VERSION}...HEAD --graph --oneline --decorate
@@ -94,15 +79,5 @@ actualizar_theme:
 
 actualizar_web:
 	sh publishToGithubPages.sh
-
-a_produccion:
-	cp public/package.prod.json public/package.json
-
-a_desarrollo:
-	cp public/package.dev.json public/package.json
-
-to_develop: a_desarrollo
-
-to_production: a_produccion
 
 .PHONY: dist
