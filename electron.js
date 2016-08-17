@@ -45,7 +45,7 @@ app.on('ready', function onReady() {
     // please consult the ember-electron readme.
     mainWindow.loadURL(emberAppLocation);
     /* TODO: BORRAR */
-    mainWindow.openDevTools();
+    //mainWindow.openDevTools();
 
 
     // Create the Application's main menu
