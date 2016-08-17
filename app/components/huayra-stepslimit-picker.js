@@ -4,7 +4,7 @@ var _steps = [2, 4, 8, 12, 16];
 
 export default Ember.Component.extend({
     tagName: 'span',
-    classNames: ['uk-button-group'],
+    classNames: ['ui', 'icon', 'buttons', 'mini'],
     onStepslimitSelected: null,
     stepslimit: null,
     steps: Ember.computed('stepslimit', function() {

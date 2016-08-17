@@ -1,15 +1,19 @@
-<div class="row">
-  <div class="col-xs-4">
-    <div class="sound-category">
-      {{#each categories as |category|}}
-        <a href {{action "selectCategory" category}} class="list-group-item">{{category}}</a>
-      {{/each}}
-    </div>
+<div class="ui grid">
+  <div class="three wide column">
+      <div class="ui vertical fluid tabular menu">
+        {{#each categories as |category|}}
+          <a href class="item" {{action "selectCategory" category}}>{{category}}</a>
+        {{/each}}
+      </div>
   </div>
 
-  <div class="col-xs-8">
-    {{#each soundsInThisCategory as |sound|}}
-      <a href {{action "select" sound}} class="list-group-item">{{sound.title}}</a>
-    {{/each}}
+  <div class="thirteen wide column">
+    <table class="ui table">
+      {{#each soundsInThisCategory as |sound|}}
+        <tr>
+          <td href {{action "select" sound}} class="clickeable list-group-item">{{sound.title}}</td>
+        </tr>
+      {{/each}}
+    </table>
   </div>
 </div>
