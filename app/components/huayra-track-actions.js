@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['huayra-track-actions'],
   itsEmpty: false,
+  onChange: null,
+  onRemove: null,
 
   actions: {
     clean() {
@@ -13,6 +15,9 @@ export default Ember.Component.extend({
       });
 
       this.sendAction('onChange');
+    },
+    remove() {
+      this.sendAction('onRemove', this.get('track'));
     }
   },
 });

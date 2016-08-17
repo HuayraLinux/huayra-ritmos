@@ -6,7 +6,7 @@
 {{/if}}
 
 {{huayra-player recordTitle=model.title pattern=pattern player=player onChange="onChange"}}
-{{huayra-pattern pattern=pattern player=player onChange="onChange" onEditTrack="editTrack"}}
+{{huayra-pattern pattern=pattern player=player onChange="onChange" onEditTrack="editTrack" onRemoveTrack=(action "removeTrack")}}
 
 {{huayra-new-track pattern=pattern onNewTrack="newTrack" onChange="onChange"}}
 

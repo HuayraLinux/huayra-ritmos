@@ -63,13 +63,17 @@ export default Ember.Controller.extend({
     return this.get('model');
   },
 
+  save() {
+    var model = this.updateModel();
+
+    return model.save().then(() => {
+      this.set('unsavedChanges', false);
+    });
+  },
+
   actions: {
     save() {
-      var model = this.updateModel();
-
-      return model.save().then(() => {
-        this.set('unsavedChanges', false);
-      });
+      this.save();
     },
 
     saveAs() {
@@ -171,8 +175,7 @@ export default Ember.Controller.extend({
     },
 
     saveFromConfirmModal() {
-      this.send('save');
-      this.transitionToRoute('index');
+      this.save().then(() => this.transitionToRoute('index'));
     },
 
     cancelAndDontCloseFromConfirmModal() {
@@ -184,8 +187,7 @@ export default Ember.Controller.extend({
     },
 
     saveAndCloseFromConfirmModal() {
-      this.send('save');
-      this.forceCloseWindow();
+      this.save().then(() => this.forceCloseWindow());
     },
 
     cancelAndCloseFromConfirmModal() {
