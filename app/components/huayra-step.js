@@ -1,5 +1,16 @@
 import Ember from 'ember';
 
+function onlyOnce(f) {
+  let exec = false;
+  return () => {
+    if(exec) {
+      return;
+    }
+    exec = true;
+    return f();
+  };
+}
+
 export default Ember.Component.extend({
   audio: Ember.inject.service(),
   classNames: ['step', 'step-default', 'huayra-step'],
@@ -38,24 +49,28 @@ export default Ember.Component.extend({
   mouseEnter() {
     var track = this.get('track');
     if (track.paint) {
-      this.toggleProperty('step.active');
+      this.set('step.active', track.chequear);
       this.sendAction('onChange');
     }
   },
   didInsertElement: function() {
     var track = this.get('track');
     var step = this.$();
-    var track_elm = step.eq(0).parent();
 
     step.on('mousedown', () => {
+      let endDrag = onlyOnce(() => {
+          Ember.set(track, "paint", false);
+      });
       Ember.set(track, "paint", true);
-    }).on('mouseup', () => {
-      Ember.set(track, "paint", false);
+      /* Setea la intención del drag */
+      Ember.set(track, "chequear", !this.get('step.active'));
+      $(window).one('mouseup', endDrag);
+      $(window).one('blur', endDrag);
     });
-
+    /*
     track_elm.on('mouseleave', () => {
       Ember.set(track, "paint", false);
-    });
+    });*/
   }
 
 });
