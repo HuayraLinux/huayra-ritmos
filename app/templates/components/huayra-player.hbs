@@ -12,7 +12,7 @@
   </div>
   <div class="eight wide column text-right">
     <span class="huayra-player-bpm">
-        BPM: {{adjustable-number value=pattern.bpm min=40 max=200 onChange="onChange"}}
+        BPM: {{adjustable-number value=pattern.bpm min=40 max=360 onChange="onChange"}}
     </span>
     {{huayra-stepslimit-picker stepslimit=player.stepsLimit onStepslimitSelected="updateStepsLimit"}}
 
