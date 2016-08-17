@@ -1,8 +1,12 @@
 {{#modal-dialog
     close=close
     targetAttachment="center"
+    container-class="small-dialog"
     translucentOverlay=true}}
     <h1>¿Estás seguro de {{accion}}?</h1>
-    <button {{action 'ok'}}>{{si}}</button>
-    <button {{action 'cancel'}}>{{no}}</button>
+
+    <div class="button-container">
+      <button class="ui button" {{action 'ok'}}>{{si}}</button>
+      <button class="ui button red" {{action 'cancel'}}>{{no}}</button>
+    </div>
 {{/modal-dialog}}

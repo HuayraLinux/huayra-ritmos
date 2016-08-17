@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
     model: null,
     accion: value('model.accion', 'hacer esto'),
     si: value('model.si', '¡Sí!'),
-    no: value('model.no', '🤔 No'),
+    no: value('model.no', 'No, cancelar'),
     ok: value('model.ok', dummy),
     cancel: value('model.cancel', dummy),
     close: value('model.close', dummy),

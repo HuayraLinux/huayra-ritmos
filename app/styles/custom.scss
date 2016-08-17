@@ -515,6 +515,7 @@ a.list-group-item:focus {
   padding: 7px;
   height: calc(100% - 152px);
   background-color: rgb(237, 237, 237);
+  margin-top: 20px;
 }
 
 
@@ -697,4 +698,28 @@ td.actions {
 
 #defaultCanvas {
   display: none;
+}
+
+.main-container {
+  width: 854px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.small-dialog {
+  margin: auto !important;
+  width: 500px;
+  height: 200px;
+}
+
+.input {
+  width: 100%;
 }
