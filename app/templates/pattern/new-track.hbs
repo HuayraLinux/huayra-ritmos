@@ -3,9 +3,8 @@
     close="close"
     translucentOverlay=true}}
 
-    <button class="close" {{action "discardAndClose"}} title="Close the modal" data-test="modal-close" data-ember-action="742">
-      <span class="icon-close modal-close-btn">{{fa-icon icon="times"}}</span>
-      <span class="hidden">Close modal</span>
+    <button class="close ui button mini" {{action "discardAndClose"}} data-test="modal-close" data-ember-action="742">
+      <span><i class="close icon"></i></span>
     </button>
 
     <h1 data-test="modal-title" class="huayra-modal-title">Crear una pista</h1>
@@ -15,9 +14,9 @@
     {{huayra-sound-selector onSelect="onSelectSound"}}
 
     <div class="bottom-bar">
-      <button class='uk-button uk-button-large uk-button-danger' {{action "discardAndClose"}}>Cancelar</button>
-      <button disabled={{emptySelection}} class='uk-button uk-button-large' {{action "accept"}}> Agregar </button>
-      <button disabled={{emptySelection}} class='uk-button uk-button-large uk-button-primary' {{action "acceptAndClose"}}> Agregar y cerrar</button>
+      <button class='ui button' {{action "discardAndClose"}}>Cancelar</button>
+      <button disabled={{emptySelection}} class='ui button' {{action "accept"}}> Agregar </button>
+      <button disabled={{emptySelection}} class='ui button' {{action "acceptAndClose"}}> Agregar y cerrar</button>
     </div>
 
 {{/modal-dialog}}

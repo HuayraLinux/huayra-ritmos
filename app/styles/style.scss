@@ -45,18 +45,13 @@
   filter: alpha(opacity=20);
 }
 
-.modal .close:hover {
-  opacity: 0.4;
-  filter: alpha(opacity=40);
-}
-
-.icon-close:before {
-  content: '\00D7';
-}
-
 .modal .icon-close {
   text-align: center;
   text-decoration: none;
+}
+
+.close {
+  float: right;
 }
 
 .modal .hidden {

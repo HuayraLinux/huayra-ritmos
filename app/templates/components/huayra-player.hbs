@@ -1,26 +1,20 @@
-<div class='huayra-player-ui'>
-<div class='huayra-player-handler'>
+<div class="ui grid huayra-player-ui">
+  <div class="eight wide column">
+    <div class='huayra-player-handler'>
 
-  {{#if playing}}
-    <button {{action "togglePlay"}} id='stop-button' class="uk-button uk-active button-fixed-width-sm">{{fa-icon icon="stop"}} Stop</button>
-  {{else}}
-    <button {{action "togglePlay"}} id='play-button' class="uk-button button-fixed-width-sm">{{fa-icon icon="play"}} Play</button>
-  {{/if}}
+      {{#if playing}}
+        <button {{action "togglePlay"}} id='stop-button' class="ui button"><i class="icon stop"></i> Stop</button>
+      {{else}}
+        <button {{action "togglePlay"}} id='play-button' class="ui button"><i class="icon play"></i> Play</button>
+      {{/if}}
 
-</div>
+    </div>
+  </div>
+  <div class="eight wide column text-right">
+    <span class="huayra-player-bpm">
+        BPM: {{adjustable-number value=pattern.bpm min=40 max=200 onChange="onChange"}}
+    </span>
+    {{huayra-stepslimit-picker stepslimit=player.stepsLimit onStepslimitSelected="updateStepsLimit"}}
 
-
-
-<!--
-<div class='slider'>
-  {{input value=player.bpm type='range' min=40 max=200}}
-</div>
--->
-
-<div class="uk-panel">
-  <span class="huayra-player-bpm">
-    BPM: {{adjustable-number value=pattern.bpm min=40 max=200 onChange="onChange"}}
-  </span>
-  {{huayra-stepslimit-picker stepslimit=player.stepsLimit onStepslimitSelected="updateStepsLimit"}}
-</div>
+  </div>
 </div>

@@ -1,4 +1,3 @@
-Steps:
 {{#each steps as |stepslimit|}}
-    <input {{action "stepslimitChange" stepslimit.steps}} class="uk-button uk-button-mini" type="button" value="{{stepslimit.steps}}" disabled={{stepslimit.seleccionado}} />
+  <input {{action "stepslimitChange" stepslimit.steps}} class="ui button mini {{if stepslimit.seleccionado 'active'}}" type="button" value="{{stepslimit.steps}}" />
 {{/each}}
