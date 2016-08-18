@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # definir aqui los valores de la aplicacion
-APP_PATH="/usr/share/huayra-ritmos/dist";
+APP_PATH="/usr/share/huayra-ritmos";
 PID_FILE="/tmp/huayra-ritmos.pid";
 WM_CLASS="Huayra-Ritmos.nw";
 
