@@ -11,7 +11,10 @@
       window.isNodeWebkit = (typeof process == "object");
 
       window.getAudioContext = function() {
-        return {currentTime: 1};
+        return {
+          currentTime: 1,
+          IN_TEST_MODE: true
+        };
       };
     </script>
 

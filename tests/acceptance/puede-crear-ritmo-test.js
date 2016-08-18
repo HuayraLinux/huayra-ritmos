@@ -27,13 +27,23 @@ test('visiting /', function(assert) {
     assert.ok(patternPage.elPlayerEstaDetenido, "El player se encuentra inicialmente detenido.");
 
     patternPage.play();
+  });
+
+  andThen(function() {
     assert.ok(patternPage.elPlayerEstaReproduciendo, "Puede comenzar a reproducir.");
 
-    setTimeout(function() {
-      patternPage.stop();
-      assert.ok(patternPage.elPlayerEstaDetenido, "El player se pudo detener.");
-    }, 500);
+    /* Espera 2 segundos ... */
+    return new Ember.RSVP.Promise((success) => {
+      setTimeout(success, 2000);
+    });
+  });
 
+  andThen(function() {
+    patternPage.stop();
+  });
+
+  andThen(function() {
+    assert.ok(patternPage.elPlayerEstaDetenido, "El player se pudo detener.");
   });
 
 });
