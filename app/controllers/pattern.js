@@ -77,7 +77,6 @@ export default Ember.Controller.extend({
     },
 
     saveAs() {
-      let removeModal = () => this.send('removeModal');
 
       return new Ember.RSVP.Promise((resolve, reject) => {
         this.send('showModal', 'modals/huayra-prompt', {
@@ -85,15 +84,20 @@ export default Ember.Controller.extend({
           cancel: reject,
           close: reject,
           accept: (title) => {
-            var model = this.get('store').createRecord('pattern', {
+            let model = this.get('store').createRecord('pattern', {
                 title: title,
                 content: this.updateModel().get('content')
             });
+            let removeModal = () => this.send('removeModal');
+            let goToNewPattern = () => this.transitionToRoute('pattern', model);
 
-            model.save().then(resolve, reject);
+            model.save()
+              .then(removeModal)
+              .then(goToNewPattern)
+              .then(resolve, reject);
           }
         });
-      }).then(removeModal, removeModal);
+      });
     },
 
     exportar() {
