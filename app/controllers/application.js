@@ -52,6 +52,10 @@ export default Ember.Controller.extend({
       this.set('showConfig', false);
     },
 
+    abrirSitioDeHuayra() {
+      require("electron").shell.openExternal("http://huayra.conectarigualdad.gob.ar/");
+    },
+
     selectUserPrefix() {
       var settings = this.get('settings');
       var self = this;

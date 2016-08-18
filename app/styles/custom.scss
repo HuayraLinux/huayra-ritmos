@@ -398,8 +398,6 @@ div.slider {
   margin: 0;
   padding: 0;
   line-height: 3;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .version {
@@ -718,8 +716,13 @@ td.actions {
   margin: auto !important;
   width: 500px;
   height: 200px;
+  margin-top: 10% !important;
 }
 
 .input {
   width: 100%;
+}
+
+.item-version {
+  font-weight: bold;
 }

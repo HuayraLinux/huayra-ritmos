@@ -3,23 +3,22 @@
     targetAttachment="center"
     translucentOverlay=true}}
 
-    <button class="close" {{action "closeConfigModal"}} title="Close the modal" data-test="modal-close" data-ember-action="742">
-      <span class="icon-close modal-close-btn">{{fa-icon icon="times"}}</span>
-      <span class="hidden">Close modal</span>
+    <button class="close ui button mini" {{action "closeConfigModal"}} data-test="modal-close" data-ember-action="742">
+      <span><i class="close icon"></i></span>
     </button>
 
-<h1 data-test="modal-title" class="huayra-modal-title">Configuraciones</h1>
+    <h1 data-test="modal-title" class="huayra-modal-title">Configuraciones</h1>
 
 
     <label for="inputUserPrefix">Directorio personal de <em>kits de sonidos</em></label>:
     <code class="userprefix-dir"> {{ userPrefix }} </code>
     <br>
     <input type="file" webkitdirectory id="inputUserPrefix" style="display:none;" />
-    <button class='uk-button uk-button-large uk-button-primary' {{action "selectUserPrefix"}}>Seleccionar nuevo directorio</button>
+    <button class='ui button' {{action "selectUserPrefix"}}>Seleccionar nuevo directorio</button>
 
 
-<div class="bottom-bar">
-  <button class='uk-button uk-button-large' {{action "closeConfigModal"}}>Aceptar</button>
-</div>
+    <div class="bottom-bar">
+      <button class='ui button' {{action "closeConfigModal"}}>Aceptar</button>
+    </div>
 
 {{/modal-dialog}}

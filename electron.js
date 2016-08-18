@@ -21,9 +21,7 @@ let mainWindow = null;
 // });
 
 app.on('window-all-closed', function onWindowAllClosed() {
-    if (process.platform !== 'darwin') {
         app.quit();
-    }
 });
 
 app.on('ready', function onReady() {
@@ -44,8 +42,6 @@ app.on('ready', function onReady() {
     // config/environment.js file to 'hash'. For more information,
     // please consult the ember-electron readme.
     mainWindow.loadURL(emberAppLocation);
-    /* TODO: BORRAR */
-    //mainWindow.openDevTools();
 
 
     // Create the Application's main menu
