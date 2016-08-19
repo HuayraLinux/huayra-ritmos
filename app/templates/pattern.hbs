@@ -1,4 +1,4 @@
-{{huayra-title-editable value=model.title onChange="onChange"}}
+{{huayra-title-editable value=model.title onChange="onChange" unsaved=unsavedChanges}}
 
 {{#if inBrowser}}
   <button class="ui button" {{action "goIndex"}}><i class="angle left icon"></i> Volver</button>
