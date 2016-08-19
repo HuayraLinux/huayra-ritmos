@@ -5,10 +5,6 @@ node_js:
 
 sudo: false
 
-cache:
-  directories:
-    - node_modules
-
 addons:
   apt:
     sources:
@@ -24,6 +20,7 @@ python:
   - "2.7"
 
 before_install:
+  - npm config set registry http://registry.npmjs.org/
   - python --version
   - npm config set spin false
   - npm install -g node-gyp
