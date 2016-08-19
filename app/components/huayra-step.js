@@ -67,10 +67,10 @@ export default Ember.Component.extend({
       $(window).one('mouseup', endDrag);
       $(window).one('blur', endDrag);
     });
-    /*
-    track_elm.on('mouseleave', () => {
-      Ember.set(track, "paint", false);
-    });*/
+  },
+  willDestroyElement() {
+    var step = this.$();
+    step.off('mousedown');
   }
 
 });
