@@ -25,6 +25,7 @@
     "fs",
     "p5",
     "requireNode",
+    "__dirname",
     "isNodeWebkit"
   ],
   "node": false,
