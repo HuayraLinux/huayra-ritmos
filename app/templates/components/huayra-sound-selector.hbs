@@ -2,16 +2,20 @@
   <div class="three wide column">
       <div class="ui vertical fluid tabular menu">
         {{#each categories as |category|}}
-          <a href class="item" {{action "selectCategory" category}}>{{category}}</a>
+          <a href class="item {{if category.selected "active"}}" {{action "selectCategory" category.name}}>
+            {{category.name}}
+          </a>
         {{/each}}
       </div>
   </div>
 
   <div class="thirteen wide column">
     <table class="ui table">
-      {{#each soundsInThisCategory as |sound|}}
+      {{#each sounds as |sound|}}
         <tr>
-          <td href {{action "select" sound}} class="clickeable list-group-item">{{sound.title}}</td>
+          <td class="clickeable list-group-item {{if sound.selected "active"}}" {{action "select" sound}}>
+            {{sound.title}}
+          </td>
         </tr>
       {{/each}}
     </table>

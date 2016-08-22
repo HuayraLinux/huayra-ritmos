@@ -7,6 +7,23 @@ export default Ember.Service.extend({
   sounds: {},
   categories: [],
 
+  onInit: Ember.on('init', function() {
+    this.set('sounds', {});
+    this.set('categories', []);
+
+    var loadProcess = new Ember.RSVP.Promise((success) => {
+      this.reloadCategories();
+
+      this.getCategories().forEach((category) => {
+        this.get('sounds')[category] = this.readSoundFilesFromFolder(category);
+      });
+
+      success();
+    });
+
+    this.set('loadSounds', () => loadProcess);
+  }),
+
   getSoundsByCategory(category) {
     return this.get('sounds')[category];
   },
@@ -106,21 +123,7 @@ export default Ember.Service.extend({
   },
 
   loadSounds() {
-
-    this.set('sounds', {});
-    this.set('categories', []);
-
-    return new Ember.RSVP.Promise((success) => {
-
-      this.reloadCategories();
-
-      this.getCategories().forEach((category) => {
-        this.get('sounds')[category] = this.readSoundFilesFromFolder(category);
-      });
-
-      setTimeout(success, 1000);
-    });
-
+    // Lo genera onInit por como quedó el router
   },
 
 });

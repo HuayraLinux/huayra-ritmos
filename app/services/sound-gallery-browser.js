@@ -5,6 +5,25 @@ export default Ember.Service.extend({
   settings: service('settings'),
   sounds: {},
   categories: [],
+
+  onInit: Ember.on('init', function() {
+    this.set('sounds', {});
+    this.set('categories', []);
+
+    var loadProcess = new Ember.RSVP.Promise((success) => {
+
+      this.get('categories').pushObject('basicos');
+      this.get("sounds")['basicos'] = {};
+      this.add_fixed_sound("basicos", "000_drum1.wav");
+      this.add_fixed_sound("basicos", "002_drum3.wav");
+      this.add_fixed_sound("basicos", "bombo.wav");
+
+      success();
+    });
+
+    this.set('loadSounds', () => loadProcess);
+  }),
+
   getSoundsByCategory(category) {
     return this.get('sounds')[category];
   },
@@ -39,21 +58,7 @@ export default Ember.Service.extend({
 
 
   loadSounds() {
-
-    this.set('sounds', {});
-    this.set('categories', []);
-
-    return new Ember.RSVP.Promise((success) => {
-
-      this.get('categories').pushObject('basicos');
-      this.get("sounds")['basicos'] = {};
-      this.add_fixed_sound("basicos", "000_drum1.wav");
-      this.add_fixed_sound("basicos", "002_drum3.wav");
-      this.add_fixed_sound("basicos", "bombo.wav");
-
-      setTimeout(success, 1000);
-    });
-
+    // Lo genera onInit por como quedó el router
   },
 
 

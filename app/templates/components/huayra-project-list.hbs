@@ -17,7 +17,7 @@
 
         <td>
           {{#link-to "pattern" pattern tagName="button" class="ui button mini"}} Abrir para editar {{/link-to}}
-          <button class="ui button mini"
+          <button class="ui button mini red"
           {{action
             (showModal "modals/huayra-srsly" accion="borrar este proyecto" ok=(action "delete" pattern))
           }}> Eliminar </button>

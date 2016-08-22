@@ -17,7 +17,7 @@ export default Ember.Service.extend({
             { enabled: true,
               paint: false,
               color: "verde",
-              sound: 'basicos/000_drum1.wav',
+              sound: 'sounds/basicos/000_drum1.wav',
               volume: 1,
               steps: [
                         {active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false},
@@ -28,7 +28,7 @@ export default Ember.Service.extend({
             { enabled: true,
               paint: false,
               color: "amarillo",
-              sound: 'basicos/002_drum3.wav',
+              sound: 'sounds/basicos/002_drum3.wav',
               volume: 1,
               steps: [
                         {active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false}, { active: false, variant: true, disabled:false},
