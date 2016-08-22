@@ -23,9 +23,9 @@ module.exports = function(defaults) {
   app.import("bower_components/lato/font/lato-light/lato-light.woff", {destDir: "font/lato-light"});
   app.import("bower_components/lato/font/lato-light/lato-light.woff2", {destDir: "font/lato-light"});
 
-  app.import("bower_components/lato/font/lato-thin/lato-thin.ttf", {destDir: "font/lato-light"});
-  app.import("bower_components/lato/font/lato-thin/lato-thin.woff", {destDir: "font/lato-light"});
-  app.import("bower_components/lato/font/lato-thin/lato-thin.woff2", {destDir: "font/lato-light"});
+  app.import("bower_components/lato/font/lato-thin/lato-thin.ttf", {destDir: "font/lato-thin"});
+  app.import("bower_components/lato/font/lato-thin/lato-thin.woff", {destDir: "font/lato-thin"});
+  app.import("bower_components/lato/font/lato-thin/lato-thin.woff2", {destDir: "font/lato-thin"});
 
   app.import("bower_components/lato/font/lato-regular/lato-regular.ttf", {destDir: "font/lato-regular"});
   app.import("bower_components/lato/font/lato-regular/lato-regular.woff", {destDir: "font/lato-regular"});
