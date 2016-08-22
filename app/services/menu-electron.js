@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Menu} = require('electron').remote;
+const {Menu, getCurrentWindow} = require('electron').remote;
 
 export default Ember.Service.extend(Ember.Evented, {
   // menu principal
@@ -53,6 +53,14 @@ export default Ember.Service.extend(Ember.Evented, {
           {
             label: 'Configuraciones',
             click: this.trigger.bind(this, 'configurar'),
+            enabled: true
+          },
+          {
+            label: 'Abrir las herramientas de desarrollo',
+            accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+            click: function() {
+              getCurrentWindow().toggleDevTools();
+            },
             enabled: true
           }
         ]
