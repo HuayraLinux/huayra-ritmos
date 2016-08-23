@@ -84,12 +84,17 @@ export default Ember.Service.extend({
         let path_to_filename = `${path}/${name}`;
 
       let title = name.replace(VALID_EXTENSIONS, '');
-      let audioClip = loadSound(path_to_filename);
-
-      /* Si el audio es muy largo supongo que es un loop */
-      if(audioClip.duration() > 3) {
-        audioClip.playMode('restart');
-      }
+      let audioClip = loadSound(path_to_filename, (sound) => {
+        /*
+         * Cuándo termina de cargar todo reviso si es suficientemente
+         * largo como para no estar en sustain
+         */
+        console.log(sound.duration());
+        if(sound.duration() > 1.5) {
+          console.log("TRIGGERED ON", sound);
+          sound.playMode('restart');
+        }
+      });
 
       sounds[name] = {id: name,
                       title: title,
