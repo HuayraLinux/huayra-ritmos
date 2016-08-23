@@ -2,6 +2,8 @@ import Ember from 'ember';
 import naturalSort from '../naturalSort';
 import {service} from '../service';
 
+const VALID_EXTENSIONS = /\.(?:wav|ogg|mp3)$/;
+
 export default Ember.Service.extend({
   settings: service('settings'),
   sounds: {},
@@ -70,10 +72,10 @@ export default Ember.Service.extend({
       else if( fs.existsSync(`${userPath}/${foldername}`) ){
         path = `${userPath}/${foldername}`;
       }
-   }
+    }
 
-   var files = fs.readdirSync(path).filter((e) => {
-     return e.indexOf('.wav') > 0;
+   var files = fs.readdirSync(path).filter((file) => {
+     return VALID_EXTENSIONS.test(file);
    });
 
     files.sort(naturalSort);
@@ -81,8 +83,13 @@ export default Ember.Service.extend({
     files.forEach((name) => {
         let path_to_filename = `${path}/${name}`;
 
-      let title = name.replace('.wav', '');
+      let title = name.replace(VALID_EXTENSIONS, '');
       let audioClip = loadSound(path_to_filename);
+
+      /* Si el audio es muy largo supongo que es un loop */
+      if(audioClip.duration() > 3) {
+        audioClip.playMode('restart');
+      }
 
       sounds[name] = {id: name,
                       title: title,

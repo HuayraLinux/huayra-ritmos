@@ -14,8 +14,8 @@
     {{huayra-sound-selector onSelect="onSelectSound"}}
 
     <div class="bottom-bar">
-      <button disabled={{emptySelection}} class='ui button' {{action "accept"}}> Agregar </button>
-      <button disabled={{emptySelection}} class='ui button' {{action "acceptAndClose"}}> Agregar y cerrar</button>
+      <button disabled={{emptySelection}} class='ui button primary' {{action "acceptAndClose"}}>Agregar y cerrar</button>
+      <button disabled={{emptySelection}} class='ui button' {{action "accept"}}>Agregar</button>
       <button class='ui button' {{action "discardAndClose"}}>Cancelar</button>
     </div>
 
