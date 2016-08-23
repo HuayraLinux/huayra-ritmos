@@ -1,7 +1,7 @@
 {
   "name": "huayra-ritmos",
-  "version": "0.9.4",
-  "description": "Small description for huayra-ritmos goes here",
+  "version": "0.9.5",
+  "description": "huayra-ritmos es un software que permite armar patrones rítmicos son un secuenciador de 16 steps",
   "private": true,
   "directories": {
     "doc": "doc",
