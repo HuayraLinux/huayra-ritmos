@@ -89,9 +89,7 @@ export default Ember.Service.extend({
          * Cuándo termina de cargar todo reviso si es suficientemente
          * largo como para no estar en sustain
          */
-        console.log(sound.duration());
         if(sound.duration() > 1.5) {
-          console.log("TRIGGERED ON", sound);
           sound.playMode('restart');
         }
       });
