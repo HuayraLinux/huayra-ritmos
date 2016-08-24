@@ -31,6 +31,10 @@ module.exports = function(defaults) {
   app.import("bower_components/lato/font/lato-regular/lato-regular.woff", {destDir: "font/lato-regular"});
   app.import("bower_components/lato/font/lato-regular/lato-regular.woff2", {destDir: "font/lato-regular"});
 
+  app.import("bower_components/lato/font/lato-italic/lato-italic.ttf", {destDir: "font/lato-italic"});
+  app.import("bower_components/lato/font/lato-italic/lato-italic.woff", {destDir: "font/lato-italic"});
+  app.import("bower_components/lato/font/lato-italic/lato-italic.woff2", {destDir: "font/lato-italic"});
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //
