@@ -24,22 +24,14 @@ export default Ember.Service.extend({
     this.set('loadSounds', () => loadProcess);
   }),
 
-  getSoundsByCategory(category) {
-    return this.get('sounds')[category];
-  },
-
   getSoundsByCategoryAsList(category) {
-    var dictionary = this.getSoundsByCategory(category);
+    var dictionary = this.get('sounds')[category];
 
     var values = Object.keys(dictionary).map(function(key){
       return dictionary[key];
     });
 
     return values;
-  },
-
-  getCategories() {
-    return this.get('categories');
   },
 
   getAudioClip(audioThing){

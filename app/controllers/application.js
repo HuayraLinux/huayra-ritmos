@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
   settings: service('settings'),
   showAbout: false,
   showConfig: false,
-  userPrefix: null,
+  userSounds: Ember.computed.alias('settings.userSounds'),
 
   import: Ember.on('init', function() {
     this.get('menu').on('importar', () => {
@@ -43,8 +43,6 @@ export default Ember.Controller.extend({
     },
 
     showConfigModal() {
-      var settings = this.get('settings');
-      this.set('userPrefix', settings.getUserPrefix);
       this.set('showConfig', true);
     },
 
@@ -57,11 +55,8 @@ export default Ember.Controller.extend({
     },
 
     selectUserPrefix() {
-      var settings = this.get('settings');
-      var self = this;
-      $('#inputUserPrefix').trigger('click').on('change', function(/*e*/){
-        self.set('userPrefix', $(this).val());
-        settings.setUserPrefix($(this).val());
+      $('#inputUserPrefix').trigger('click').on('change', (event) => {
+        this.set('userSounds', event.target.files[0].path);
       });
     }
   }

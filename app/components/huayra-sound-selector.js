@@ -34,7 +34,7 @@ export default Ember.Component.extend({
   }),
 
   categoryNames: Ember.computed('soundGallery', function() {
-    return this.get('soundGallery').getCategories();
+    return this.get('soundGallery.categories');
   }),
 
   categories: Ember.computed('categoryNames.@each', 'currentCategory', function() {
