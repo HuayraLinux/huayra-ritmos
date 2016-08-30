@@ -66,8 +66,29 @@ export default Ember.Controller.extend({
   save() {
     var model = this.updateModel();
 
-    return model.save().then(() => {
-      this.set('unsavedChanges', false);
+    /* Si hay alguno con el mismo nombre le digo al usuario, sino guardo */
+    return model.save().then(() => this.set('unsavedChanges', false));
+    /*
+    return this.get('store').query('pattern', {title: model.get('title')}).then((proyectos) => {
+      if(proyectos !== null) {
+        this.prompt('Ya existe un proyecto de ritmos con ese nombre').then(() => this.save());
+      } else {
+        model.save().then(() => {
+          this.set('unsavedChanges', false);
+        });
+      }
+    });*/
+  },
+
+  /* TODO: Meter esto y un par de cosas así en una lib posta de utilidades modales */
+  prompt(title) {
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      this.send('showModal', 'modals/huayra-prompt', {
+        title: title,
+        cancel: reject,
+        close: reject,
+        accept: resolve
+      });
     });
   },
 
@@ -77,27 +98,19 @@ export default Ember.Controller.extend({
     },
 
     saveAs() {
+      let removeModal = () => this.send('removeModal');
 
-      return new Ember.RSVP.Promise((resolve, reject) => {
-        this.send('showModal', 'modals/huayra-prompt', {
-          title: 'Ingresa el nuevo título',
-          cancel: reject,
-          close: reject,
-          accept: (title) => {
-            let model = this.get('store').createRecord('pattern', {
-                title: title,
-                content: this.updateModel().get('content')
-            });
-            let removeModal = () => this.send('removeModal');
-            let goToNewPattern = () => this.transitionToRoute('pattern', model);
-
-            model.save()
-              .then(removeModal)
-              .then(goToNewPattern)
-              .then(resolve, reject);
-          }
+      return this.prompt('Ingresá un nuevo título').then((title) => {
+        let model = this.get('store').createRecord('pattern', {
+          title: title,
+          content: this.updateModel().get('content')
         });
-      });
+        let goToNewPattern = () => this.transitionToRoute('pattern', model);
+
+        model.save()
+          .then(removeModal)
+          .then(goToNewPattern);
+      }, removeModal);
     },
 
     exportar() {
