@@ -65,19 +65,9 @@ export default Ember.Controller.extend({
 
   save() {
     var model = this.updateModel();
-
-    /* Si hay alguno con el mismo nombre le digo al usuario, sino guardo */
-    return model.save().then(() => this.set('unsavedChanges', false));
-    /*
-    return this.get('store').query('pattern', {title: model.get('title')}).then((proyectos) => {
-      if(proyectos !== null) {
-        this.prompt('Ya existe un proyecto de ritmos con ese nombre').then(() => this.save());
-      } else {
-        model.save().then(() => {
-          this.set('unsavedChanges', false);
-        });
-      }
-    });*/
+    return model
+      .save()
+      .then(() => this.set('unsavedChanges', false));
   },
 
   /* TODO: Meter esto y un par de cosas así en una lib posta de utilidades modales */
@@ -89,7 +79,7 @@ export default Ember.Controller.extend({
         close: reject,
         accept: resolve
       });
-    });
+    }).finally(() => this.send('removeModal'));
   },
 
   actions: {
@@ -98,8 +88,6 @@ export default Ember.Controller.extend({
     },
 
     saveAs() {
-      let removeModal = () => this.send('removeModal');
-
       return this.prompt('Ingresá un nuevo título').then((title) => {
         let model = this.get('store').createRecord('pattern', {
           title: title,
@@ -107,10 +95,9 @@ export default Ember.Controller.extend({
         });
         let goToNewPattern = () => this.transitionToRoute('pattern', model);
 
-        model.save()
-          .then(removeModal)
+        return model.save()
           .then(goToNewPattern);
-      }, removeModal);
+      });
     },
 
     exportar() {
