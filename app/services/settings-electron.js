@@ -25,7 +25,7 @@ export default Ember.Service.extend({
         let absPath = path.resolve(homeConfig.homeDir, dir);
         /* Si no existe lo creo */
         if (!fs.existsSync(absPath)) {
-          fs.mkdirSync(dir);
+          fs.mkdirSync(absPath);
         }
         return dir;
       }, '');
