@@ -22,6 +22,11 @@ test('visiting /', function(assert) {
     visit().
     crearUnNuevoProyecto();
 
+
+  andThen(function() {
+    indexPage.colocarTitulo("Otro demo");
+  });
+
   andThen(function() {
     assert.equal(currentURL().indexOf("pattern"), '1', "Ingresó a la ruta pattern");
     assert.ok(patternPage.elPlayerEstaDetenido, "El player se encuentra inicialmente detenido.");

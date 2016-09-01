@@ -20,7 +20,8 @@ module('Acceptance | puede cambiar pistas', {
 test('Puede cambiar pistas', function(assert) {
   indexPage.
     visit().
-    crearUnNuevoProyecto();
+    crearUnNuevoProyecto().
+    colocarTitulo("Demo");
 
   andThen(function() {
     assert.equal(currentURL().indexOf("pattern"), '1', "Ingresó a la ruta pattern");

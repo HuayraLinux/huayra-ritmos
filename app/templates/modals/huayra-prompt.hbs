@@ -8,14 +8,14 @@
 <h5>{{note}}</h5>
 
 <div class="ui input">
-  {{input value=model.value}}
+  {{input value=model.value id="prompt-value"}}
 </div>
 
 <div class="button-container">
-  <button disabled={{isInvalid}} class="ui button primary" {{action model.accept model.value model.close}}>
+  <button id="prompt-aceptar" disabled={{isInvalid}} class="ui button primary" {{action model.accept model.value model.close}}>
     Aceptar
   </button>
-  <button class="ui button" {{action model.cancel model.close}}>Cancelar</button>
+  <button id="prompt-cancelar" class="ui button" {{action model.cancel model.close}}>Cancelar</button>
 </div>
 
 {{/modal-dialog}}
