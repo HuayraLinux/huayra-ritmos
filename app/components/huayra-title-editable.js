@@ -1,23 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  modal: Ember.inject.service(),
   classNames: ['huayra-title-editable-container'],
-  store: Ember.inject.service(),
   value: '',
   onChange: null,
   onCancel: null,
   showModal: null,
   removeModal: null,
-
-  validarTitulo(title) {
-    return this.get('store').query('pattern', {title: title}).then((proyectos) => {
-      if(proyectos !== null) {
-        /* Si ya hay uno igual no es válido */
-        return proyectos.get('length') <= 0;
-      }
-      return true;
-    }, () => true);
-  },
 
   actions: {
     accept(value, closeModal) {
@@ -30,10 +20,10 @@ export default Ember.Component.extend({
       closeModal();
     },
     validate(title) {
-      return this.validarTitulo(title);
+      return this.get('modal').validarTitulo(title);
     },
     notas(title) {
-      return this.validarTitulo(title).then((valido) => valido? '': 'Ya hay un proyecto con ese nombre');
+      return this.get('modal').validarTitulo(title).then((valido) => valido ? '' : 'Ya hay un proyecto con ese nombre');
     }
   }
 });

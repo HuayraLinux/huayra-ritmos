@@ -14,6 +14,7 @@ export default Ember.Controller.extend({
   showEditTrack: false,
   currentModalTrack: undefined,
   model: undefined,
+  modal: Ember.inject.service(),
   exportar: service('exportar'),
 
   savedChanges: Ember.computed('unsavedChanges', function() {
@@ -65,22 +66,11 @@ export default Ember.Controller.extend({
 
   save() {
     var model = this.updateModel();
-    return model
-      .save()
+    return model.save()
       .then(() => this.set('unsavedChanges', false));
   },
 
   /* TODO: Meter esto y un par de cosas así en una lib posta de utilidades modales */
-  prompt(title) {
-    return new Ember.RSVP.Promise((resolve, reject) => {
-      this.send('showModal', 'modals/huayra-prompt', {
-        title: title,
-        cancel: reject,
-        close: reject,
-        accept: resolve
-      });
-    }).finally(() => this.send('removeModal'));
-  },
 
   actions: {
     save() {
@@ -88,7 +78,14 @@ export default Ember.Controller.extend({
     },
 
     saveAs() {
-      return this.prompt('Ingresá un nuevo título').then((title) => {
+      let validar = (titulo) =>
+        this.get('modal').validarTitulo(titulo);
+
+      let notas = (titulo) =>
+        this.get('modal').validarTitulo(titulo)
+          .then((valido) => valido ? '' : 'Ya hay un proyecto con ese nombre');
+
+      return this.get('modal').prompt('Ingresá un nuevo título', validar, notas).then((title) => {
         let model = this.get('store').createRecord('pattern', {
           title: title,
           content: this.updateModel().get('content')
