@@ -14,25 +14,27 @@ export default Ember.Service.extend({
   }),
 
   init() {
-      // Si no existen los directorios, los creamos
-      configPath
-        .replace(/\/[^\/]*$/, '') /* Quito el archivo al final */
-        .split('/') /* Separo los nombres de cada directorio */
-        .reduce((basedir, child) => {
-          /* Tomo el basedir y le agrego el directorio hijo */
-          let dir = path.join(basedir, child);
-          /* Si no existe lo creo */
-          if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-          }
-          return dir;
-        }, '');
+    var homeConfig = require('home-config');
+    // Si no existen los directorios, los creamos
+    configPath
+      .replace(/\/[^\/]*$/, '') /* Quito el archivo al final */
+      .split('/') /* Separo los nombres de cada directorio */
+      .reduce((basedir, child) => {
+        /* Tomo el basedir y le agrego el directorio hijo */
+        let dir = path.join(basedir, child);
+        let absPath = path.resolve(homeConfig.homeDir, dir);
+        /* Si no existe lo creo */
+        if (!fs.existsSync(absPath)) {
+          fs.mkdirSync(dir);
+        }
+        return dir;
+      }, '');
 
-      let config = require('home-config').load(configPath, {
-        userSounds: '~/Música/Huayra Ritmos/Sonidos'
-      });
-      config.save();
+    let config = homeConfig.load(configPath, {
+      userSounds: '~/Música/Huayra Ritmos/Sonidos'
+    });
+    config.save();
 
-      this.set('config', config);
+    this.set('config', config);
   },
 });
