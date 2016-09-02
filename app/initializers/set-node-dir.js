@@ -5,7 +5,7 @@ export function initialize(/* application */) {
   let inElectron = (window && window.process && window.process.type) === "renderer";
 
   if(inElectron) {
-  	process.chdir('dist');
+  	process.chdir(__dirname);
   }
 }
 

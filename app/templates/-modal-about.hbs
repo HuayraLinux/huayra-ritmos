@@ -3,28 +3,27 @@
     targetAttachment="center"
     translucentOverlay=true}}
 
-
-    <button class="close" {{action "closeAboutModal"}} title="Close the modal" data-test="modal-close" data-ember-action="742">
-      <span class="icon-close modal-close-btn">{{fa-icon icon="times"}}</span>
-      <span class="hidden">Close modal</span>
+    <button class="close ui button mini" {{action "closeAboutModal"}} data-test="modal-close" data-ember-action="742">
+      <span><i class="close icon"></i></span>
     </button>
 
-<div class="main-title">
-  <div class="version">versión {{version.version}}</div>
-</div>
-<div>
-<p>Huayra Ritmos es una aplicación para definir patrones rítmicos</p>
-<p>Actualmente contiene 3 "packs" de sonidos:</p>
-<ul>
-        <li>Básicos</li>
-        <li>bits - 8bit</li>
-        <li>Alchemist - Breakbeat / Jungle</li>
-</ul>
-</div>
+    <h1 data-test="modal-title" class="huayra-modal-title">Acerca de ...</h1>
+
+    <p class='item-version'>Versión: {{app-version}}</p>
+
+    <div>
+      <p>Huayra Ritmos es una aplicación para definir patrones rítmicos,
+      componer ritmos de batería, música electrónica y más.
+      </p>
+
+      <p>El proyecto ha sido desarrollo por el equipo de desarrollo
+        de <a href target="_blank" {{action "abrirSitioDeHuayra"}}>Huayra GNU/Linux</a>.</p>
+
+    </div>
 
     <div class="bottom-bar">
-      <button class='uk-button uk-button-large' {{action "closeAboutModal"}}>Aceptar</button>
+      <button class='ui button' {{action "closeAboutModal"}}>Aceptar</button>
     </div>
 
 
-{{/modal-dialog}}
+    {{/modal-dialog}}

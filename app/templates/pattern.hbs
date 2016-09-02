@@ -1,12 +1,12 @@
-{{huayra-title-editable value=model.title onChange="onChange" showModal="showModal" removeModal="removeModal"}}
+{{huayra-title-editable value=model.title onChange="onChange" unsaved=unsavedChanges}}
 
-{{#if inBrowser}}
-  <button class="uk-button" {{action "goIndex"}}>{{fa-icon icon="fa-chevron-left"}} Volver</button>
-  <button disabled={{savedChanges}} class="uk-button" {{action "save"}}>{{fa-icon icon="fa-save"}} Guardar</button>
-{{/if}}
+<div>
+  <button class="ui button" {{action "goIndex"}}><i class="angle left icon"></i> Volver</button>
+  <button disabled={{savedChanges}} class="ui button" {{action "save"}}><i class="save icon"></i> Guardar</button>
+</div>
 
 {{huayra-player recordTitle=model.title pattern=pattern player=player onChange="onChange"}}
-{{huayra-pattern pattern=pattern player=player onChange="onChange" onEditTrack="editTrack"}}
+{{huayra-pattern pattern=pattern player=player onChange="onChange" onEditTrack="editTrack" onRemoveTrack=(action "removeTrack")}}
 
 {{huayra-new-track pattern=pattern onNewTrack="newTrack" onChange="onChange"}}
 

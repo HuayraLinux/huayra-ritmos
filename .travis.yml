@@ -1,21 +1,33 @@
 ---
 language: node_js
 node_js:
-  - "4"
+  - "4.2"
 
 sudo: false
 
-cache:
-  directories:
-    - node_modules
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+env:
+  global:
+    - CXX=g++-4.8
+
+python:
+  - "2.7"
 
 before_install:
+  - npm config set registry http://registry.npmjs.org/
+  - python --version
   - npm config set spin false
+  - npm install -g node-gyp
   - npm install -g bower
   - npm install phantomjs-prebuilt
 
 install:
-  - npm install -g bower
   - npm install
   - bower install
 

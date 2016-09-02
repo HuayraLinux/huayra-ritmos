@@ -16,21 +16,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-  font-family: "Roboto" !important;
+  font-family: "Lato" !important;
 }
-
-h1, h2, h3 {
-  font-weight: 100 !important;
-}
-
-h2 small {
-  font-weight: 100 !important;
-}
-
-
-a.active {
-}
-
 
 .huayra-step {
   color: red;
@@ -57,7 +44,6 @@ a.active {
 
 /* Colores de pistas */
 .color-picker{
-  margin-top:20px;
 }
 .huayra-track-color-picker {
   -webkit-border-radius: 2px;
@@ -212,46 +198,6 @@ p.huayra-track-name {
   border-radius: 0 0 8px 8px;
 }
 
-input[type=range] {
-  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  width: 100%; /* Specific width is required for Firefox. */
-}
-
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
-
-input[type=range]:focus {
-  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-}
-
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: 2px solid #006f9d;
-  border-left-width: 1px;
-  border-right-width: 1px;
-  height: 30px;
-  width: 12px;
-  border-radius: 5px;
-  background: #22beff;
-  cursor: pointer;
-  margin-top: -12px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  background: -webkit-linear-gradient(left, #006f9d 0%,#75d6ff 50%,#006f9d 100%);
-  border-radius: 1.3px;
-  border: 0;
-}
-
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: -webkit-linear-gradient(left, #006f9d 0%,#75d6ff 50%,#7db9e8 100%);
-}
-
-
 * {
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -381,26 +327,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 
 .huayra-player-ui{
-    display:block;
-    clear:both;
-    height:50px;
+  display:block;
+  clear:both;
 }
 
 .huayra-player-handler {
   display: inline-block;
-  /*
-  width: 100px;
-  font-size: x-small;
-  */
 }
-
-/*
-span.huayra-player-bpm,
-span.huayra-player-step {
-  color: #d7f4ee;
-  background-color: #004455;
-}
-*/
 
 .huayra-player-bpm-step{
   color: #d7f4ee;
@@ -418,8 +351,7 @@ span.huayra-player-bpm {
 }
 
 span.huayra-player-bpm .adjustable-number {
-  border-bottom: 1px dashed #d7f4ee !important;
-  color: #d7f4ee;
+  border-bottom: 1px dashed #46f !important;
 }
 
 span.huayra-player-step {
@@ -466,8 +398,6 @@ div.slider {
   margin: 0;
   padding: 0;
   line-height: 3;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .version {
@@ -476,8 +406,7 @@ div.slider {
   padding-top: 75px;
   font-size: 1em;
   color: gray;
-  font-family: "Roboto" !important;
-  font-weight: 300;
+  font-family: "Lato" !important;
 }
 
 .main-content {
@@ -523,9 +452,10 @@ div.slider {
   margin: 10px 0;
   padding: 0;
   font-size: 1.2em;
-  font-weight: 200 !important;
+  font-weight: 400 !important;
   width: 100%;
   vertical-align: middle;
+  color: gray;
 }
 
 .huayra-title-editable-container:hover {
@@ -584,6 +514,7 @@ a.list-group-item:focus {
   padding: 7px;
   height: calc(100% - 152px);
   background-color: rgb(237, 237, 237);
+  margin-top: 20px;
 }
 
 
@@ -748,7 +679,7 @@ td.actions {
 
 
 .actions-column {
-  width: 200px;
+  width: 220px;
 }
 
 .clickeable {
@@ -766,4 +697,33 @@ td.actions {
 
 #defaultCanvas {
   display: none;
+}
+
+.main-container {
+  width: 854px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.small-dialog {
+  margin: auto !important;
+  width: 500px;
+  height: 200px;
+  margin-top: 10% !important;
+}
+
+.input {
+  width: 100%;
+}
+
+.item-version {
+  font-weight: bold;
 }

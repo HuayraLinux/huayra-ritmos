@@ -1,6 +1,7 @@
-<p>Color de la pista</p>
+<p>Color de la pista
 {{#each colores as |color|}}
 <span {{action "colorSelected" color.nombre}}
     class="huayra-track-color-picker huayra-track-picker-{{color.nombre}}
     {{if color.seleccionado "huayra-track-seleccionado"}}">&nbsp;</span>
 {{/each}}
+</p>

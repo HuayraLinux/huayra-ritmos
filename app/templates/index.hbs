@@ -1,23 +1,19 @@
-<div class="uk-flex">
+<div class="ui grid">
+  <div class="row">
+    <div class="two wide column">
+      <img src="img/huayra-ritmos-logo.png" alt="" />
+    </div>
 
-  <div>
-    <img src="img/huayra-ritmos-logo.png" alt="" />
+    <div class="twelve wide column">
+      <h2 class="titulo">Huayra Ritmos</h2>
+    </div>
   </div>
-
-  <div>
-    <h2 class="titulo">Huayra Ritmos</h2>
-  </div>
-
-  <div class="uk-flex-item-1">
-    <div class="version">versión {{version.version}}</div>
-  </div>
-
 </div>
 
 
 <div class='main-content'>
 
-  <button {{action "new"}} id="crear-proyecto" class="uk-button" type="button">{{fa-icon icon="plus"}} Crear un proyecto nuevo</button>
+  <button {{action "new"}} id="crear-proyecto" class="ui button" type="button"><i class="plus icon"></i> Crear un proyecto nuevo</button>
 
   <div>
     {{huayra-project-list model=model onDelete='deleteRecord'}}

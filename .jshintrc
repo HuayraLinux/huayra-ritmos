@@ -12,8 +12,8 @@
     "saveSound", // p5sound
     "getAudioContext", // WebAudio
     "$",
-    "fs",
     "requireNode",
+    "__dirname",
     "isNodeWebkit"
   ],
   "browser": true,

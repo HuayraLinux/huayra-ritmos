@@ -2,126 +2,108 @@ import Ember from 'ember';
 import naturalSort from '../naturalSort';
 import {service} from '../service';
 
+/* Consideración importante: LAS CATEGORÍAS NO PUEDEN LLEVAR UN . EN EL NOMBRE */
+const quitarPuntos = (str) => str.replace(/\./g, '');
+
+const fs = require('fs');
+const path = require('path');
+const VALID_EXTENSIONS = /\.(?:wav|ogg|mp3)$/;
+
 export default Ember.Service.extend({
   settings: service('settings'),
   recorder: Ember.inject.service(),
   sounds: {},
   categories: [],
+  folders: {}, // Hash con la forma <category>: <folder>
 
-  getSoundsByCategory(category) {
-    return this.get('sounds')[category];
-  },
+
+  onInit: Ember.on('init', function() {
+    var loadProcess = new Ember.RSVP.Promise((success) => {
+      this.loadCategories();
+
+      this.get('categories').forEach((category) => {
+        this.get('sounds')[category] = this.loadCategory(category);
+      });
+
+      success();
+    });
+
+    this.set('loadSounds', () => loadProcess);
+  }),
 
   getSoundsByCategoryAsList(category) {
-    var dictionary = this.getSoundsByCategory(category);
-
-    var values = Object.keys(dictionary).map(function(key){
-      return dictionary[key];
-    });
+    var dictionary = this.get('sounds')[category]; // SoundsByCategory
+    var values = Object.keys(dictionary).map((key) => dictionary[key]);
 
     return values;
   },
 
-  getCategories() {
-    return this.get('categories');
-  },
-
   getAudioClip(audioThing){
-   var audioClip;
-
-   if(typeof(audioThing) === "string"){
-    var category = audioThing.split('/')[0];
-    var filename = audioThing.split('/')[1];
-    audioClip = this.get('sounds')[category][filename].audioClip;
-   }
-    else{
-     audioClip = audioThing.audioClip;
-   }
-   return audioClip;
+    if(typeof(audioThing) === "string"){
+      var [category, filename] = audioThing.split('/');
+      return this.get('sounds')[quitarPuntos(category)][filename].audioClip;
+    } else {
+      return audioThing.audioClip;
+    }
   },
 
-  readSoundFilesFromFolder(foldername) {
-    var fs = window.requireNode('fs');
+  loadCategory(category) {
     var sounds = {};
-    var path = "";
-    var basePath = this.getSoundPath();
-    var userPath = this.getSoundUserPath();
+    var folder = Ember.get(this.get('folders'), category);
 
-    if (foldername) {
-      if( fs.existsSync(`${basePath}/${foldername}`) ){
-        path = `${basePath}/${foldername}`;
-      }
-      else if( fs.existsSync(`${userPath}/${foldername}`) ){
-        path = `${userPath}/${foldername}`;
-      }
-   }
-
-   var files = fs.readdirSync(path).filter((e) => {
-     return e.indexOf('.wav') > 0;
-   });
+    var files = fs.readdirSync(folder).filter((filename) => {
+      return VALID_EXTENSIONS.test(filename);
+    });
 
     files.sort(naturalSort);
 
-    files.forEach((name) => {
-        let path_to_filename = `${path}/${name}`;
+    files.forEach((filename) => {
+      let filepath = path.join(folder, filename);
 
-      let title = name.replace('.wav', '');
-      let audioClip = loadSound(path_to_filename);
+      let title = filename.replace(VALID_EXTENSIONS, '');
+      let audioClip = loadSound(filepath, (sound) => {
+        /*
+         * Cuándo termina de cargar todo reviso si es suficientemente
+         * largo como para no estar en sustain
+         */
+        if(sound.duration() > 1.5) {
+          sound.playMode('restart');
+        }
+      });
 
-      sounds[name] = {id: name,
-                      title: title,
-                      category: foldername,
-                      audioClip: audioClip,
-                      };
+      sounds[filename] = {
+        id: name,
+        title: title,
+        category: category,
+        audioClip: audioClip,
+      };
     });
 
     return sounds;
   },
 
-  getSoundPath() {
-    var prefix = this.get('settings').getPrefix();
-    return `${prefix}sounds`;
-  },
-  getSoundUserPath() {
-    return this.get('settings').getUserPrefix;
-  },
+  loadCategories() {
+    var isFolder = (folder) => fs.statSync(folder).isDirectory();
 
-  reloadCategories() {
-    var fs = window.requireNode('fs');
-    var path = window.requireNode('path');
-    var basePath = this.getSoundPath();
-    var userPath = this.getSoundUserPath();
-    function isFolder(file) {
-      return fs.statSync(path.join(basePath, file)).isDirectory();
-    }
-    function isUserFolder(file) {
-      return fs.statSync(path.join(userPath, file)).isDirectory();
-    }
-
-    fs.readdirSync(basePath).filter(isFolder).forEach((e) => {
-      this.get('categories').pushObject(e);
-    });
-    fs.readdirSync(userPath).filter(isUserFolder).forEach((e) => {
-      this.get('categories').pushObject(e);
-    });
+    var systemSounds = this.get('settings.systemSounds');
+    var userSounds = this.get('settings.userSounds');
+    [].concat(systemSounds)
+      .concat(userSounds)
+      .filter(fs.existsSync)
+      .filter(isFolder)
+      .forEach((folder) => {
+        fs.readdirSync(folder)
+          .filter((category) => isFolder(path.join(folder, category)))
+          .forEach((category) => {
+            const categoryName = quitarPuntos(category);
+            this.get('categories').pushObject(categoryName);
+            Ember.set(this.get('folders'), categoryName, path.join(folder, category));
+          });
+      });
   },
 
   loadSounds() {
-
-    this.set('sounds', {});
-    this.set('categories', []);
-
-    return new Ember.RSVP.Promise((success) => {
-
-      this.reloadCategories();
-
-      this.getCategories().forEach((category) => {
-        this.get('sounds')[category] = this.readSoundFilesFromFolder(category);
-      });
-
-      setTimeout(success, 1000);
-    });
-
+    // Lo genera onInit por como quedó el router
   },
 
 });

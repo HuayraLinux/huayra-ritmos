@@ -14,5 +14,5 @@
     {{huayra-step index=index player=player sound=track.sound step=step track=track onChange='onChange'}}
   {{/each}}
 
-  {{huayra-track-actions track=track onChange='onChange'}}
+  {{huayra-track-actions track=track onChange='onChange' onRemove=onRemoveTrack isLastTrack=isLastTrack}}
 </div>

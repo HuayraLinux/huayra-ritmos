@@ -14,6 +14,7 @@ export default Ember.Controller.extend({
   showEditTrack: false,
   currentModalTrack: undefined,
   model: undefined,
+  modal: Ember.inject.service(),
   exportar: service('exportar'),
 
   savedChanges: Ember.computed('unsavedChanges', function() {
@@ -63,33 +64,37 @@ export default Ember.Controller.extend({
     return this.get('model');
   },
 
+  save() {
+    var model = this.updateModel();
+    return model.save()
+      .then(() => this.set('unsavedChanges', false));
+  },
+
+  /* TODO: Meter esto y un par de cosas así en una lib posta de utilidades modales */
+
   actions: {
     save() {
-      var model = this.updateModel();
-
-      return model.save().then(() => {
-        this.set('unsavedChanges', false);
-      });
+      this.save();
     },
 
     saveAs() {
-      let removeModal = () => this.send('removeModal');
+      let validar = (titulo) =>
+        this.get('modal').validarTitulo(titulo);
 
-      return new Ember.RSVP.Promise((resolve, reject) => {
-        this.send('showModal', 'modals/huayra-prompt', {
-          title: 'Ingresa el nuevo título',
-          cancel: reject,
-          close: reject,
-          accept: (title) => {
-            var model = this.get('store').createRecord('pattern', {
-                title: title,
-                content: this.updateModel().get('content')
-            });
+      let notas = (titulo) =>
+        this.get('modal').validarTitulo(titulo)
+          .then((valido) => valido ? '' : 'Ya hay un proyecto con ese nombre');
 
-            model.save().then(resolve, reject);
-          }
+      return this.get('modal').prompt('Ingresá un nuevo título', validar, notas).then((title) => {
+        let model = this.get('store').createRecord('pattern', {
+          title: title,
+          content: this.updateModel().get('content')
         });
-      }).then(removeModal, removeModal);
+        let goToNewPattern = () => this.transitionToRoute('pattern', model);
+
+        return model.save()
+          .then(goToNewPattern);
+      });
     },
 
     exportar() {
@@ -171,8 +176,7 @@ export default Ember.Controller.extend({
     },
 
     saveFromConfirmModal() {
-      this.send('save');
-      this.transitionToRoute('index');
+      this.save().then(() => this.transitionToRoute('index'));
     },
 
     cancelAndDontCloseFromConfirmModal() {
@@ -184,8 +188,7 @@ export default Ember.Controller.extend({
     },
 
     saveAndCloseFromConfirmModal() {
-      this.send('save');
-      this.forceCloseWindow();
+      this.save().then(() => this.forceCloseWindow());
     },
 
     cancelAndCloseFromConfirmModal() {

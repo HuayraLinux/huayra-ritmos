@@ -1,1 +1,8 @@
-<button type="button" disabled={{itsEmpty}} class='uk-button' {{action "clean"}}>{{fa-icon icon="eraser"}} Limpiar</button>
+<button type="button" disabled={{itsEmpty}} class='ui button tiny basic' {{action "clean"}}>Limpiar</button>
+<button type="button" disabled={{isLastTrack}} class='ui button tiny basic red'
+  {{action (showModal "modals/huayra-srsly"
+    ok=(action "remove")
+    accion="borrar la pista"
+  )}}>
+  Borrar pista
+</button>

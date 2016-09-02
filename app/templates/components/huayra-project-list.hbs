@@ -1,7 +1,6 @@
 {{#if model}}
 
-<table class="uk-table uk-table-hover">
-  <caption>Mis proyectos anteriores:</caption>
+<table class="ui celled table">
   <thead>
     <tr>
         <th>Título del ritmo</th>
@@ -17,8 +16,11 @@
         {{#link-to "pattern" pattern tagName="td" class="clickeable"}}<a> {{pattern.title}} </a>{{/link-to}}
 
         <td>
-          {{#link-to "pattern" pattern tagName="button" class="uk-button uk-button-mini"}} Abrir para editar {{/link-to}}
-          <button class="uk-button uk-button-danger uk-button-mini" {{action "delete" pattern}}> Eliminar </button>
+          {{#link-to "pattern" pattern tagName="button" class="ui button mini"}} Abrir para editar {{/link-to}}
+          <button class="ui button mini red"
+          {{action
+            (showModal "modals/huayra-srsly" accion="borrar este proyecto" ok=(action "delete" pattern))
+          }}> Eliminar </button>
         </td>
       </tr>
     {{/each}}

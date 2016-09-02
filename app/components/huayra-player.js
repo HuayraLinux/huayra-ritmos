@@ -37,6 +37,11 @@ export default Ember.Component.extend({
   },
 
   play() {
+
+    if (getAudioContext().IN_TEST_MODE) {
+      return;
+    }
+
     this.audioTimer();
   },
 
