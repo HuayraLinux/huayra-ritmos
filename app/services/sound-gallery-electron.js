@@ -2,6 +2,9 @@ import Ember from 'ember';
 import naturalSort from '../naturalSort';
 import {service} from '../service';
 
+/* Consideración importante: LAS CATEGORÍAS NO PUEDEN LLEVAR UN . EN EL NOMBRE */
+const quitarPuntos = (str) => str.replace(/\./g, '');
+
 const fs = require('fs');
 const path = require('path');
 const VALID_EXTENSIONS = /\.(?:wav|ogg|mp3)$/;
@@ -29,10 +32,7 @@ export default Ember.Service.extend({
 
   getSoundsByCategoryAsList(category) {
     var dictionary = this.get('sounds')[category]; // SoundsByCategory
-
-    var values = Object.keys(dictionary).map(function(key){
-      return dictionary[key];
-    });
+    var values = Object.keys(dictionary).map((key) => dictionary[key]);
 
     return values;
   },
@@ -40,7 +40,7 @@ export default Ember.Service.extend({
   getAudioClip(audioThing){
     if(typeof(audioThing) === "string"){
       var [category, filename] = audioThing.split('/');
-      return this.get('sounds')[category][filename].audioClip;
+      return this.get('sounds')[quitarPuntos(category)][filename].audioClip;
     } else {
       return audioThing.audioClip;
     }
@@ -94,8 +94,9 @@ export default Ember.Service.extend({
         fs.readdirSync(folder)
           .filter((category) => isFolder(path.join(folder, category)))
           .forEach((category) => {
-            this.get('categories').pushObject(category);
-            Ember.set(this.get('folders'), category, path.join(folder, category));
+            const categoryName = quitarPuntos(category);
+            this.get('categories').pushObject(categoryName);
+            Ember.set(this.get('folders'), categoryName, path.join(folder, category));
           });
       });
   },
