@@ -13,5 +13,5 @@ export default Ember.Controller.extend({
         validator(title).then((valid) => this.set('isInvalid', !valid));
     }),
     note: '',
-    isInvalid: false
+    isInvalid: true
 });

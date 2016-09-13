@@ -7,11 +7,7 @@ export default Ember.Controller.extend({
 
   actions: {
     new() {
-      this.get('modal').prompt(
-        '¿Cómo se llama tu nuevo ritmo?',
-        (titulo) => this.get('modal').validarTitulo(titulo),
-        (titulo) => this.get('modal').validarTitulo(titulo).then((valido) => valido ? '' : 'Ya hay un proyecto con ese nombre')
-      ).then((titulo) => {
+      this.get('modal').titlePrompt('¿Cómo se llama tu nuevo ritmo?').then((titulo) => {
         var initial_record = this.get('modelFactory').get_initial_record();
         var record = this.get('store').createRecord('pattern', {
           title: titulo,

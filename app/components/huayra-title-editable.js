@@ -9,21 +9,18 @@ export default Ember.Component.extend({
   showModal: null,
   removeModal: null,
 
+  accept(value) {
+    this.set('value', value === '' ? 'Sin título' : value);
+    this.sendAction('onChange');
+  },
+  cancel() {
+    this.sendAction('onCancel');
+  },
+
   actions: {
-    accept(value, closeModal) {
-      this.set('value', value === '' ? 'Sin título' : value);
-      this.sendAction('onChange');
-      closeModal();
-    },
-    cancel(closeModal) {
-      this.sendAction('onCancel');
-      closeModal();
-    },
-    validate(title) {
-      return this.get('modal').validarTitulo(title);
-    },
-    notas(title) {
-      return this.get('modal').validarTitulo(title).then((valido) => valido ? '' : 'Ya hay un proyecto con ese nombre');
+    editarTitulo() {
+      this.get('modal').titlePrompt("Ingresá el nuevo título", this.get('value'))
+        .then((title) => this.accept(title), () => this.cancel());
     }
   }
 });
