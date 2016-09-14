@@ -5,14 +5,16 @@
     translucentOverlay=true}}
 
 <h1>{{model.title}}</h1>
-<h5>{{note}}</h5>
 
 <div class="ui input">
-  {{input value=model.value id="prompt-value"}}
+  {{input value=model.value id="prompt-value" autofocus=true action=(action "userPressEnter")}}
 </div>
 
+
+<p class="huayra-prompt-note">{{note}}</p>
+
 <div class="button-container">
-  <button id="prompt-aceptar" disabled={{isInvalid}} class="ui button primary" {{action model.accept model.value model.close}}>
+  <button id="prompt-aceptar" disabled={{isInvalid}} class="ui button primary" {{action model.accept model.value}}>
     Aceptar
   </button>
   <button id="prompt-cancelar" class="ui button" {{action model.cancel model.close}}>Cancelar</button>

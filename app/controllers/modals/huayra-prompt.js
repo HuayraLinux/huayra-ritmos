@@ -13,5 +13,11 @@ export default Ember.Controller.extend({
         validator(title).then((valid) => this.set('isInvalid', !valid));
     }),
     note: '',
-    isInvalid: true
+    isInvalid: true,
+
+    actions: {
+      userPressEnter() {
+        $("#prompt-aceptar").click();
+      }
+    }
 });
