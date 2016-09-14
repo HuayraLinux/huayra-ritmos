@@ -2,7 +2,9 @@ import PageObject from 'huayra-ritmos/tests/page-object';
 
 let {
   visitable,
-  clickable
+  clickable,
+  count,
+  text
 } = PageObject;
 
 export default PageObject.create({
@@ -11,5 +13,8 @@ export default PageObject.create({
   colocarTitulo(nombre) {
     fillIn('#prompt-value', nombre);
     click('#prompt-aceptar');
-  }
+  },
+  cantidadDeErrores: count(".huayra-prompt-note"),
+  mensajeDeError: text(".huayra-prompt-note")
+
 });
