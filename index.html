@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Huayra Ritmos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<meta name="huayra-ritmos/config/environment" content="%7B%22modulePrefix%22%3A%22huayra-ritmos%22%2C%22environment%22%3A%22production%22%2C%22baseURL%22%3A%22/huayra-ritmos/%22%2C%22locationType%22%3A%22hash%22%2C%22testMode%22%3Afalse%2C%22EmberENV%22%3A%7B%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%2C%22Array%22%3Atrue%7D%2C%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22name%22%3A%22huayra-ritmos%22%2C%22version%22%3A%220.9.8%22%7D%2C%22baseUrl%22%3A%22/huayra-ritmos/%22%2C%22exportApplicationGlobal%22%3Afalse%7D" />
+<script>
+/* jshint browser: true */
+(function (window) {
+    if (window && window.process && window.process.type) {
+        window.ELECTRON = true;
+    }
+
+    window.requireNode = window.require;
+    window.moduleNode = window.module;
+    window.processNode = window.process;
+
+    delete window.process;
+    delete window.require;
+    delete window.module;
+})(this);
+
+</script>
+
+    <link rel="stylesheet" href="assets/vendor-a29b25c5cf953a88c42ceecb8f438cca.css" integrity="sha256-3GIaVN8ZuvaDT4qRgSt79IS8X274jzogkHfghqfmQM8= sha512-wKiIFndH77gI6/PYyYUGo/LQyEj6LtCpnFpnJwBHhEtg3hs35IqA+2Aj5/ZjLvM+g3ZQ7WACj0uloUR+4/ladQ==" >
+    <link rel="stylesheet" href="assets/huayra-ritmos-c9f3db19c3d87e49da85ff2647f22526.css" integrity="sha256-6EX1B7KMpBXnVdZC/t2TZUOArFhPVnMvVqVSs7VFYWo= sha512-/MVc9CnHW5ENIfNzAnDzEJPLb20fUE++kyg2+U8ccAzD2y59LbOogSjRFWVVH96o5ArdF6FNFkn8mNhliFP5IA==" >
+
+    
+  </head>
+  <body>
+    
+
+    <script src="assets/vendor-6a323b243843f470197f248131d415c0.js" integrity="sha256-rxZaXXi+HjBEjzW4TAADRSq5vjsHyCIlZd88aHWy0bw= sha512-zrRQrVVe3RPTeYADeLxrNJBWUvllWGgNyDjPKxQjnUvUrA5/5VpgMe4t/44PyQHLBwHrTRh4qo11Sm20i5ykpQ==" ></script>
+    <script src="assets/huayra-ritmos-c82254492c71769e0f158b2b1e6c4dd9.js" integrity="sha256-9opJV3ohR3XMVnw1Qo9uIdVjPExJisl6DNuC00WXG9o= sha512-WtuX4VOrfG2EXe4aDf8zBPUIFPvgcyS5YhzrlDvOkIvq6w8D/uay5WWe4iZ0/5Yu7n9a0Cs0g7Du4Kr0W3BXDg==" ></script>
+
+    <script>
+/* jshint browser: true */
+(function (window) {
+    if (!window.ELECTRON) {
+        return;
+    }
+
+    // Restore Electron variables.
+    window.process = window.processNode;
+
+    // Redefine a global `require` function that can satisfy both
+    // Node and AMD module systems.
+    var requireAMD = window.require;
+    var requireNode = window.requireNode;
+
+    if (requireAMD) {
+        window.require = function () {
+            try {
+                return requireAMD.apply(null, arguments);
+            } catch (e) {
+                if (e.toString().includes('Error: Could not find module')) {
+                    return requireNode.apply(null, arguments);
+                } else {
+                    return console.error(e);
+                }
+            }
+        };
+    } else {
+        window.require = requireNode;
+    }
+})(this);
+
+</script>
+
+    <!-- AGREGADOS PARA PROCESING -->
+    <script integrity="" src='libs/p5-9581aea27244a2898046c64a62ed6448.js'></script>
+    <script integrity="" src='libs/addons/p5.dom-8b63b28745a14f924283a12090ff21c4.js'></script>
+    <script integrity="" src='libs/addons/p5.sound-e3e06867e36e710f9e1d84197c2364b5.js'></script>
+
+  </body>
+</html>
