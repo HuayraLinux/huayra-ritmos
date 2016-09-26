@@ -40,6 +40,6 @@ cd ..
 echo " "
 echo " ${V}Listo, el proyecto se puede vistar en:${N}"
 echo " "
-echo "                ${V}http://hugoruscitti.github.io/huayra-ritmos${N}"
+echo "                ${V}http://huayralinux.github.io/huayra-ritmos${N}"
 echo " "
 

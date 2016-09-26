@@ -16,8 +16,6 @@ comandos:
 	@echo "    ${G}compilar${N}            Genera los archivos compilados."
 	@echo "    ${G}compilar_live${N}       Compila de forma contínua."
 	@echo ""
-	@echo "    ${G}actualizar_theme${N}    Actualizar el tema css."
-	@echo ""
 	@echo "    ${G}ejecutar_linux${N}      Prueba la aplicacion sobre Huayra."
 	@echo "    ${G}ejecutar_mac${N}        Prueba la aplicacion sobre OSX."
 	@echo ""
@@ -57,25 +55,10 @@ compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
 
 version:
-	# patch || minor
 	ember release
 
 log:
 	git log ${VERSION}...HEAD --graph --oneline --decorate
-
-actualizar_theme:
-	rm -r -f master.zip
-	wget https://github.com/hugoruscitti/huayra-bootstrap-liso/archive/master.zip
-	unzip master.zip -d tmp_theme
-	rm -r -f public/libs
-	rm -r -f public/img
-	rm -r -f public/fonts
-	mv tmp_theme/huayra-bootstrap-liso-master/destino/libs public/
-	mv tmp_theme/huayra-bootstrap-liso-master/destino/img public/
-	mv tmp_theme/huayra-bootstrap-liso-master/destino/fonts public/
-	mv tmp_theme/huayra-bootstrap-liso-master/destino/huayra-bootstrap.css public/
-	rm -r -f master.zip
-	rm -r -f tmp_theme
 
 actualizar_web:
 	sh publishToGithubPages.sh
